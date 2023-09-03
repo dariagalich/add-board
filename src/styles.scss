@@ -1,1 +1,240 @@
-/* You can add global styles to this file, and also import other style files */
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/*--------------------*/
+
+
+//====================================
+
+:root {
+  --blue: #6697E6;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+h1 {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+h2 {
+
+  margin: 32px 0 24px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px
+}
+
+a {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  gap: 8px;
+}
+
+label {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  height: 32px;
+  padding: 4px 10px;
+  border: 1px solid rgba(203, 213, 225, 1);
+  border-radius: 5px 0 0 5px;
+}
+
+
+.container {
+  margin: auto;
+  max-width: 1400px;
+}
+
+
+.button-line-white {
+  color: white;
+  background: none;
+}
+
+.button-line-white:hover {
+  background: #4f5670;
+}
+
+.button-line-white:active {
+  background: #535970;
+  color: white;
+}
+
+.button-blue {
+  display: flex;
+  align-items: center;
+  background-color: #6697E6;
+  color: white;
+}
+
+.button-blue:hover {
+  background-color: #77a1e5;
+}
+
+.button-blue:active {
+  color: white;
+  background: #85a9e3;
+}
+
+
+.button-line-blue {
+  color: var(--blue);
+  background: none;
+  border: 1px #6697E6 solid;
+}
+
+.button-line-blue:hover {
+  color: white;
+  background: #6697E6;
+}
+
+.button-line-blue:active {
+  color: white;
+  background: #739fe5;
+}
+.main-content__ad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.main-content__ad-item {
+  margin-bottom: 16px;
+  width: calc(20% - 8px);
+}
+
+@media (max-width: 1400px) {
+  .container{
+    width: 1140px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 960px;
+  }
+  .main-content__ad-item {
+    width: calc(25% - 8px);
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 720px;
+  }
+  .main-content__ad-item {
+    width: calc(33.33% - 7px);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container{
+    width: 540px;
+  }
+  .header-bottom-bar {
+    flex-wrap: wrap;
+  }
+  .main-content__ad-item {
+    width: calc(50% - 7px);
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    width: 432px;
+  }
+  .categories-text {
+    display: none;
+  }
+  .main-content__ad-item {
+    width: calc(100% - 7px);
+  }
+}

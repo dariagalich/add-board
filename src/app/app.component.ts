@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Daum} from "./component/product/interface";
+import {ProductsService} from "./services/products.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop';
+
+  products: Daum[] = []
+
+  constructor(private _productService: ProductsService) {
+  }
+
+  ngOnInit() {
+    this._productService.getProducts().subscribe(resp => {
+      this.products = resp.data
+      console.log('this.products', this.products)
+    })
+  }
 }
