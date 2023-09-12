@@ -8,4 +8,6 @@ import {Daum} from "./interface";
 })
 export class ProductComponent {
   @Input() product!: Daum
+
+
 }
