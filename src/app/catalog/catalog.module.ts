@@ -4,13 +4,16 @@ import {CatalogComponent} from "./catalog.component";
 import {CatalogRoutingModule} from "./catalog.routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductComponent} from "../shered/product/product.component";
+import {ProductsService} from "../services/products.service";
 
 @NgModule({
   declarations: [
     CatalogComponent,
     ProductComponent,
+
   ],
   imports: [
+
     CommonModule,
     CatalogRoutingModule,
     HttpClientModule
@@ -18,5 +21,6 @@ import {ProductComponent} from "../shered/product/product.component";
   exports: [
     ProductComponent,
   ],
+  providers:[ProductsService]
 })
 export class CatalogModule { }

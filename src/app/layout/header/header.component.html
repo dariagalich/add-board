@@ -13,8 +13,8 @@
             Войти
           </a>
         </div>
-        <div class="header-top__add-button">
-          <a class="button-blue">
+        <div class="header-top__add-button" routerLink="/ad-create">
+          <a class="button-blue" >
             Разместить объявление
             <svg xmlns="http://www.w3.org/2000/svg" height="21" viewBox="0 0 20 20" fill="currentColor">
               <path
@@ -28,7 +28,7 @@
   <div class="header-bottom">
     <div class="container">
       <div class="header-bottom-bar">
-        <div class="header-bottom__heading"><h1>Доска объявлений</h1></div>
+        <div class="header-bottom__heading" routerLink="/"><h1>Доска объявлений</h1></div>
         <div class="header-bottom__categories">
           <a class="button-line-blue" (click)="showTree()">
             <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

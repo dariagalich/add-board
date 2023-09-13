@@ -1,14 +1,13 @@
 .ad-view{
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   gap: 24px;
 }
-//a{
-//  width: 416px;
-//  height: 68px;
-//  padding: 12px;
-//}
+
+p{
+  color: #64748B;
+}
 a{
   height: 40px;
   padding: 12px;

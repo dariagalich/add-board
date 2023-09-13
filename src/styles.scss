@@ -1,116 +1,6 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$shop-primary: mat.define-palette(mat.$indigo-palette);
-$shop-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$shop-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$shop-theme: mat.define-light-theme((
-  color: (
-    primary: $shop-primary,
-    accent: $shop-accent,
-    warn: $shop-warn,
-  )
-));
-
-// Include theme styles for core and each shered used in your app.
-// Alternatively, you can import and @include the theme mixins for each shered
-// that you are using.
-@include mat.all-component-themes($shop-theme);
-
-/*Обнуление*/
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-:focus, :active {
-  outline: none;
-}
-
-a:focus, a:active {
-  outline: none;
-}
-
-nav, footer, header, aside {
-  display: block;
-}
-
-html, body {
-  height: 100%;
-  width: 100%;
-  font-size: 100%;
-  line-height: 1;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-input, button, textarea {
-  font-family: inherit;
-}
-
-input::-ms-clear {
-  display: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
-a, a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-ul li {
-  list-style: none;
-}
-
-img {
-  width: 100%;
-  vertical-align: top;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: 400;
-}
-
-/*--------------------*/
-
-
-//====================================
+@import "assets/scss/angular-material";
+@import "assets/scss/reset-styles";
+@import "assets/scss/button-styles";
 
 :root {
   --blue: #6697E6;
@@ -167,6 +57,7 @@ a {
   text-decoration: none;
   gap: 8px;
 }
+
 p{
   font-size: 16px;
   font-weight: 400;
@@ -191,52 +82,7 @@ input {
 }
 
 
-.button-line-white {
-  color: white;
-  background: none;
-}
 
-.button-line-white:hover {
-  background: #4f5670;
-}
-
-.button-line-white:active {
-  background: #535970;
-  color: white;
-}
-
-.button-blue {
-  display: flex;
-  align-items: center;
-  background-color: #6697E6;
-  color: white;
-}
-
-.button-blue:hover {
-  background-color: #77a1e5;
-}
-
-.button-blue:active {
-  color: white;
-  background: #85a9e3;
-}
-
-
-.button-line-blue {
-  color: var(--blue);
-  background: none;
-  border: 1px #6697E6 solid;
-}
-
-.button-line-blue:hover {
-  color: white;
-  background: #6697E6;
-}
-
-.button-line-blue:active {
-  color: white;
-  background: #739fe5;
-}
 .main-content__ad {
   display: flex;
   flex-wrap: wrap;
@@ -251,59 +97,8 @@ input {
   grid-template-columns: repeat(4,1fr);
 }
 
-@media (max-width: 1400px) {
-  .container, .wrap{
-    width: 1140px;
-  }
-  .wrap{
-    grid-template-columns: repeat(3,1fr);
-  }
-}
 
-@media (max-width: 1200px) {
-  .container, .wrap {
-    width: 960px;
-  }
-}
-
-@media (max-width: 992px) {
-  .container, .wrap {
-    width: 700px;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  .container, .wrap{
-    width: 540px;
-  }
-  .wrap{
-    grid-template-columns: repeat(2,1fr);
-  }
-  .header-bottom-bar {
-    flex-wrap: wrap;
-  }
-
-  //.main-content__ad-item {
-  //  width: calc(50% - 7px);
-  //}
-}
-
-@media (max-width: 576px) {
-  .container, .wrap {
-    width: 432px;
-  }
-  .wrap{
-    grid-template-columns: repeat(1,1fr);
-  }
-  .categories-text {
-    display: none;
-  }
-  //.main-content__ad-item {
-  //  width: calc(100% - 7px);
-  //}
-}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "assets/scss/adaptive-styles";
