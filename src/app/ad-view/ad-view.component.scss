@@ -1,0 +1,24 @@
+.ad-view{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 24px;
+}
+//a{
+//  width: 416px;
+//  height: 68px;
+//  padding: 12px;
+//}
+a{
+  height: 40px;
+  padding: 12px;
+  justify-content: center;
+}
+svg{
+  width: 28px;
+  height: 28px;
+}
+a .button-blue{
+  gap: 12px;
+  flex-shrink: 0;
+}
