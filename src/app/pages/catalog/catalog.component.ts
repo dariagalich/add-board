@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Daum} from "../shered/product/interface";
-import {ProductsService} from "../services/products.service";
+import {Daum} from "../../shered/product/interface";
+import {ProductsService} from "../../services/products.service";
 
 @Component({
   selector: 'app-catalog',

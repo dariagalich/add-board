@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {AdCreateEditComponent} from "../../ad-create-edit/ad-create-edit.component";
+import {AdCreateEditComponent} from "../../pages/ad-create-edit/ad-create-edit.component";
 
 const routes: Routes = [
   { path: 'ad-create',

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: '',
-    loadChildren: () => import('./catalog/catalog.module').then(m=>m.CatalogModule)
+    loadChildren: () => import('./pages/catalog/catalog.module').then(m=>m.CatalogModule)
   }
 ];
 
