@@ -3,11 +3,11 @@ import {Daum} from "../../shered/product/interface";
 import {ProductsService} from "../../services/products.service";
 
 @Component({
-  selector: 'app-catalog',
-  templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  selector: 'app-recommendation',
+  templateUrl: './recommendation.component.html',
+  styleUrls: ['./recommendation.component.scss']
 })
-export class CatalogComponent {
+export class RecommendationComponent {
 
   products: Daum[] = []
 
