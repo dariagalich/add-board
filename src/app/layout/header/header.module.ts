@@ -5,11 +5,13 @@ import {TreeComponent} from "../../shered/categories-tree-view/tree.component";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {AuthorizationComponent} from "../../shered/authorization/authorization.component";
 
 
 @NgModule({
   declarations: [
-    TreeComponent
+    TreeComponent,
+    AuthorizationComponent
   ],
   imports: [
     CommonModule,

@@ -2,21 +2,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  //При наличии закоменченого кода перестают работать остальные роуты
+  // {
+  //   path: '',
+  //   redirectTo: '/main',
+  //   pathMatch: 'prefix',
+  // },
   {
+    // path: 'main',
     path: '',
-    redirectTo: '/main',
-    pathMatch: 'prefix',
-  },
-  {
-    path: 'main',
     title: 'Главная',
     loadChildren: () =>
       import('./pages/recommendation/recommendation.module').then(m=>m.RecommendationModule)
   },
-  // {path: 'ad-view',
-  //   loadChildren: () =>
-  //     import('./pages/ad-view/ad-view.module').then(m=>m.AdViewModule)
-  // },
+  {
+    path: 'ad-view',
+    loadChildren: () =>
+      import('./pages/ad-view/ad-view.module').then(m=>m.AdViewModule)
+  },
   {
     path: 'ad-create-edit',
     title: 'Создание объявления',
