@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import {Daum} from "./shered/product/interface";
+// import {Daum} from "./shared/product/interface";
 // import {ProductsService} from "./services/products.service";
 
 @Component({

@@ -27,7 +27,7 @@ $shop-theme: mat.define-light-theme((
   )
 ));
 
-// Include theme styles for core and each shered used in your app.
-// Alternatively, you can import and @include the theme mixins for each shered
+// Include theme styles for core and each shared used in your app.
+// Alternatively, you can import and @include the theme mixins for each shared
 // that you are using.
 @include mat.all-component-themes($shop-theme);

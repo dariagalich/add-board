@@ -10,13 +10,10 @@ header {
   background-color: #49516F;
 }
 
-.header-top__enter {
+.header-top-end {
+  height: 36px;
   display: flex;
   align-items: center;
-}
-
-.header-top-end {
-  display: flex;
   justify-content: flex-end;
   gap: 24px;
 }
@@ -41,14 +38,4 @@ header {
 .header-bottom__categories {
   flex-shrink: 0;
 }
-.header-bottom__search-bar {
-  display: flex;
-  align-items: center;
-  flex-basis: 100%;
-}
 
-.button-search {
-  color: white;
-  background-color: #6697E6;
-  border-radius: 0 5px 5px 0;
-}

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RecommendationComponent} from "./recommendation.component";
 import {RecommendationRoutingModule} from "./recommendation.routing.module";
 import {HttpClientModule} from "@angular/common/http";
-import {ProductComponent} from "../../shered/product/product.component";
+import {ProductComponent} from "../../shared/product/product.component";
 import {ProductsService} from "../../services/products.service";
 
 @NgModule({

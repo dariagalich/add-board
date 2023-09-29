@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeaderRoutingModule} from "./header.routing.module";
-import {TreeComponent} from "../../shered/categories-tree-view/tree.component";
+import {TreeComponent} from "../../shared/categories-tree-view/tree.component";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {AuthorizationComponent} from "../../shered/authorization/authorization.component";
+import {AuthorizationComponent} from "../../shared/authorization/authorization.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import { UserAuthorizationComponent } from './components/user-authorization/user-authorization.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     TreeComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    UserAuthorizationComponent,
+    SearchBarComponent
   ],
   imports: [
     CommonModule,
@@ -19,10 +26,15 @@ import {AuthorizationComponent} from "../../shered/authorization/authorization.c
     MatTreeModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
+    HttpClientModule,
+    FormsModule
 
   ],
   exports: [
     TreeComponent,
+    UserAuthorizationComponent,
+    SearchBarComponent,
   ]
 })
 export class HeaderModule { }

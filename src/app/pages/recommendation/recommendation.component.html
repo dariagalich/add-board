@@ -1,3 +1,7 @@
-<div class="wrap">
-  <app-product *ngFor="let p of products" [product]="p" routerLink="/ad-view"></app-product>
+<div class="container">
+  <h3>Рекомендации для вас</h3>
+  <div class="wrap">
+    <app-product *ngFor="let p of products" [product]="p" routerLink="/ad-view/123"></app-product>
+  </div>
 </div>
+

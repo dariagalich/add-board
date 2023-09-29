@@ -4,7 +4,7 @@ import {AdViewComponent} from "./ad-view.component";
 
 const routes: Routes = [
   {
-    path: 'ad-view',
+    path: '',
     component: AdViewComponent
   }
 ];

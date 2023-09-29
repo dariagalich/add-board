@@ -36,6 +36,7 @@ button{
 
 
 .button-line-blue {
+  margin: auto;
   color: var(--blue);
   background: none;
   border: 1px #6697E6 solid;
@@ -49,4 +50,11 @@ button{
 .button-line-blue:active {
   color: white;
   background: #739fe5;
+}
+
+.button-search {
+  margin: auto;
+  color: white;
+  background-color: #6697E6;
+  border-radius: 0 5px 5px 0;
 }

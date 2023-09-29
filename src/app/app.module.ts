@@ -5,19 +5,23 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from "./layout/header/header.component";
 import {RouterOutlet} from "@angular/router";
 import {HeaderModule} from "./layout/header/header.module";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
+    MatButtonModule,
     HeaderModule,
+    // HeaderModule,
+    // MatButtonModule,
   ],
   providers: [],
   exports: [],
