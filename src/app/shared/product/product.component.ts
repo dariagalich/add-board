@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Daum} from "./interface";
+import {Properties} from "../../api.interface";
 
 @Component({
   selector: 'app-product',
@@ -7,7 +7,7 @@ import {Daum} from "./interface";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  @Input() product!: Daum
 
+  @Input() product!: Properties;
 
 }

@@ -9,10 +9,11 @@ import {MatButtonModule} from "@angular/material/button";
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

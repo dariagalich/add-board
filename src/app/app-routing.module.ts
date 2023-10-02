@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    title: 'Главная',
+    title: 'Рекомендации',
     loadChildren: () =>
       import('./pages/recommendation/recommendation.module').then(m=>m.RecommendationModule)
   },
@@ -30,6 +30,11 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then(m=>m.AdminModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./pages/search/search.module').then(m=>m.SearchModule)
   }
 
 ];

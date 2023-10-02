@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Daum} from "../../shared/product/interface";
 import {ProductsService} from "../../services/products.service";
+import {Properties} from "../../api.interface";
 
 @Component({
   selector: 'app-recommendation',
@@ -9,16 +9,17 @@ import {ProductsService} from "../../services/products.service";
 })
 export class RecommendationComponent {
 
-  products: Daum[] = []
+  products: Properties[] = []
+  images: Blob[] = []
 
-  constructor(private _productService: ProductsService) {
+  constructor(private productService: ProductsService) {
   }
 
   ngOnInit() {
-    this._productService.getProducts().subscribe(resp => {
-      this.products = resp.data
-      console.log('this.products', this.products)
-    })
+    this.productService.getProducts()
+      .subscribe(result => {
+        this.products = result
+        console.log('this.products', this.products)
+      })
   }
-
 }

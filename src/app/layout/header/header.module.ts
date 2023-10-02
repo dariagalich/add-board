@@ -10,7 +10,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { UserAuthorizationComponent } from './components/user-authorization/user-authorization.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -20,17 +21,19 @@ import {FormsModule} from "@angular/forms";
     UserAuthorizationComponent,
     SearchBarComponent
   ],
-  imports: [
-    CommonModule,
-    HeaderRoutingModule,
-    MatTreeModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
-    HttpClientModule,
-    FormsModule
+    imports: [
+        CommonModule,
+        HeaderRoutingModule,
+        MatTreeModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        HttpClientModule,
+        FormsModule,
+        MatCheckboxModule,
+        ReactiveFormsModule
 
-  ],
+    ],
   exports: [
     TreeComponent,
     UserAuthorizationComponent,

@@ -1,44 +1,9 @@
 h4{
   margin-bottom: 24px;
 }
-.warning{
-  display: none;
-  color: red;
-}
-label{
-  display: block;
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-a{
-  display: contents;
-  padding-left: 0;
-  color: var(--blue)
-}
-small a:hover{
-  text-decoration: underline;
-}
-.form-input{
-  //margin-top: 8px;
-  margin-bottom: 16px;
-}
-input{
-  margin-top: 8px;
-}
-textarea{
-  width: 100%;
-  display: block;
-  border: 1px solid rgba(203, 213, 225, 1);
-  border-radius: 5px 0 0 5px;
-}
 .add-image{
   display: flex;
   align-items: center;
   gap: 16px;
 }
-.big-button{
-  display: flex;
-  justify-content: center;
-  width: 186px;
-  height: 35px;
-}
+@import "src/assets/scss/form-styles";

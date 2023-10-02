@@ -1,21 +1,37 @@
-<form class="form-authorization">
+<form class="form-authorization" [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-header">
     <h3>Авторизация</h3>
-    <mat-icon>close</mat-icon>
+     <mat-icon mat-dialog-close="">close</mat-icon>
   </div>
   <div class="form-control">
     <label for="phone"></label>
-    <input id="phone" type="phone" placeholder="Введите телефон">
+    <input id="phone" type="phone" placeholder="Номер телефона">
     <div class="validation">
-      <small>Пожалуйста введите телефон</small>
+<!--      <small>Пожалуйста введите телефон</small>-->
     </div>
   </div>
   <div class="form-control">
     <label for="password"></label>
-    <input id="password" type="password" placeholder="Введите пароль">
+    <input id="password" type="password" placeholder="Пароль">
     <div class="validation">
-      <small>Пожалуйста введите пароль</small>
+<!--      <small>Пожалуйста введите пароль</small>-->
     </div>
+  </div>
+
+  <div class="other-info">
+    <div class="check-remember">
+      <input type="checkbox" name="checkbox-remember" id="checkbox-remember" class="checkbox" [(ngModel)]="rememberMe"/>
+      <label for="checkbox-remember">Запомнить меня</label>
+    </div>
+    <a href="#">Забыли пароль?</a>
+  </div>
+
+  <div class="button-login">
+    <button type="submit" class="button-blue button-big">Войти</button>
+  </div>
+  <div class="registration-link">
+    <span>Нет учетной записи?</span>
+    <a (click)="openDialog()" mat-dialog-close="">Зарегистрироваться</a>
   </div>
 
 </form>
