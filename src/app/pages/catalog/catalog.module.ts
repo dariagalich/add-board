@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RecommendationComponent} from "./recommendation.component";
-import {RecommendationRoutingModule} from "./recommendation.routing.module";
+import {CatalogComponent} from "./catalog.component";
+import {CatalogRoutingModule} from "./catalog.routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductComponent} from "../../shared/product/product.component";
 import {ProductsService} from "../../services/products.service";
 
 @NgModule({
   declarations: [
-    RecommendationComponent,
+    CatalogComponent,
     ProductComponent,
   ],
   imports: [
 
     CommonModule,
-    RecommendationRoutingModule,
+    CatalogRoutingModule,
     HttpClientModule
   ],
   exports: [
@@ -22,4 +22,4 @@ import {ProductsService} from "../../services/products.service";
   ],
   providers:[ProductsService]
 })
-export class RecommendationModule { }
+export class CatalogModule { }

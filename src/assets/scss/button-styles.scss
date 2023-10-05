@@ -3,7 +3,10 @@ button{
   padding: 6px 12px;
   border-radius: 5px;
 }
-
+button:disabled{
+  color: white;
+  background-color: #c7c9d2;
+}
 .button-line-white {
   color: white;
   background: none;

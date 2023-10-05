@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  //При наличии закоменченого кода перестают работать остальные роуты
   {
     path: '',
     redirectTo: '/main',
@@ -10,9 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    title: 'Рекомендации',
+    title: 'Главная',
     loadChildren: () =>
-      import('./pages/recommendation/recommendation.module').then(m=>m.RecommendationModule)
+      import('./pages/catalog/catalog.module').then(m=>m.CatalogModule)
   },
   {
     path: 'ad-view/:id',
@@ -31,11 +30,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then(m=>m.AdminModule)
   },
-  {
-    path: 'search',
-    loadChildren: () =>
-      import('./pages/search/search.module').then(m=>m.SearchModule)
-  }
+
 
 ];
 

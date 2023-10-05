@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {Properties} from "../../api.interface";
 
 @Component({
-  selector: 'app-recommendation',
-  templateUrl: './recommendation.component.html',
-  styleUrls: ['./recommendation.component.scss']
+  selector: 'app-catalog',
+  templateUrl: './catalog.component.html',
+  styleUrls: ['./catalog.component.scss']
 })
-export class RecommendationComponent {
+export class CatalogComponent {
 
   products: Properties[] = []
-  images: Blob[] = []
 
   constructor(private productService: ProductsService) {
   }
@@ -22,4 +21,5 @@ export class RecommendationComponent {
         console.log('this.products', this.products)
       })
   }
+
 }
