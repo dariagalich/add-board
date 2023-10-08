@@ -33,7 +33,7 @@ import {RegistrationComponent} from "../../shared/registration/registration.comp
         HttpClientModule,
         FormsModule,
         MatCheckboxModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
 
     ],
   exports: [

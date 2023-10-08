@@ -1,10 +1,7 @@
 import {Component} from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   UntypedFormGroup,
-  ValidationErrors,
-  ValidatorFn,
   Validators
 } from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
@@ -29,7 +26,7 @@ export class AuthorizationDialogComponent {
   private _buildForm() {
     this.authorizationForm = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern(/^(8|\+7)[\-\s]?\(?\d{3}\)?[\-\s]?[\d\-\s]{7,10}$/mg)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: false
     })
   }
@@ -46,12 +43,6 @@ export class AuthorizationDialogComponent {
 
   openDialog() {
     this.matDialog.open(RegistrationComponent)
-  }
-
-  onlyNumberValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      return !Number(control.value) ? {onlyNumber: {value: 'Тут буква'}} : null;
-    };
   }
 
 }

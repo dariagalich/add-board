@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {AdCreateEditComponent} from "./ad-create-edit.component";
 import {AdCreateEditRoutingModule} from "./ad-create-edit.routing.module";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -14,7 +17,10 @@ import {AdCreateEditRoutingModule} from "./ad-create-edit.routing.module";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AdCreateEditRoutingModule
+    AdCreateEditRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    HttpClientModule,
   ]
 })
 export class AdCreateEditModule { }

@@ -1,0 +1,84 @@
+<form class="form-size" [formGroup]="registrationForm">
+
+  <div class="form-header">
+    <h3>Регистрация</h3>
+    <!--    <mat-icon mat-dialog-close="">close</mat-icon>-->
+  </div>
+
+
+  <input id="name-registration" type="name" formControlName="name" placeholder="Имя">
+  <div class="warning"
+       *ngIf="registrationForm.controls['name'].invalid && (registrationForm.controls['name'].touched || registrationForm.controls['name'].dirty)">
+    <span *ngIf="registrationForm.controls['name'].errors?.['required']">Пожалуйста введите имя</span>
+    <div *ngIf="registrationForm.controls['name'].errors?.['pattern']">
+      <span>В имени содержатся не допустимые символы</span>
+    </div>
+  </div>
+
+
+  <input id="email-registration" type="email" formControlName="email" placeholder="E-mail">
+  <div class="warning"
+       *ngIf="registrationForm.controls['email'].invalid && (registrationForm.controls['email'].touched || registrationForm.controls['email'].dirty)">
+    <span *ngIf="registrationForm.controls['email'].errors?.['required']">Пожалуйста введите e-mail</span>
+    <div *ngIf="registrationForm.controls['email'].errors?.['email']">
+      <span>Некорректный формат e-mail</span>
+    </div>
+  </div>
+
+
+  <input id="phone-registration" type="phone" formControlName="phone" placeholder="Номер телефона">
+  <div class="warning"
+       *ngIf="registrationForm.controls['phone'].invalid && (registrationForm.controls['phone'].touched || registrationForm.controls['phone'].dirty)">
+    <span *ngIf="registrationForm.controls['phone'].errors?.['required']">Пожалуйста введите номер телефона</span>
+    <div *ngIf="registrationForm.controls['phone'].errors?.['pattern']">
+      <span>Некорректный формат телефона</span>
+    </div>
+  </div>
+
+
+  <input id="password-registration" type="password" formControlName="password" placeholder="Пароль">
+  <div class="warning"
+       *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].touched || registrationForm.controls['password'].dirty)">
+    <small *ngIf="registrationForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</small>
+    <div *ngIf="registrationForm.controls['password'].errors?.['minlength']">
+      <small>Пароль должен содержать не меннее 6 символов</small>
+    </div>
+  </div>
+
+
+  <input id="confirm-password-registration" type="password" formControlName="confirmPassword"
+         placeholder="Подтвердите пароль">
+  <div class="warning"
+      *ngIf="registrationForm.controls['confirmPassword'].invalid && (registrationForm.controls['confirmPassword'].touched || registrationForm.controls['confirmPassword'].dirty)">
+      <span
+        *ngIf="registrationForm.controls['confirmPassword'].errors?.['required']">Пожалуйста подтвердите пароль</span>
+    <div *ngIf="registrationForm.controls['confirmPassword'].errors?.['confirmPass']">
+      <span>Пароли не совпадают</span>
+    </div>
+  </div>
+
+
+  <img src="assets/images/KCaptcha.png" alt="Ошибка загрузки изображения">
+
+
+  <input id="captcha" type="text" formControlName="captcha" placeholder="Введите код">
+  <div class="warning"
+      *ngIf="registrationForm.controls['captcha'].invalid && (registrationForm.controls['captcha'].touched || registrationForm.controls['captcha'].dirty)">
+      <span *ngIf="registrationForm.controls['captcha'].errors?.['required']">Пожалуйста введите код с картинки</span>
+    <div *ngIf="registrationForm.controls['captcha'].errors?.['correctCaptcha']">
+      <span>Неправильный код {{registrationForm.controls['captcha'].errors?.['correctCaptcha'].value}}</span>
+    </div>
+  </div>
+
+
+  {{registrationForm.get('captcha')?.value}}
+
+  <!--  <p>1</p>{{this.registrationForm.controls['age'].errors?.['correctCaptcha']?.value}}-->
+
+
+  <!--  {{registrationForm.invalid}}-->
+  <div class="button-login">
+    <button type="submit" class="button-blue button-big">Зарегистрироваться</button>
+  </div>
+
+</form>

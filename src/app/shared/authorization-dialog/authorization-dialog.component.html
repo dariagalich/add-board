@@ -3,8 +3,7 @@
     <h3>Авторизация</h3>
      <mat-icon mat-dialog-close="">close</mat-icon>
   </div>
-  <div class="form-control">
-    <label for="phone"></label>
+  <div>
     <input id="phone" type="phone" formControlName="phone" placeholder="Номер телефона">
     <div class="validation warning">
       <div *ngIf="authorizationForm.controls['phone'].invalid && (authorizationForm.controls['phone'].touched || authorizationForm.controls['phone'].dirty)">
@@ -15,7 +14,7 @@
       </div>
     </div>
   </div>
-  <div class="form-control">
+  <div>
     <label for="password"></label>
     <input id="password" type="password" formControlName="password" placeholder="Пароль">
     <div class="validation warning">
@@ -23,7 +22,7 @@
         <small *ngIf="authorizationForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</small>
       </div>
       <div *ngIf="authorizationForm.controls['password'].errors?.['minlength']">
-        <small>Пароль должен содержать не меннее 8 символов</small>
+        <small>Пароль должен содержать не меннее 6 символов</small>
       </div>
     </div>
   </div>
