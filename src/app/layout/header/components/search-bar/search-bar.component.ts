@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {SearchService} from "../../../../services/search.service";
+import {ProductsService} from "../../../../services/products.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -17,14 +17,14 @@ export class SearchBarComponent {
   constructor(
     private router: Router,
     _http: HttpClient,
-    private searchService: SearchService
+    private searchService: ProductsService
   ){
     this.HttpClient = _http
   }
 
   searchAd(): void {
     if (this.search) {
-      this.searchService.search(this.search).subscribe((response) => {
+      this.searchService.searchProducts(this.search).subscribe((response) => {
         console.log(response)
       })
     }

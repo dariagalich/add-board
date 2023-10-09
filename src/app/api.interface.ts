@@ -2200,6 +2200,10 @@ export interface Schema94 {
 
 export interface N20012 {
   description: string
+}
+
+export interface N40410 {
+  description: string
   content: Content73
 }
 
@@ -2215,23 +2219,6 @@ export interface Schema95 {
   $ref: string
 }
 
-export interface N40410 {
-  description: string
-  content: Content74
-}
-
-export interface Content74 {
-  "application/json": ApplicationJson74
-}
-
-export interface ApplicationJson74 {
-  schema: Schema96
-}
-
-export interface Schema96 {
-  $ref: string
-}
-
 export interface Delete4 {
   tags: string[]
   summary: string
@@ -2244,10 +2231,10 @@ export interface Parameter13 {
   in: string
   description: string
   required: boolean
-  schema: Schema97
+  schema: Schema96
 }
 
-export interface Schema97 {
+export interface Schema96 {
   type: string
   format: string
 }
@@ -2260,6 +2247,27 @@ export interface Responses20 {
 }
 
 export interface N50020 {
+  description: string
+  content: Content74
+}
+
+export interface Content74 {
+  "application/json": ApplicationJson74
+}
+
+export interface ApplicationJson74 {
+  schema: Schema97
+}
+
+export interface Schema97 {
+  $ref: string
+}
+
+export interface N2044 {
+  description: string
+}
+
+export interface N4038 {
   description: string
   content: Content75
 }
@@ -2276,11 +2284,7 @@ export interface Schema98 {
   $ref: string
 }
 
-export interface N2044 {
-  description: string
-}
-
-export interface N4038 {
+export interface N40411 {
   description: string
   content: Content76
 }
@@ -2297,23 +2301,6 @@ export interface Schema99 {
   $ref: string
 }
 
-export interface N40411 {
-  description: string
-  content: Content77
-}
-
-export interface Content77 {
-  "application/json": ApplicationJson77
-}
-
-export interface ApplicationJson77 {
-  schema: Schema100
-}
-
-export interface Schema100 {
-  $ref: string
-}
-
 export interface Images5 {
   post: Post8
 }
@@ -2326,19 +2313,19 @@ export interface Post8 {
 }
 
 export interface RequestBody11 {
-  content: Content78
+  content: Content77
 }
 
-export interface Content78 {
+export interface Content77 {
   "multipart/form-data": MultipartFormData6
 }
 
 export interface MultipartFormData6 {
-  schema: Schema101
+  schema: Schema100
   encoding: Encoding6
 }
 
-export interface Schema101 {
+export interface Schema100 {
   required: string[]
   type: string
   properties: Properties6
@@ -2346,7 +2333,7 @@ export interface Schema101 {
 
 export interface Properties6 {
   AdvertId: AdvertId2
-  Content: Content79
+  Content: Content78
 }
 
 export interface AdvertId2 {
@@ -2355,7 +2342,7 @@ export interface AdvertId2 {
   format: string
 }
 
-export interface Content79 {
+export interface Content78 {
   type: string
   description: string
   format: string
@@ -2363,14 +2350,14 @@ export interface Content79 {
 
 export interface Encoding6 {
   AdvertId: AdvertId3
-  Content: Content80
+  Content: Content79
 }
 
 export interface AdvertId3 {
   style: string
 }
 
-export interface Content80 {
+export interface Content79 {
   style: string
 }
 
@@ -2383,6 +2370,23 @@ export interface Responses21 {
 }
 
 export interface N50021 {
+  description: string
+  content: Content80
+}
+
+export interface Content80 {
+  "application/json": ApplicationJson77
+}
+
+export interface ApplicationJson77 {
+  schema: Schema101
+}
+
+export interface Schema101 {
+  $ref: string
+}
+
+export interface N2014 {
   description: string
   content: Content81
 }
@@ -2399,7 +2403,7 @@ export interface Schema102 {
   $ref: string
 }
 
-export interface N2014 {
+export interface N4009 {
   description: string
   content: Content82
 }
@@ -2416,7 +2420,7 @@ export interface Schema103 {
   $ref: string
 }
 
-export interface N4009 {
+export interface N4039 {
   description: string
   content: Content83
 }
@@ -2433,7 +2437,7 @@ export interface Schema104 {
   $ref: string
 }
 
-export interface N4039 {
+export interface N4228 {
   description: string
   content: Content84
 }
@@ -2447,23 +2451,6 @@ export interface ApplicationJson81 {
 }
 
 export interface Schema105 {
-  $ref: string
-}
-
-export interface N4228 {
-  description: string
-  content: Content85
-}
-
-export interface Content85 {
-  "application/json": ApplicationJson82
-}
-
-export interface ApplicationJson82 {
-  schema: Schema106
-}
-
-export interface Schema106 {
   $ref: string
 }
 
@@ -2485,6 +2472,23 @@ export interface Responses22 {
 
 export interface N50022 {
   description: string
+  content: Content85
+}
+
+export interface Content85 {
+  "application/json": ApplicationJson82
+}
+
+export interface ApplicationJson82 {
+  schema: Schema106
+}
+
+export interface Schema106 {
+  $ref: string
+}
+
+export interface N20013 {
+  description: string
   content: Content86
 }
 
@@ -2497,10 +2501,15 @@ export interface ApplicationJson83 {
 }
 
 export interface Schema107 {
+  type: string
+  items: Items9
+}
+
+export interface Items9 {
   $ref: string
 }
 
-export interface N20013 {
+export interface N40310 {
   description: string
   content: Content87
 }
@@ -2514,28 +2523,6 @@ export interface ApplicationJson84 {
 }
 
 export interface Schema108 {
-  type: string
-  items: Items9
-}
-
-export interface Items9 {
-  $ref: string
-}
-
-export interface N40310 {
-  description: string
-  content: Content88
-}
-
-export interface Content88 {
-  "application/json": ApplicationJson85
-}
-
-export interface ApplicationJson85 {
-  schema: Schema109
-}
-
-export interface Schema109 {
   type: string
   items: Items10
 }
@@ -2562,10 +2549,10 @@ export interface Parameter14 {
   in: string
   description: string
   required: boolean
-  schema: Schema110
+  schema: Schema109
 }
 
-export interface Schema110 {
+export interface Schema109 {
   type: string
   format: string
 }
@@ -2577,6 +2564,23 @@ export interface Responses23 {
 }
 
 export interface N50023 {
+  description: string
+  content: Content88
+}
+
+export interface Content88 {
+  "application/json": ApplicationJson85
+}
+
+export interface ApplicationJson85 {
+  schema: Schema110
+}
+
+export interface Schema110 {
+  $ref: string
+}
+
+export interface N20014 {
   description: string
   content: Content89
 }
@@ -2593,7 +2597,7 @@ export interface Schema111 {
   $ref: string
 }
 
-export interface N20014 {
+export interface N40412 {
   description: string
   content: Content90
 }
@@ -2610,23 +2614,6 @@ export interface Schema112 {
   $ref: string
 }
 
-export interface N40412 {
-  description: string
-  content: Content91
-}
-
-export interface Content91 {
-  "application/json": ApplicationJson88
-}
-
-export interface ApplicationJson88 {
-  schema: Schema113
-}
-
-export interface Schema113 {
-  $ref: string
-}
-
 export interface Put4 {
   tags: string[]
   summary: string
@@ -2640,28 +2627,28 @@ export interface Parameter15 {
   in: string
   description: string
   required: boolean
-  schema: Schema114
+  schema: Schema113
 }
 
-export interface Schema114 {
+export interface Schema113 {
   type: string
   format: string
 }
 
 export interface RequestBody12 {
-  content: Content92
+  content: Content91
 }
 
-export interface Content92 {
+export interface Content91 {
   "multipart/form-data": MultipartFormData7
 }
 
 export interface MultipartFormData7 {
-  schema: Schema115
+  schema: Schema114
   encoding: Encoding7
 }
 
-export interface Schema115 {
+export interface Schema114 {
   required: string[]
   type: string
   properties: Properties7
@@ -2723,6 +2710,23 @@ export interface Responses24 {
 
 export interface N50024 {
   description: string
+  content: Content92
+}
+
+export interface Content92 {
+  "application/json": ApplicationJson88
+}
+
+export interface ApplicationJson88 {
+  schema: Schema115
+}
+
+export interface Schema115 {
+  $ref: string
+}
+
+export interface N20015 {
+  description: string
   content: Content93
 }
 
@@ -2738,7 +2742,7 @@ export interface Schema116 {
   $ref: string
 }
 
-export interface N20015 {
+export interface N40010 {
   description: string
   content: Content94
 }
@@ -2755,7 +2759,7 @@ export interface Schema117 {
   $ref: string
 }
 
-export interface N40010 {
+export interface N40311 {
   description: string
   content: Content95
 }
@@ -2772,7 +2776,7 @@ export interface Schema118 {
   $ref: string
 }
 
-export interface N40311 {
+export interface N40413 {
   description: string
   content: Content96
 }
@@ -2789,7 +2793,7 @@ export interface Schema119 {
   $ref: string
 }
 
-export interface N40413 {
+export interface N4229 {
   description: string
   content: Content97
 }
@@ -2806,23 +2810,6 @@ export interface Schema120 {
   $ref: string
 }
 
-export interface N4229 {
-  description: string
-  content: Content98
-}
-
-export interface Content98 {
-  "application/json": ApplicationJson94
-}
-
-export interface ApplicationJson94 {
-  schema: Schema121
-}
-
-export interface Schema121 {
-  $ref: string
-}
-
 export interface Delete5 {
   tags: string[]
   summary: string
@@ -2835,10 +2822,10 @@ export interface Parameter16 {
   in: string
   description: string
   required: boolean
-  schema: Schema122
+  schema: Schema121
 }
 
-export interface Schema122 {
+export interface Schema121 {
   type: string
   format: string
 }
@@ -2851,6 +2838,27 @@ export interface Responses25 {
 }
 
 export interface N50025 {
+  description: string
+  content: Content98
+}
+
+export interface Content98 {
+  "application/json": ApplicationJson94
+}
+
+export interface ApplicationJson94 {
+  schema: Schema122
+}
+
+export interface Schema122 {
+  $ref: string
+}
+
+export interface N2045 {
+  description: string
+}
+
+export interface N40312 {
   description: string
   content: Content99
 }
@@ -2867,11 +2875,7 @@ export interface Schema123 {
   $ref: string
 }
 
-export interface N2045 {
-  description: string
-}
-
-export interface N40312 {
+export interface N40414 {
   description: string
   content: Content100
 }
@@ -2885,23 +2889,6 @@ export interface ApplicationJson96 {
 }
 
 export interface Schema124 {
-  $ref: string
-}
-
-export interface N40414 {
-  description: string
-  content: Content101
-}
-
-export interface Content101 {
-  "application/json": ApplicationJson97
-}
-
-export interface ApplicationJson97 {
-  schema: Schema125
-}
-
-export interface Schema125 {
   $ref: string
 }
 
@@ -2923,6 +2910,23 @@ export interface Responses26 {
 
 export interface N50026 {
   description: string
+  content: Content101
+}
+
+export interface Content101 {
+  "application/json": ApplicationJson97
+}
+
+export interface ApplicationJson97 {
+  schema: Schema125
+}
+
+export interface Schema125 {
+  $ref: string
+}
+
+export interface N20016 {
+  description: string
   content: Content102
 }
 
@@ -2938,7 +2942,7 @@ export interface Schema126 {
   $ref: string
 }
 
-export interface N20016 {
+export interface N40313 {
   description: string
   content: Content103
 }
@@ -2955,23 +2959,6 @@ export interface Schema127 {
   $ref: string
 }
 
-export interface N40313 {
-  description: string
-  content: Content104
-}
-
-export interface Content104 {
-  "application/json": ApplicationJson100
-}
-
-export interface ApplicationJson100 {
-  schema: Schema128
-}
-
-export interface Schema128 {
-  $ref: string
-}
-
 export interface Components {
   schemas: Schemas
   securitySchemes: SecuritySchemes
@@ -2984,7 +2971,6 @@ export interface Schemas {
   CommentDto: CommentDto
   CreateUserDto: CreateUserDto
   ErrorDto: ErrorDto
-  ImageDto: ImageDto
   ImportCategoryDto: ImportCategoryDto
   LoginUserDto: LoginUserDto
   ShortAdvertDto: ShortAdvertDto
@@ -3287,7 +3273,7 @@ export interface Items13 {
   $ref: string
 }
 
-export interface ImageDto {
+export interface ImportCategoryDto {
   type: string
   properties: Properties14
   additionalProperties: boolean
@@ -3296,43 +3282,11 @@ export interface ImageDto {
 
 export interface Properties14 {
   id: Id4
-  advertId: AdvertId4
-  content: Content105
-}
-
-export interface Id4 {
-  type: string
-  description: string
-  format: string
-}
-
-export interface AdvertId4 {
-  type: string
-  description: string
-  format: string
-}
-
-export interface Content105 {
-  type: string
-  description: string
-  format: string
-  nullable: boolean
-}
-
-export interface ImportCategoryDto {
-  type: string
-  properties: Properties15
-  additionalProperties: boolean
-  description: string
-}
-
-export interface Properties15 {
-  id: Id5
   name: Name14
   parentId: ParentId9
 }
 
-export interface Id5 {
+export interface Id4 {
   type: string
   description: string
   format: string
@@ -3354,12 +3308,12 @@ export interface ParentId9 {
 export interface LoginUserDto {
   required: string[]
   type: string
-  properties: Properties16
+  properties: Properties15
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties16 {
+export interface Properties15 {
   login: Login4
   password: Password4
 }
@@ -3380,13 +3334,13 @@ export interface Password4 {
 
 export interface ShortAdvertDto {
   type: string
-  properties: Properties17
+  properties: Properties16
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties17 {
-  id: Id6
+export interface Properties16 {
+  id: Id5
   name: Name15
   location: Location6
   createdAt: CreatedAt
@@ -3395,7 +3349,7 @@ export interface Properties17 {
   cost: Cost6
 }
 
-export interface Id6 {
+export interface Id5 {
   type: string
   description: string
   format: string
@@ -3444,18 +3398,18 @@ export interface Cost6 {
 
 export interface ShortCategoryDto {
   type: string
-  properties: Properties18
+  properties: Properties17
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties18 {
-  id: Id7
+export interface Properties17 {
+  id: Id6
   parentId: ParentId10
   name: Name16
 }
 
-export interface Id7 {
+export interface Id6 {
   type: string
   description: string
   format: string
@@ -3475,20 +3429,20 @@ export interface Name16 {
 
 export interface ShortCommentDto {
   type: string
-  properties: Properties19
+  properties: Properties18
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties19 {
-  id: Id8
+export interface Properties18 {
+  id: Id7
   text: Text4
   created: Created3
   parentId: ParentId11
   user: User3
 }
 
-export interface Id8 {
+export interface Id7 {
   type: string
   description: string
   format: string
@@ -3520,16 +3474,16 @@ export interface User3 {
 
 export interface ShortImageDto {
   type: string
-  properties: Properties20
+  properties: Properties19
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties20 {
-  id: Id9
+export interface Properties19 {
+  id: Id8
 }
 
-export interface Id9 {
+export interface Id8 {
   type: string
   description: string
   format: string
@@ -3537,17 +3491,17 @@ export interface Id9 {
 
 export interface ShortUserDto {
   type: string
-  properties: Properties21
+  properties: Properties20
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties21 {
-  id: Id10
+export interface Properties20 {
+  id: Id9
   name: Name17
 }
 
-export interface Id10 {
+export interface Id9 {
   type: string
   description: string
   format: string
@@ -3562,12 +3516,12 @@ export interface Name17 {
 export interface UpdateCommentDto {
   required: string[]
   type: string
-  properties: Properties22
+  properties: Properties21
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties22 {
+export interface Properties21 {
   text: Text5
 }
 
@@ -3580,20 +3534,20 @@ export interface Text5 {
 
 export interface UserDto {
   type: string
-  properties: Properties23
+  properties: Properties22
   additionalProperties: boolean
   description: string
 }
 
-export interface Properties23 {
-  id: Id11
+export interface Properties22 {
+  id: Id10
   name: Name18
   role: Role
   adverts: Adverts
   registeredTime: RegisteredTime
 }
 
-export interface Id11 {
+export interface Id10 {
   type: string
   description: string
   format: string
