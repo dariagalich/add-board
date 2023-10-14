@@ -1,40 +1,15 @@
 import {Component} from '@angular/core';
 import {CategoriesService} from "../../services/categories.service";
-import {Properties14} from "../../api.interface";
+import {Properties10} from "../../api.interface";
+import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
+import {FlatTreeControl} from "@angular/cdk/tree";
 
-// interface FoodNode {
-//   name: string;
-//   children?: FoodNode[];
-// }
 
-// const TREE_DATA: FoodNode[] = [
-//   {
-//     name: 'Fruit',
-//     children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
-//   },
-//   {
-//     name: 'Vegetables',
-//     children: [
-//       {
-//         name: 'Green',
-//         children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
-//       },
-//       {
-//         name: 'Orange',
-//         children: [
-//           {
-//             name: 'Pumpkins',
-//             children: [{name: '111'}]
-//           },
-//           {
-//             name: 'Carrots'
-//           }
-//         ],
-//       },
-//     ],
-//   },
-// ];
-
+interface ExampleFlatNode {
+  expandable: boolean;
+  name: string;
+  level: number;
+}
 
 @Component({
   selector: 'app-categories-tree',
@@ -43,52 +18,41 @@ import {Properties14} from "../../api.interface";
 })
 export class CategoriesTreeComponent {
 
-  categories: Properties14[] = []
+  categories: Properties10[] = []
 
   constructor(private categoriesService: CategoriesService) {
-  }
-
-  get(): void {
-
     this.categoriesService.getCategories().subscribe((response) => {
-      this.categories = response
+      this.categories = response;
+      this.dataSource.data = response;
       console.log(response)
     })
-
   }
 
-  // c: Properties2
 
-  // treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  // dataSource = new MatTreeNestedDataSource<FoodNode>();
-  //
-  // constructor() {
-  //   this.dataSource.data = TREE_DATA;
-  // }
-  //
-  // hasChild = (_: number, node: FoodNode) => {
-  //   return !!node.children && node.children.length > 0;
-  // };
+  private _transformer = (node: Properties10, level: number) => {
+    return {
+      expandable: !!node.childs && node.childs.length > 0,
+      name: node.name,
+      level: level,
+    };
+  };
 
-  // treeControl = new NestedTreeControl<Properties10>(node => node.name);
-  // dataSource = new MatTreeNestedDataSource<Properties10>();
-  //
-  //
-  // hasChild = (_: number, node: Properties10) => {
-  //   return !!node.childs.description && node.childs.description.length > 0;
-  // };
+  treeControl = new FlatTreeControl<ExampleFlatNode>(
+    node => node.level,
+    node => node.expandable,
+  );
 
-  // public search: string = ''
-  // private HttpClient: HttpClient;
-  //
-  // constructor(
-  //   private router: Router,
-  //   _http: HttpClient,
-  //   private searchService: CategoriesService
-  // ) {
-  //   this.HttpClient = _http
-  //   // this.dataSource.data = this.categories;
-  // }
+  treeFlattener = new MatTreeFlattener(
+    this._transformer,
+    node => node.level,
+    node => node.expandable,
+    node => node.childs,
+  );
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
 
 

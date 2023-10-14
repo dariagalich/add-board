@@ -3122,12 +3122,20 @@ export interface CategoryDto {
   description: string
 }
 
+// export interface Properties10 {
+//   id: Id2
+//   name: Name12
+//   parentId: ParentId7
+//   childs: Childs
+// }
+
 export interface Properties10 {
-  id: Id2
-  name: Name12
-  parentId: ParentId7
-  childs: Childs
+  id: string
+  name: string
+  parentId: string
+  childs?: Properties14[]
 }
+
 
 export interface Id2 {
   type: string

@@ -1,5 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormBuilder, FormControl, UntypedFormGroup, Validators} from "@angular/forms";
+import {CategoriesService} from "../../services/categories.service";
+import {Properties, Properties10} from "../../api.interface";
+import {Observable} from "rxjs";
 
 
 export interface Food {
@@ -27,9 +30,15 @@ export class AdCreateEditComponent {
     {value: 'tacos-3', viewValue: 'Tacos'}
   ];
 
-  constructor(private fb: FormBuilder) {
+  // categories: Properties10[] = []
+
+  categories$: Observable<Properties10[]>;
+
+  constructor(private fb: FormBuilder, private categoriesService: CategoriesService) {
     this._buildForm()
+    this.categories$ = this.categoriesService.getCategories()
   }
+
   private _buildForm() {
     this.addAd = this.fb.group({
       categoryId:['',[Validators.required]],

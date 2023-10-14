@@ -1,11 +1,11 @@
 <h4>Новое объявление</h4>
-<form [formGroup]="addAd">
+<form [formGroup]="addAd" *ngIf="categories$ | async as category">
 
   <div class="form-input">
     <label for="category">Выберите категорию</label>
     <select id="category" formControlName="categoryId">
-      <option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
+      <option *ngFor="let c of category" [value]="c.name">
+        {{c.name}}
       </option>
     </select>
   </div>
