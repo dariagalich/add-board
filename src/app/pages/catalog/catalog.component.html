@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Рекомендации для вас</h3>
   <div class="wrap">
-    <app-product *ngFor="let p of products" [product]="p" routerLink="/ad-view/123"></app-product>
+    <app-product *ngFor="let p of products$ | async" [product]="p" [routerLink]="['/ad-view',p.id]"></app-product>
   </div>
 </div>
 

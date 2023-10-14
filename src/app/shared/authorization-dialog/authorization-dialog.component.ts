@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   FormBuilder,
   UntypedFormGroup,
@@ -6,6 +6,9 @@ import {
 } from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationComponent} from "../registration/registration.component";
+// import {TokenStorageService} from "../../services/token-storage.service";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-authorization-dialog',
@@ -13,31 +16,51 @@ import {RegistrationComponent} from "../registration/registration.component";
   styleUrls: ['./authorization-dialog.component.scss'],
 })
 
-export class AuthorizationDialogComponent {
+export class AuthorizationDialogComponent implements OnInit {
+
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
   authorizationForm: UntypedFormGroup = new UntypedFormGroup({})
 
   rememberMe: boolean = false
 
-  constructor(private matDialog: MatDialog, private fb: FormBuilder) {
+  constructor(
+    private matDialog: MatDialog,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+  ){
     this._buildForm()
+  }
+
+  ngOnInit() {
   }
 
   private _buildForm() {
     this.authorizationForm = this.fb.group({
-      phone: ['', [Validators.required, Validators.pattern(/^(8|\+7)[\-\s]?\(?\d{3}\)?[\-\s]?[\d\-\s]{7,10}$/mg)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      login: ['', [Validators.required, Validators.pattern(/^(8|\+7)[\-\s]?\(?\d{3}\)?[\-\s]?[\d\-\s]{7,10}$/mg)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       rememberMe: false
     })
   }
 
-  submit() {
-    if (!this.authorizationForm.invalid){
-      console.log(this.authorizationForm)
-    }
+  submit(){
+    const { login, password } = this.authorizationForm.controls
+    this.authService.login(login.value,password.value).subscribe(()=>{
+      this.authorizationForm.reset()
+      // this.router.navigate(['/login','catalog']).then(() =>{})
+    })
   }
 
-  remember(){
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+
+  remember() {
     this.rememberMe = !this.rememberMe
   }
 

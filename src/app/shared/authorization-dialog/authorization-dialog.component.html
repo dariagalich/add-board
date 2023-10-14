@@ -1,15 +1,15 @@
-<form class="form-size" [formGroup]="authorizationForm">
+<form class="form-size" [formGroup]="authorizationForm"  (ngSubmit)="submit()">
   <div class="form-header">
     <h3>Авторизация</h3>
      <mat-icon mat-dialog-close="">close</mat-icon>
   </div>
   <div>
-    <input id="phone" type="phone" formControlName="phone" placeholder="Номер телефона">
+    <input id="login" type="login" formControlName="login" placeholder="Номер телефона">
     <div class="validation warning">
-      <div *ngIf="authorizationForm.controls['phone'].invalid && (authorizationForm.controls['phone'].touched || authorizationForm.controls['phone'].dirty)">
-        <span *ngIf="authorizationForm.controls['phone'].errors?.['required']">Пожалуйста введите номер телефона</span>
+      <div *ngIf="authorizationForm.controls['login'].invalid && (authorizationForm.controls['login'].touched || authorizationForm.controls['login'].dirty)">
+        <span *ngIf="authorizationForm.controls['login'].errors?.['required']">Пожалуйста введите номер телефона</span>
       </div>
-      <div *ngIf="authorizationForm.controls['phone'].errors?.['pattern']">
+      <div *ngIf="authorizationForm.controls['login'].errors?.['pattern']">
         <span>Некорректный формат телефона</span>
       </div>
     </div>
@@ -22,7 +22,7 @@
         <small *ngIf="authorizationForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</small>
       </div>
       <div *ngIf="authorizationForm.controls['password'].errors?.['minlength']">
-        <small>Пароль должен содержать не меннее 6 символов</small>
+        <small>Пароль должен содержать не меннее 8 символов</small>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="button-login">
-    <button type="submit" [disabled]="authorizationForm.invalid" (click)="submit()" class="button-blue button-big">Войти</button>
+    <button type="submit" [disabled]="authorizationForm.invalid" class="button-blue button-big">Войти</button>
   </div>
   <div class="registration-link">
     <span>Нет учетной записи?</span>

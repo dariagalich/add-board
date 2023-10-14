@@ -244,14 +244,13 @@ export interface Schema11 {
 }
 
 export interface Properties {
-  name: Name
-  description: Description
-  images: Images
-  cost: Cost
-  email: Email
-  phone: Phone
-  location: Location
-  categoryId: CategoryId
+  cost: number,
+  createdAt: string,
+  id: string,
+  imagesIds: [],
+  isActive: boolean,
+  location: string,
+  name: string,
 }
 
 export interface Name {
@@ -2654,11 +2653,18 @@ export interface Schema114 {
   properties: Properties7
 }
 
+// export interface Properties7 {
+//   Name: Name9
+//   Login: Login
+//   Password: Password
+// }
+//========
 export interface Properties7 {
-  Name: Name9
-  Login: Login
-  Password: Password
+  // name: string
+  login: string
+  password: string
 }
+//========
 
 export interface Name9 {
   maxLength: number
@@ -3280,10 +3286,16 @@ export interface ImportCategoryDto {
   description: string
 }
 
+// export interface Properties14 {
+//   id: Id4
+//   name: Name14
+//   parentId: ParentId9
+// }
+
 export interface Properties14 {
-  id: Id4
-  name: Name14
-  parentId: ParentId9
+  id: string
+  name: string
+  parentId: string
 }
 
 export interface Id4 {
@@ -3313,10 +3325,18 @@ export interface LoginUserDto {
   description: string
 }
 
+// export interface Properties15 {
+//   login: Login4
+//   password: Password4
+// }
+
+//=================
 export interface Properties15 {
-  login: Login4
-  password: Password4
+  login: string
+  password: string
+  //======
 }
+//==================
 
 export interface Login4 {
   maxLength: number

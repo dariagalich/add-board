@@ -1,16 +1,11 @@
 import {Component} from '@angular/core';
-import {NestedTreeControl} from "@angular/cdk/tree";
-import {MatTreeNestedDataSource} from "@angular/material/tree";
-import {Router} from "@angular/router";
-import {ProductsService} from "../../services/products.service";
-import {HttpClient} from "@angular/common/http";
 import {CategoriesService} from "../../services/categories.service";
-import {Childs, Properties10, Properties2} from "../../api.interface";
+import {Properties14} from "../../api.interface";
 
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
+// interface FoodNode {
+//   name: string;
+//   children?: FoodNode[];
+// }
 
 // const TREE_DATA: FoodNode[] = [
 //   {
@@ -42,16 +37,27 @@ interface FoodNode {
 
 
 @Component({
-  selector: 'app-categories-tree-view',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss']
+  selector: 'app-categories-tree',
+  templateUrl: './categories-tree.component.html',
+  styleUrls: ['./categories-tree.component.scss']
 })
-export class TreeComponent {
+export class CategoriesTreeComponent {
 
-  categories: Properties2[] = []
+  categories: Properties14[] = []
+
+  constructor(private categoriesService: CategoriesService) {
+  }
+
+  get(): void {
+
+    this.categoriesService.getCategories().subscribe((response) => {
+      this.categories = response
+      console.log(response)
+    })
+
+  }
 
   // c: Properties2
-
 
   // treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   // dataSource = new MatTreeNestedDataSource<FoodNode>();
@@ -72,27 +78,19 @@ export class TreeComponent {
   //   return !!node.childs.description && node.childs.description.length > 0;
   // };
 
-  public search: string = ''
-  private HttpClient: HttpClient;
-
-  constructor(
-    private router: Router,
-    _http: HttpClient,
-    private searchService: CategoriesService
-  ) {
-    this.HttpClient = _http
-    // this.dataSource.data = this.categories;
-  }
-
-  get(): void {
+  // public search: string = ''
+  // private HttpClient: HttpClient;
+  //
+  // constructor(
+  //   private router: Router,
+  //   _http: HttpClient,
+  //   private searchService: CategoriesService
+  // ) {
+  //   this.HttpClient = _http
+  //   // this.dataSource.data = this.categories;
+  // }
 
 
-    this.searchService.getCategories().subscribe((response) => {
-      this.categories = response
-      console.log(response)
-    })
-
-  }
 
 
 }

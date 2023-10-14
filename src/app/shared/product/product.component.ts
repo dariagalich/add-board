@@ -7,8 +7,9 @@ import {Properties} from "../../api.interface";
   styleUrls: ['./product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductComponent {
+export class ProductComponent{
 
   @Input() product!: Properties;
+
 
 }

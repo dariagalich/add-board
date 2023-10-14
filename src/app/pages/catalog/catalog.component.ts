@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {Properties} from "../../api.interface";
+import {SearchService} from "../../services/search.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-catalog',
@@ -9,28 +11,27 @@ import {Properties} from "../../api.interface";
 })
 export class CatalogComponent {
 
-  products: Properties[] = []
+  public products$!: Observable<Properties[]>;
 
-  constructor(private productService: ProductsService,  private _cdr: ChangeDetectorRef,) {
-
-  }
+  constructor(
+    private productService: ProductsService,
+    private searchService: SearchService,
+    private _cdr: ChangeDetectorRef,
+  ) { }
 
   ngOnInit() {
-    // this.productService.getProducts()
-    //   .subscribe(result => {
-    //     this.products = result
-    //     console.log('this.products', this.products)
-    //   })
-    this.test()
+    this.getProduct()
+    this.searchService.search.subscribe((search) => {
+      this.searchProducts(search)
+    })
   }
 
-  test(){
-    this.productService.getProducts()
-      .subscribe(result => {
-        this.products = result
-        this._cdr.detectChanges();
-        console.log('this.products', this.products)
-      })
+  getProduct() {
+    this.products$ = this.productService.getProducts()
+  }
+
+  searchProducts(search: string) {
+    this.products$ = this.productService.searchProducts(search)
   }
 
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeaderRoutingModule} from "./header.routing.module";
-import {TreeComponent} from "../../shared/categories-tree-view/tree.component";
+import {CategoriesTreeComponent} from "../../shared/categories-tree/categories-tree.component";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
@@ -17,7 +17,7 @@ import {RegistrationComponent} from "../../shared/registration/registration.comp
 
 @NgModule({
   declarations: [
-    TreeComponent,
+    CategoriesTreeComponent,
     AuthorizationDialogComponent,
     UserAuthorizationComponent,
     SearchBarComponent,
@@ -37,7 +37,7 @@ import {RegistrationComponent} from "../../shared/registration/registration.comp
 
     ],
   exports: [
-    TreeComponent,
+    CategoriesTreeComponent,
     UserAuthorizationComponent,
     SearchBarComponent,
   ]
