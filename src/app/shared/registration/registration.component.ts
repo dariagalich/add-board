@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -8,6 +8,10 @@ import {
   Validators
 } from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {RegistrSuccessComponent} from "../registr-success/registr-success.component";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -15,15 +19,18 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnDestroy{
 
-  isSuccessful = false;
-  isSignUpFailed = false;
-  errorMessage = '';
 
+  authSub!: Subscription
   registrationForm: UntypedFormGroup = new UntypedFormGroup({})
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private matDialog: MatDialog,
+  ) {
     this._buildForm()
   }
 
@@ -58,28 +65,39 @@ export class RegistrationComponent {
 
   }
 
-  submit(): void {
+  onSubmit(): void {
+    const {name, login, password} = this.registrationForm.controls;
+    this.authSub = this.authService.register(name.value, login.value, password.value).subscribe(
+      () => {
+        this.registrationForm.reset()
+        this.router.navigate(['/main'],{
+          queryParams: {
+            registered: true
+          }
+        }).then(() => {
+          this.openDialog()
+        })
+      },
+      () => {
+        console.warn(Error)
+        this.registrationForm.enabled
+      },
+    )
+  }
 
-    //   const {name, login, password} = this.registrationForm.controls;
-    //
-    //   this.authService.register(name.value, login.value, password.value).subscribe(
-    //     data => {
-    //       console.log(data);
-    //       this.isSuccessful = true;
-    //       this.isSignUpFailed = false;
-    //     },
-    //     err => {
-    //       this.errorMessage = err.error.message;
-    //       console.log(this.errorMessage)
-    //       this.isSignUpFailed = true;
-    //     }
-    //   );
+  ngOnDestroy() {
+    if (this.authSub){
+      this.authSub.unsubscribe()
+    }
+  }
 
-    const { name, login, password } = this.registrationForm.controls;
-    this.authService.register(name.value, login.value, password.value).subscribe(() => {
-      this.registrationForm.reset()
-      console.log(this.registrationForm)
-      // this.router.navigate(['/login','catalog']).then(() =>{})
-    })
+  // test() {
+  //   this.router.navigate(['/main']).then(() => {
+  //     this.openDialog()
+  //   })
+  // }
+
+  openDialog() {
+    this.matDialog.open(RegistrSuccessComponent)
   }
 }
