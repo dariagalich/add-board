@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {
   FormBuilder,
   UntypedFormGroup,
@@ -8,7 +8,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {RegistrationComponent} from "../registration/registration.component";
 // import {TokenStorageService} from "../../services/token-storage.service";
 import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-authorization-dialog',
@@ -16,12 +17,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./authorization-dialog.component.scss'],
 })
 
-export class AuthorizationDialogComponent implements OnInit {
+export class AuthorizationDialogComponent implements OnDestroy {
 
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
+  authSub!: Subscription
 
   authorizationForm: UntypedFormGroup = new UntypedFormGroup({})
 
@@ -32,11 +30,18 @@ export class AuthorizationDialogComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute
   ){
     this._buildForm()
-  }
 
-  ngOnInit() {
+    this.route.queryParams.subscribe((params:Params) => {
+      if (params['registered']){
+        // Вы вошли в систему
+      } else  if (params['accessDenied']){
+        // Сначала войдите в систему
+      }
+
+    })
   }
 
   private _buildForm() {
@@ -49,10 +54,16 @@ export class AuthorizationDialogComponent implements OnInit {
 
   submit(){
     const { login, password } = this.authorizationForm.controls
-    this.authService.login(login.value,password.value).subscribe(()=>{
+    this.authSub = this.authService.login(login.value,password.value).subscribe(()=>{
       this.authorizationForm.reset()
-      // this.router.navigate(['/login','catalog']).then(() =>{})
+      this.router.navigate(['/authorized-user','user-profile']).then(() =>{})
     })
+  }
+
+  ngOnDestroy() {
+    if (this.authSub){
+      this.authSub.unsubscribe()
+    }
   }
 
   reloadPage(): void {

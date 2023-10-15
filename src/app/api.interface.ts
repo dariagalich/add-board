@@ -5,7 +5,11 @@ export interface Root {
   components: Components
   security: Security[]
 }
-
+//=======
+// export interface AuthResponse{
+//   idToken: string
+// }
+//=======
 export interface Info {
   title: string
   version: string

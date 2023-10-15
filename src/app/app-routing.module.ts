@@ -8,6 +8,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+
     path: 'main',
     title: 'Главная',
     loadChildren: () =>
@@ -26,9 +27,9 @@ const routes: Routes = [
       import('./pages/ad-create-edit/ad-create-edit.module').then(m=>m.AdCreateEditModule)
   },
   {
-    path: 'admin',
+    path: 'authorized-user',
     loadChildren: () =>
-      import('./admin/admin.module').then(m=>m.AdminModule)
+      import('./authorized-user/authorized-user.module').then(m=>m.AuthorizedUserModule)
   },
 
 

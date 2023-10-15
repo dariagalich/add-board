@@ -1,4 +1,4 @@
-<form class="form-size" [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && submit()">
+<form class="form-size" [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit()">
 
   <div class="form-header">
     <h3>Регистрация</h3>
@@ -81,8 +81,5 @@
     <button type="submit" class="button-blue button-big">Зарегистрироваться</button>
   </div>
 
-  <div *ngIf="errorMessage">
-    <p>{{errorMessage}}</p>
-  </div>
-
 </form>
+<!--<button (click)="test()" mat-dialog-close="">click</button>-->

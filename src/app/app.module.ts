@@ -6,6 +6,7 @@ import {HeaderComponent} from "./layout/header/header.component";
 import {RouterOutlet} from "@angular/router";
 import {HeaderModule} from "./layout/header/header.module";
 import {MatButtonModule} from "@angular/material/button";
+import { RegistrSuccessComponent } from './shared/registr-success/registr-success.component';
 
 
 
@@ -14,6 +15,7 @@ import {MatButtonModule} from "@angular/material/button";
   declarations: [
     AppComponent,
     HeaderComponent,
+    RegistrSuccessComponent,
   ],
   imports: [
     BrowserModule,
