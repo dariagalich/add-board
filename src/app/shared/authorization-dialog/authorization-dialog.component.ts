@@ -54,10 +54,11 @@ export class AuthorizationDialogComponent implements OnDestroy {
 
   submit(){
     const { login, password } = this.authorizationForm.controls
-    this.authSub = this.authService.login(login.value,password.value).subscribe(()=>{
+    this.authSub = this.authService.login(login.value,password.value)
+    {
       this.authorizationForm.reset()
-      this.router.navigate(['/authorized-user','user-profile']).then(() =>{})
-    })
+      this.router.navigate(['/authorized-user']).then(() =>{})
+    }
   }
 
   ngOnDestroy() {
@@ -75,7 +76,7 @@ export class AuthorizationDialogComponent implements OnDestroy {
     this.rememberMe = !this.rememberMe
   }
 
-  openDialog() {
+  openDialogRegistration() {
     this.matDialog.open(RegistrationComponent)
   }
 

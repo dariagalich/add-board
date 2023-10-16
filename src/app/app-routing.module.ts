@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from "./shared/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
   {
     path: 'ad-create-edit',
     title: 'Создание объявления',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/ad-create-edit/ad-create-edit.module').then(m=>m.AdCreateEditModule)
   },

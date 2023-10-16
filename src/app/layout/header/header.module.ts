@@ -9,10 +9,11 @@ import {AuthorizationDialogComponent} from "../../shared/authorization-dialog/au
 import {MatDialogModule} from "@angular/material/dialog";
 import { UserAuthorizationComponent } from './components/user-authorization/user-authorization.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {RegistrationComponent} from "../../shared/registration/registration.component";
+import {TokenInterceptor} from "../../shared/classes/token.interceptor";
 
 
 @NgModule({
@@ -40,6 +41,13 @@ import {RegistrationComponent} from "../../shared/registration/registration.comp
     CategoriesTreeComponent,
     UserAuthorizationComponent,
     SearchBarComponent,
+  ],
+  providers:[
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }
   ]
 })
 export class HeaderModule { }

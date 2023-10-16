@@ -5,7 +5,7 @@
         <div class="header-top__login">
           <app-user-authorization></app-user-authorization>
         </div>
-        <div class="header-top__add-ad" routerLink="/ad-create">
+        <div class="header-top__add-ad" [routerLink]="['/ad-create-edit']">
           <button class="button-blue" >
             Разместить объявление
             <svg xmlns="http://www.w3.org/2000/svg" height="21" viewBox="0 0 20 20" fill="currentColor">
