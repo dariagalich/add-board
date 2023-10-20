@@ -4,11 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 
-const AUTH_API = 'http://194.87.237.48:5000/Auth/'
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+const apiUrl = 'http://194.87.237.48:5000/Auth/'
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +17,7 @@ export class AuthService {
   }
 
   login(login: string, password: string) {
-    return this.http.post<{ token: string }>(AUTH_API + 'Login', {login, password})
+    return this.http.post<{ token: string }>(apiUrl + 'Login', {login, password})
       .subscribe((response: any) => {
         this.setToken(response)
         localStorage.setItem('auth-token', this.token)
@@ -31,9 +27,9 @@ export class AuthService {
   }
 
   register(name: string, login: string, password: string): Observable<Properties7> {
-    return this.http.post<Properties7>(AUTH_API + 'Register', {
+    return this.http.post<Properties7>(apiUrl + 'Register', {
       name, login, password
-    }, httpOptions);
+    });
   }
 
 

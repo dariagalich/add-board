@@ -13,7 +13,10 @@ export class CategoriesService {
   constructor(private httpClient: HttpClient){ }
 
   getCategories(): Observable <Properties10[]>{
-    return this.httpClient.get<Properties10[]>(API + 'Categories',{})
+    return this.httpClient.get<Properties10[]>(API + 'Categories',{}
+    )
   }
+
+
 
 }

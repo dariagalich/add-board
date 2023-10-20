@@ -17,7 +17,7 @@
   <div>
     <label for="password"></label>
     <input id="password" type="password" formControlName="password" placeholder="Пароль">
-    <div class="validation warning">
+    <div class="warning">
       <div *ngIf="authorizationForm.controls['password'].invalid && (authorizationForm.controls['password'].touched || authorizationForm.controls['password'].dirty)">
         <small *ngIf="authorizationForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</small>
       </div>
