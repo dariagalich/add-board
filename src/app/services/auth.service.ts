@@ -21,7 +21,6 @@ export class AuthService {
       .subscribe((response: any) => {
         this.setToken(response)
         localStorage.setItem('auth-token', this.token)
-        console.log('get token ', this.getToken())
       })
 
   }

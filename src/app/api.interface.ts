@@ -315,14 +315,14 @@ export interface CategoryId {
 }
 
 export interface Encoding {
-  name: string
-  description: string
-  images: []
-  cost: string
-  email: string
-  phone: string
-  location: string
-  categoryId: string
+  Name: string
+  Description: string
+  Images: []
+  Cost: string
+  Email: string
+  Phone: string
+  Location: string
+  CategoryId: string
 }
 
 export interface Name2 {

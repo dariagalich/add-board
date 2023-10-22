@@ -5,6 +5,7 @@ import { CreateAdComponent } from './components/create-ad/create-ad.component';
 import { EditAdComponent } from './components/edit-ad/edit-ad.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import {UserAdsComponent} from "./pages/user-ads/user-ads.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -17,7 +18,8 @@ import {UserAdsComponent} from "./pages/user-ads/user-ads.component";
   ],
   imports: [
     CommonModule,
-    AuthorizedUserRoutingModule
+    AuthorizedUserRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthorizedUserModule { }

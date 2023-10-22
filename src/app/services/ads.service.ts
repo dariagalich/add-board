@@ -13,8 +13,13 @@ export class AdsService {
 
   constructor(private http: HttpClient) { }
 
-  adAdd(name:string, description:string, images:[], cost:string, email:string, phone:string, location:string, categoryId:string): Observable<Encoding>{
-    return this.http.post<Encoding>(apiUrl + 'Advert', {name, description, images, cost, email, phone, location, categoryId})
+  // adAdd(Name:string, Description:string, Images:[], Cost:string, Email:string, Phone:string, Location:string, CategoryId:string): Observable<Encoding>{
+  //   return this.http.post<Encoding>(apiUrl + 'Advert', {Name, Description, Images, Cost, Email, Phone, Location, CategoryId})
+  // }
+
+
+  adAdd(form:any): Observable<Encoding>{
+    return this.http.post<Encoding>(apiUrl + 'Advert',  form)
   }
 
 }

@@ -1,1 +1,42 @@
-<p>user-profile works!</p>
+<form [formGroup] = "UserForm">
+
+  <h3>Настройки пользователя</h3>
+
+  <h4>Для смены имени введите данные</h4>
+
+  <div class="form-input">
+    <label for="user-name">Имя</label>
+    <input id="user-name" formControlName="name" type="text" placeholder="Новое имя">
+    <div class="warning"
+         *ngIf="UserForm.controls['name'].invalid && (UserForm.controls['name'].touched || UserForm.controls['name'].dirty)">
+      <span *ngIf="UserForm.controls['name'].errors?.['required']">Пожалуйста введите имя</span>
+    </div>
+  </div>
+
+  <div class="form-input">
+    <label for="login">Телефон</label>
+    <input id="login" type="login" formControlName="login" placeholder="Номер телефона">
+    <div class="validation warning">
+      <div *ngIf="UserForm.controls['login'].invalid && (UserForm.controls['login'].touched || UserForm.controls['login'].dirty)">
+        <span *ngIf="UserForm.controls['login'].errors?.['required']">Пожалуйста введите номер телефона</span>
+      </div>
+      <div *ngIf="UserForm.controls['login'].errors?.['pattern']">
+        <span>Некорректный формат телефона</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-input">
+    <label for="password">Пароль</label>
+    <input id="password" formControlName="password" type="text" placeholder="Введите адресс">
+    <div class="warning"
+         *ngIf="UserForm.controls['password'].invalid && (UserForm.controls['password'].touched || UserForm.controls['password'].dirty)">
+      <span *ngIf="UserForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</span>
+    </div>
+  </div>
+
+  <button class="button-blue button-big" type="submit">Сохранить</button>
+
+</form>
+  <button [routerLink]="['/user-ads']">Объявления</button>
+

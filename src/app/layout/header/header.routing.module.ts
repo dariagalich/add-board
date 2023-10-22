@@ -4,7 +4,7 @@ import {AdCreateEditComponent} from "../../pages/ad-create-edit/ad-create-edit.c
 
 const routes: Routes = [
   {
-    path: 'ad-create',
+    path: '',
     component: AdCreateEditComponent
   }
 ];
