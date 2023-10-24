@@ -29,10 +29,19 @@ const routes: Routes = [
       import('./pages/ad-create-edit/ad-create-edit.module').then(m=>m.AdCreateEditModule)
   },
   {
-    path: 'authorized-user',
+    path: 'user-ads',
+    title: 'Мои объявления',
+    canActivate: [AuthGuard],
     loadChildren: () =>
-      import('./authorized-user/authorized-user.module').then(m=>m.AuthorizedUserModule)
+      import('./pages/user-ads/user-ads.module').then(m=>m.UserAdsModule)
   },
+  {
+    path:'user-profile',
+    title: 'Настройки',
+    canActivate: [AuthGuard],
+    loadChildren:() =>
+      import('./pages/user-profile/user-profile.module').then(m=>m.UserProfileModule)
+  }
 
 
 ];

@@ -4,7 +4,41 @@
   grid-template-rows: 1fr;
   gap: 24px;
 }
-
+img{
+  max-height: 450px;
+  object-fit: cover;
+  border: #ccd0d3 1px solid;
+}
+.small-img{
+  margin-top: 8px;
+  img{
+    width: 20%;
+    height: 15%;
+    object-fit: cover;
+    border: #ccd0d3 1px solid;
+    transition: transform 0.2s ease;
+  }
+  img:hover{
+    transform-origin: center;
+    transform: scale(1.02);
+  }
+}
+//@media (max-width: 2000px) {
+//  .main-content__ad-image {
+//    img{
+//      height: 251px;
+//      width: 335px;
+//    }
+//  }
+//}
+//@media (max-width: 1200px) {
+//  .main-content__ad-image {
+//    img{
+//      max-width: 220px;
+//      max-height: 164px;
+//    }
+//  }
+//}
 p{
   color: #64748B;
 }

@@ -9,6 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {RegistrSuccessComponent} from './shared/registr-success/registr-success.component';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {TokenInterceptor} from "./shared/classes/token.interceptor";
     RouterOutlet,
     MatButtonModule,
     HeaderModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

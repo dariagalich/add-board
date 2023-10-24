@@ -11,5 +11,4 @@ export class ProductComponent{
 
   @Input() product!: Properties;
 
-
 }

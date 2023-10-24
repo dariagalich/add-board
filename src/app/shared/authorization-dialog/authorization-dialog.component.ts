@@ -57,7 +57,7 @@ export class AuthorizationDialogComponent implements OnDestroy {
     this.authSub = this.authService.login(login.value,password.value)
     {
       this.authorizationForm.reset()
-      this.router.navigate(['/authorized-user']).then(() =>{})
+      this.router.navigate(['/user-ads']).then(() =>{})
     }
   }
 

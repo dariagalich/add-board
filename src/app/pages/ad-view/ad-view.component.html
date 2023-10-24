@@ -3,11 +3,15 @@
     <p>Севастополь · Электроника · Ноутбуки · Apple</p>
   </div>
   <div class="ad-view">
-    <div class="ad-view-product-name">
+    <div class="ad-view-product-nameAndImage">
       <h3>{{product.name}}</h3>
-      <img src="../../../assets/images/mackbook.png" alt="">
+      <img *ngIf="product.imagesIds.length!=0 ;else errSrc" src="http://194.87.237.48:5000/Images/{{product.imagesIds[0]}}" alt="ошибка загрузки">
+      <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
+      <div *ngFor="let p of product.imagesIds;let i = index" class="small-img">
+        <img *ngIf="i>0 && product.imagesIds.length>1" src="http://194.87.237.48:5000/Images/{{p}}" alt="ошибка загрузки">
+      </div>
     </div>
-    <div class="ad-view-product-price">
+    <div class="ad-view-product-description">
       <h3>{{product.cost | currency: 'RUB': 'symbol-narrow'}}</h3>
       <button class="button-blue">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">

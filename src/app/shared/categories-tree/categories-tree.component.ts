@@ -24,7 +24,6 @@ export class CategoriesTreeComponent {
     this.categoriesService.getCategories().subscribe((response) => {
       this.categories = response;
       this.dataSource.data = response;
-      console.log(response)
     })
   }
 

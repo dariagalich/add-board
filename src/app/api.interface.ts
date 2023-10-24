@@ -251,7 +251,7 @@ export interface Properties {
   cost: number,
   createdAt: string,
   id: string,
-  imagesIds: [],
+  imagesIds: string[],
   isActive: boolean,
   location: string,
   name: string,
@@ -315,13 +315,13 @@ export interface CategoryId {
 }
 
 export interface Encoding {
+  Id: string
   Name: string
-  Description: string
+  Location: string
   Images: []
   Cost: string
   Email: string
   Phone: string
-  Location: string
   CategoryId: string
 }
 
@@ -3372,13 +3372,13 @@ export interface ShortAdvertDto {
 }
 
 export interface Properties16 {
-  id: Id5
-  name: Name15
-  location: Location6
-  createdAt: CreatedAt
-  isActive: IsActive2
-  imagesIds: ImagesIds2
-  cost: Cost6
+  id: string
+  name: string
+  location: string
+  createdAt: string
+  isActive: string
+  imagesIds: string
+  cost: string
 }
 
 export interface Id5 {
@@ -3572,10 +3572,10 @@ export interface UserDto {
 }
 
 export interface Properties22 {
-  id: Id10
-  name: Name18
-  role: Role
-  adverts: Adverts
+  id: string
+  name: string
+  role: string
+  adverts: Properties[]
   registeredTime: RegisteredTime
 }
 

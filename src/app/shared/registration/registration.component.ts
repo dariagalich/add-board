@@ -46,23 +46,15 @@ export class RegistrationComponent implements OnDestroy{
   }
 
   confirmPassValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-    const passwordKey = control.get('password');
-    const confirmPasswordKey = control.get('confirmPassword');
-
-    // return passwordKey?.value == confirmPasswordKey?.value ? {confirmPass: true} : null;
-
-    return passwordKey && confirmPasswordKey && passwordKey?.value === confirmPasswordKey?.value ? {confirmPass: true} : null;
-
-
+    const passwordKey = this.registrationForm.controls['password']?.value;
+    const confirmPasswordKey = this.registrationForm.controls['confirmPassword']?.value;
+    return !(passwordKey === confirmPasswordKey) ? {confirmPass: true} : null;
   }
 
   captchaValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-    const captcha = control.get('captcha');
+    const captcha = this.registrationForm.controls['captcha']?.value;
     const captchaKey = '863208';
-
-    // return captcha?.value !== captchaKey ? {correctCaptcha: {value: captcha?.value !== captchaKey}} : null;
-    return captcha && captchaKey && captcha?.value === captchaKey ? {confirmPass: true} : null;
-
+    return !(captcha === captchaKey) ? {correctCaptcha: true} : null;
   }
 
   onSubmit(): void {
@@ -100,4 +92,5 @@ export class RegistrationComponent implements OnDestroy{
   openDialog() {
     this.matDialog.open(RegistrSuccessComponent)
   }
+
 }

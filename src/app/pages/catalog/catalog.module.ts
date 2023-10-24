@@ -12,14 +12,13 @@ import {ProductsService} from "../../services/products.service";
     ProductComponent,
   ],
   imports: [
-
     CommonModule,
     CatalogRoutingModule,
     HttpClientModule
   ],
   exports: [
-    ProductComponent,
+    ProductComponent
   ],
   providers:[ProductsService]
 })
-export class CatalogModule { }
+export class CatalogModule {}

@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Properties7} from "../api.interface";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 
 const apiUrl = 'http://194.87.237.48:5000/Auth/'
@@ -13,14 +14,14 @@ export class AuthService {
 
   token = ''
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router:Router) {
   }
 
   login(login: string, password: string) {
     return this.http.post<{ token: string }>(apiUrl + 'Login', {login, password})
       .subscribe((response: any) => {
         this.setToken(response)
-        localStorage.setItem('auth-token', this.token)
+        localStorage.setItem('auth-token','Bearer ' + this.token)
       })
 
   }
@@ -33,7 +34,7 @@ export class AuthService {
 
 
   setToken(token: string) {
-    this.token = 'Bearer ' + token
+    this.token = token
   }
 
   getToken(): string {
@@ -44,6 +45,7 @@ export class AuthService {
   logout() {
     this.setToken('')
     localStorage.clear()
+    this.router.navigate(['/main']).then(() =>{})
   }
 
   isAuthenticated(): boolean {

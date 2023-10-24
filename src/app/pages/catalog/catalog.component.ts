@@ -13,6 +13,7 @@ export class CatalogComponent {
 
   public products$!: Observable<Properties[]>;
 
+
   constructor(
     private productService: ProductsService,
     private searchService: SearchService,

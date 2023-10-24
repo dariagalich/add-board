@@ -29,6 +29,7 @@ select {
     width: 220px;
     height: 124px;
     object-fit: cover;
+    transition: transform 0.2s ease;
   }
 
   img:hover {

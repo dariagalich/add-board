@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {map, Observable} from "rxjs";
-import {Properties, Properties22} from "../../../api.interface";
-import {UsersService} from "../../../services/users.service";
+import {Properties, Properties22} from "../../api.interface";
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-user-ads',

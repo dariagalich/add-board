@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {RegistrationComponent} from "../../shared/registration/registration.component";
 import {TokenInterceptor} from "../../shared/classes/token.interceptor";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {TokenInterceptor} from "../../shared/classes/token.interceptor";
         FormsModule,
         MatCheckboxModule,
         ReactiveFormsModule,
+        MatMenuModule,
 
     ],
   exports: [

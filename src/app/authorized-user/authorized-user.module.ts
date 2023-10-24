@@ -6,6 +6,11 @@ import { EditAdComponent } from './components/edit-ad/edit-ad.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import {UserAdsComponent} from "./pages/user-ads/user-ads.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import { AuthorizedUserComponent } from './authorized-user.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {CatalogModule} from "../pages/catalog/catalog.module";
+
+
 
 
 
@@ -14,12 +19,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     CreateAdComponent,
     EditAdComponent,
     UserProfileComponent,
-    UserAdsComponent
+    UserAdsComponent,
+    AuthorizedUserComponent
   ],
   imports: [
     CommonModule,
     AuthorizedUserRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule,
+    CatalogModule,
   ]
 })
 export class AuthorizedUserModule { }

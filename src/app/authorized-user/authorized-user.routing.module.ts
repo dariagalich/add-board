@@ -6,16 +6,17 @@ import {UserProfileComponent} from "./pages/user-profile/user-profile.component"
 
 
 
+
 const routes: Routes = [
-  {
-    path: '',
-    component: UserProfileComponent,
-    children:[
-      {path: 'user-ads', component: UserAdsComponent},
-      // {path: 'create-ad', component: CreateAdComponent},
-      {path: 'user-ads/:id/edit', component: EditAdComponent}
-    ]
-  }
+  // {
+  //   path: '',
+  //   component: AuthorizedUserComponent,
+  // },
+
+  {path: 'user-ads', component: UserAdsComponent},
+  {path: 'user-profile', component: UserProfileComponent},
+  {path: 'user-ads/:id/edit', component: EditAdComponent}
+
 
 ];
 
