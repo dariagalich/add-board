@@ -6,10 +6,11 @@ import {
 } from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationComponent} from "../registration/registration.component";
-// import {TokenStorageService} from "../../services/token-storage.service";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Subscription} from "rxjs";
+
+const expirationDate = new Date();
 
 @Component({
   selector: 'app-authorization-dialog',
@@ -24,6 +25,8 @@ export class AuthorizationDialogComponent implements OnDestroy {
   authorizationForm: UntypedFormGroup = new UntypedFormGroup({})
 
   rememberMe: boolean = false
+
+
 
   constructor(
     private matDialog: MatDialog,
@@ -52,13 +55,23 @@ export class AuthorizationDialogComponent implements OnDestroy {
     })
   }
 
+
+  // submit(){
+  //   // this.authService.setTokenExpirationDate(expirationDate);
+  //   // const userLoginData = { this.authorizationForm}
+  //   const { login, password } = this.authorizationForm.controls
+  //   this.authSub = this.authService.login(login.value, password.value)
+  //   // {
+  //   //   this.authorizationForm.reset()
+  //   //   this.router.navigate(['/user-ads']).then(() =>{})
+  //   // }
+  // }
+
   submit(){
+    // this.authService.setTokenExpirationDate(expirationDate);
     const { login, password } = this.authorizationForm.controls
-    this.authSub = this.authService.login(login.value,password.value)
-    {
-      this.authorizationForm.reset()
-      this.router.navigate(['/user-ads']).then(() =>{})
-    }
+    this.authService.login(login.value,password.value)
+    this.authorizationForm.reset()
   }
 
   ngOnDestroy() {
@@ -71,7 +84,6 @@ export class AuthorizationDialogComponent implements OnDestroy {
     window.location.reload();
   }
 
-
   remember() {
     this.rememberMe = !this.rememberMe
   }
@@ -79,6 +91,10 @@ export class AuthorizationDialogComponent implements OnDestroy {
   openDialogRegistration() {
     this.matDialog.open(RegistrationComponent)
   }
+
+  // closeDialog(){
+  //   this.matDialog.closeAll()
+  // }
 
 }
 

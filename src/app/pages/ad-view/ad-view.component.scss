@@ -23,22 +23,7 @@ img{
     transform: scale(1.02);
   }
 }
-//@media (max-width: 2000px) {
-//  .main-content__ad-image {
-//    img{
-//      height: 251px;
-//      width: 335px;
-//    }
-//  }
-//}
-//@media (max-width: 1200px) {
-//  .main-content__ad-image {
-//    img{
-//      max-width: 220px;
-//      max-height: 164px;
-//    }
-//  }
-//}
+
 p{
   color: #64748B;
 }
@@ -55,3 +40,61 @@ a .button-blue{
   gap: 12px;
   flex-shrink: 0;
 }
+
+.display-row{
+  display: flex;
+  //flex-direction: row;
+  justify-content: space-between;
+  //align-items: center;
+
+}
+.buttons-user-edit{
+  display: flex;
+  gap: 8px;
+  //margin: 8px 0 16px;
+  //svg{
+  //  height: 36px;
+  //}
+  button{
+    margin: 8px 0 16px;
+  }
+  .edit-button{
+    color: #FCBA04;
+    border: 1px #FCBA04 solid;
+    background-color: white;
+    fill: #FCBA04;
+  }
+
+  .delete-button{
+    color: #FE5F55;
+    border: 1px #FE5F55 solid;
+    background-color: white;
+    fill: #FE5F55;
+  }
+
+  .edit-button:hover{
+    color: white;
+    background-color: #FCBA04;
+    fill: white;
+  }
+
+  .delete-button:hover{
+    color: white;
+    background-color: #FE5F55;
+    fill: white;
+  }
+
+  .edit-button:active{
+    color: white;
+    background-color: #efac08;
+    fill: white;
+  }
+
+  .delete-button:active{
+    color: white;
+    background-color: #da564d;
+    fill: white;
+  }
+}
+
+

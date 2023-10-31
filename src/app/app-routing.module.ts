@@ -29,6 +29,13 @@ const routes: Routes = [
       import('./pages/ad-create-edit/ad-create-edit.module').then(m=>m.AdCreateEditModule)
   },
   {
+    path: 'ad-create-edit/:id',
+    title: 'Создание объявления',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/ad-create-edit/ad-create-edit.module').then(m=>m.AdCreateEditModule)
+  },
+  {
     path: 'user-ads',
     title: 'Мои объявления',
     canActivate: [AuthGuard],

@@ -22,7 +22,7 @@ export class AuthGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-    console.log(this.authService.isAuthenticated())
+    console.log('Guard isAuthenticated ',this.authService.isAuthenticated())
     if (this.authService.isAuthenticated()) {
       return of(true)
     } else {

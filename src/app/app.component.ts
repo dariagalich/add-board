@@ -13,20 +13,19 @@ export class AppComponent implements OnInit{
   constructor(private authService: AuthService) {
   }
 
-  private tokenExpired(token: string) {
-    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
-    return (Math.floor((new Date).getTime() / 1000)) >= expiry;
-  }
-
   ngOnInit() {
-    // const potentialToken = localStorage.getItem('auth-token')
-    // if (potentialToken !== null && this.tokenExpired(potentialToken)){
-    //   this.authService.setToken(potentialToken)
-    //   console.log(this.authService.getToken())
-    // }
-    const potentialToken = localStorage.getItem('auth-token')
-    if (potentialToken !== null){
+    const potentialToken = localStorage.getItem('token')
+    const expiredTokenDate = localStorage.getItem('token-expiration-date')
+
+    if (potentialToken && expiredTokenDate){
+      console.log('Истек ли токен ',this.authService.isTokenExpired(expiredTokenDate))
+    }
+
+    if (expiredTokenDate && potentialToken && !this.authService.isTokenExpired(expiredTokenDate) ){
       this.authService.setToken(potentialToken)
+    }
+    else{
+      this.authService.logout()
     }
   }
 }

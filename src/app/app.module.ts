@@ -6,7 +6,6 @@ import {HeaderComponent} from "./layout/header/header.component";
 import {RouterOutlet} from "@angular/router";
 import {HeaderModule} from "./layout/header/header.module";
 import {MatButtonModule} from "@angular/material/button";
-import {RegistrSuccessComponent} from './shared/registr-success/registr-success.component';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -15,7 +14,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   declarations: [
     AppComponent,
     HeaderComponent,
-    RegistrSuccessComponent,
   ],
   imports: [
     BrowserModule,

@@ -2668,6 +2668,13 @@ export interface Properties7 {
   login: string
   password: string
 }
+
+export interface Category {
+  id: string;
+  name: string;
+  parentId: string | null;
+  children?: Category[];
+}
 //========
 
 export interface Name9 {

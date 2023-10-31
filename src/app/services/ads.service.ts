@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {Encoding} from "../api.interface";
+import {Router} from "@angular/router";
 
 const apiUrl = 'http://194.87.237.48:5000/'
 
@@ -11,15 +12,26 @@ const apiUrl = 'http://194.87.237.48:5000/'
 
 export class AdsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {
+  }
 
-  // adAdd(Name:string, Description:string, Images:[], Cost:string, Email:string, Phone:string, Location:string, CategoryId:string): Observable<Encoding>{
-  //   return this.http.post<Encoding>(apiUrl + 'Advert', {Name, Description, Images, Cost, Email, Phone, Location, CategoryId})
-  // }
+  adAdd(form: any): Observable<Encoding> {
+    return this.http.post<Encoding>(apiUrl + 'Advert', form).pipe(
+      tap(() => {
+        this.router.navigate(['/user-ads']).then(() => {})
+      }))
+  }
 
-
-  adAdd(form:any): Observable<Encoding>{
-    return this.http.post<Encoding>(apiUrl + 'Advert',  form)
+  deleteAdd(advertId: string) {
+    console.log(advertId);
+    this.http.delete(apiUrl + 'Advert/' + advertId).subscribe({
+      next: () => {
+        this.router.navigate(['/user-ads']).then(() => {})
+      }
+    });
   }
 
 }

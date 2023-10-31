@@ -9,8 +9,6 @@ import {
 } from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
-import {RegistrSuccessComponent} from "../registr-success/registr-success.component";
 import {Subscription} from "rxjs";
 
 
@@ -29,7 +27,6 @@ export class RegistrationComponent implements OnDestroy{
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private matDialog: MatDialog,
   ) {
     this._buildForm()
   }
@@ -67,7 +64,7 @@ export class RegistrationComponent implements OnDestroy{
             registered: true
           }
         }).then(() => {
-          this.openDialog()
+          // this.openDialog()
         })
       },
       () => {
@@ -89,8 +86,8 @@ export class RegistrationComponent implements OnDestroy{
   //   })
   // }
 
-  openDialog() {
-    this.matDialog.open(RegistrSuccessComponent)
-  }
+  // openDialog() {
+  //   this.matDialog.open(RegistrSuccessComponent)
+  // }
 
 }
