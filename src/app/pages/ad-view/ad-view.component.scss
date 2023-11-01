@@ -9,11 +9,19 @@ img{
   object-fit: cover;
   border: #ccd0d3 1px solid;
 }
+
 .small-img{
-  margin-top: 8px;
+  display: inline-block;
+  flex-wrap: wrap;
+
   img{
-    width: 20%;
-    height: 15%;
+    //width: 20%;
+    //height: 15%;
+    //width: 90%;
+    //height: 80%;
+    width: 220px;
+    height: 164px;
+
     object-fit: cover;
     border: #ccd0d3 1px solid;
     transition: transform 0.2s ease;
@@ -22,6 +30,9 @@ img{
     transform-origin: center;
     transform: scale(1.02);
   }
+}
+.small-img:last-child {
+  margin-right: 0;
 }
 
 p{

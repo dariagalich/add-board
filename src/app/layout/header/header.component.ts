@@ -6,10 +6,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  visibleTree: boolean = true
+  isVisibleTree: boolean = false
 
   showTree() {
-    this.visibleTree = !this.visibleTree
+    this.isVisibleTree = !this.isVisibleTree
+    console.log(this.isVisibleTree)
   }
 
 }

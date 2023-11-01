@@ -34,4 +34,12 @@ export class AdsService {
     });
   }
 
+  editAdd(advertId: string, form: any) {
+    this.http.put(apiUrl + 'Advert/' + advertId,form).subscribe({
+      next: () => {
+        this.router.navigate(['/user-ads']).then(() => {})
+      }
+    });
+  }
+
 }

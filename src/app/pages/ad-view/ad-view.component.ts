@@ -38,38 +38,15 @@ export class AdViewComponent {
         return this.productService.getById(params['id'])
       }))
 
-    this.checkIsCreatedByUser().subscribe(result => {
-      console.log('result',result)
-      if (result) {
-        // The ad was created by the user
-        this.isAdvertCreateByUser = true
-        console.log('Ad was created by the user');
-      } else {
-        // The ad was not created by the user
-        this.isAdvertCreateByUser = false
-        console.log('Ad was not created by the user');
-      }
-    });
+    if (this.authService.isAuthenticated()) {
+
+      this.checkIsCreatedByUser().subscribe(result => {
+        // console.log('result', result)
+        this.isAdvertCreateByUser = result;
+      });
+    }
 
   }
-
-  deleteAdvert(advertId:string){
-    this.adsService.deleteAdd(advertId)
-  }
-  // isCreatedByUser(): boolean {
-  //   this.route.params.subscribe(params => {
-  //     this.adId = params['id'];
-  //   })
-  //   this.userService.getCurrentUser()
-  //     .subscribe((response: Properties22) => {
-  //       response.adverts.forEach(item => {
-  //         if (this.adId == item.id) {
-  //           return true
-  //         } else return false
-  //       })
-  //     })
-  //   return false
-  // }
 
   checkIsCreatedByUser(): Observable<boolean> {
     return this.route.params.pipe(
@@ -82,8 +59,8 @@ export class AdViewComponent {
     );
   }
 
-
-
-
+  deleteAdvert(advertId: string) {
+    this.adsService.deleteAdd(advertId)
+  }
 
 }

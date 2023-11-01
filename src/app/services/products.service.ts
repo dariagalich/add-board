@@ -20,7 +20,6 @@ export class ProductsService{
   }
 
   getById(id: string):Observable<Properties>{
-    console.log(id)
     return this.httpClient.get<Properties>(apiUrl + id,{})
   }
 

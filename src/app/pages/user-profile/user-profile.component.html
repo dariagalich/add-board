@@ -1,15 +1,15 @@
-<form [formGroup] = "UserForm">
+<form [formGroup] = "UserEditForm" (ngSubmit)="onSubmit()">
 
   <h3>Настройки пользователя</h3>
 
   <h4>Для смены имени введите данные</h4>
 
   <div class="form-input">
-    <label for="user-name">Имя</label>
+    <label for="user-name">Новое имя</label>
     <input id="user-name" formControlName="name" type="text" placeholder="Новое имя">
     <div class="warning"
-         *ngIf="UserForm.controls['name'].invalid && (UserForm.controls['name'].touched || UserForm.controls['name'].dirty)">
-      <span *ngIf="UserForm.controls['name'].errors?.['required']">Пожалуйста введите имя</span>
+         *ngIf="UserEditForm.controls['name'].invalid && (UserEditForm.controls['name'].touched || UserEditForm.controls['name'].dirty)">
+      <span *ngIf="UserEditForm.controls['name'].errors?.['required']">Пожалуйста введите имя</span>
     </div>
   </div>
 
@@ -17,10 +17,10 @@
     <label for="login">Телефон</label>
     <input id="login" type="login" formControlName="login" placeholder="Номер телефона">
     <div class="validation warning">
-      <div *ngIf="UserForm.controls['login'].invalid && (UserForm.controls['login'].touched || UserForm.controls['login'].dirty)">
-        <span *ngIf="UserForm.controls['login'].errors?.['required']">Пожалуйста введите номер телефона</span>
+      <div *ngIf="UserEditForm.controls['login'].invalid && (UserEditForm.controls['login'].touched || UserEditForm.controls['login'].dirty)">
+        <span *ngIf="UserEditForm.controls['login'].errors?.['required']">Пожалуйста введите номер телефона</span>
       </div>
-      <div *ngIf="UserForm.controls['login'].errors?.['pattern']">
+      <div *ngIf="UserEditForm.controls['login'].errors?.['pattern']">
         <span>Некорректный формат телефона</span>
       </div>
     </div>
@@ -30,8 +30,8 @@
     <label for="password">Пароль</label>
     <input id="password" formControlName="password" type="text" placeholder="Введите адресс">
     <div class="warning"
-         *ngIf="UserForm.controls['password'].invalid && (UserForm.controls['password'].touched || UserForm.controls['password'].dirty)">
-      <span *ngIf="UserForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</span>
+         *ngIf="UserEditForm.controls['password'].invalid && (UserEditForm.controls['password'].touched || UserEditForm.controls['password'].dirty)">
+      <span *ngIf="UserEditForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</span>
     </div>
   </div>
 

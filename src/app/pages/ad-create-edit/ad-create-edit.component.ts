@@ -26,6 +26,7 @@ export class AdCreateEditComponent implements OnInit {
   userAd!: Properties
   private adId: string = ''
   currentUser!: Properties22
+  imagesView: string[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -76,16 +77,17 @@ export class AdCreateEditComponent implements OnInit {
   }
 
   onFileChange(event: any) {
+    debugger
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
+        this.addAd.controls['images'].value.push(event.target.files[i]);
         let reader = new FileReader();
-
         reader.onload = (event: any) => {
-          this.addAd.controls['images'].value.push(event.target.result);
+          this.imagesView.push(event.target.result);
 
           this.addAd.patchValue({
-            fileSource: this.addAd.controls['images'].value
+            fileSource: this.imagesView
           });
         }
         reader.readAsDataURL(event.target.files[i]);
@@ -105,25 +107,21 @@ export class AdCreateEditComponent implements OnInit {
       for (let i = 0; i < this.addAd.get('images')?.value.length; i++) {
         formData.append('images', this.addAd.get('images')?.value[i]);
       }
-      formData.append('images', this.addAd.get('images')?.value)
       formData.append('email', this.addAd.get('email')?.value)
       formData.append('phone', this.addAd.get('phone')?.value)
       formData.append('cost', this.addAd.get('cost')?.value)
 
-      this.adsService.adAdd(formData)
-        .subscribe((resp) => {
-          console.log(resp)
-        })
-      {
-        this.addAd.reset()
-
+      if (!this.userAd) {
+        this.adsService.adAdd(formData)
+          .subscribe((resp) => {
+            console.log(resp)
+          })
+      } else{
+        this.adsService.editAdd(this.userAd.id,formData)
       }
+
+      this.addAd.reset()
+
     }
   }
-
-  // editAdvert(advertId:string){
-  //   user:
-  //
-  // }
-
 }

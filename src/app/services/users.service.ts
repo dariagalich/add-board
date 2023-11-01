@@ -10,8 +10,6 @@ const apiUrl = 'http://194.87.237.48:5000/'
 })
 export class UsersService {
 
-
-
   constructor(private http: HttpClient) {
   }
 
@@ -19,6 +17,8 @@ export class UsersService {
     return this.http.get<Properties22>(apiUrl + 'Users/current')
   }
 
-
+  editUserName(userId: string, form: any): Observable<Properties22> {
+    return this.http.put<Properties22>(apiUrl + 'Users/'+ userId, form)
+  }
 
 }

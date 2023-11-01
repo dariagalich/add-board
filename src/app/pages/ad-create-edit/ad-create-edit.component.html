@@ -67,11 +67,17 @@
   <!--  <div *ngIf=" this.addAd.controls['images'].value.length > 0">-->
   <!--    <p>Для удаления нажмите на изображение</p>-->
   <!--  </div>-->
-  <div class="images-array wrap">
-    <img *ngFor="let url of  this.addAd.controls['images'].value; let i = index" [src]="url" alt="Ошибка загрузки фото"
+  <div *ngIf="!userAd; else userImage" class="images-array wrap">
+    <img *ngFor="let url of  this.imagesView; let i = index" [src]="url" alt="Ошибка загрузки фото"
          class="add-image" (click)=" this.addAd.controls['images'].value.splice(i,1)">
   </div>
-
+  <ng-template #userImage class="images-array wrap">
+    <div class="images-array wrap">
+      <img *ngFor="let url of  this.userAd.imagesIds; let i = index" [src]="'http://194.87.237.48:5000/Images/' + url"
+           alt="Ошибка загрузки фото"
+           class="add-image" (click)=" this.addAd.controls['images'].value.splice(i,1)">
+    </div>
+  </ng-template>
 
   <div class="form-input">
     <label for="cost">Цена</label>

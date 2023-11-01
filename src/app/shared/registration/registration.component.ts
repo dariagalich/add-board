@@ -1,6 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   UntypedFormGroup,
   ValidationErrors,
@@ -17,7 +16,7 @@ import {Subscription} from "rxjs";
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnDestroy{
+export class RegistrationComponent implements OnDestroy {
 
 
   authSub!: Subscription
@@ -42,24 +41,28 @@ export class RegistrationComponent implements OnDestroy{
     })
   }
 
-  confirmPassValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  confirmPassValidator: ValidatorFn = (): ValidationErrors | null => {
     const passwordKey = this.registrationForm.controls['password']?.value;
     const confirmPasswordKey = this.registrationForm.controls['confirmPassword']?.value;
     return !(passwordKey === confirmPasswordKey) ? {confirmPass: true} : null;
   }
 
-  captchaValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  captchaValidator: ValidatorFn = (): ValidationErrors | null => {
     const captcha = this.registrationForm.controls['captcha']?.value;
     const captchaKey = '863208';
     return !(captcha === captchaKey) ? {correctCaptcha: true} : null;
   }
+
+  // loginValidator: ValidatorFn = (control:AbstractControl): ValidationErrors | null =>{
+  //
+  // }
 
   onSubmit(): void {
     const {name, login, password} = this.registrationForm.controls;
     this.authSub = this.authService.register(name.value, login.value, password.value).subscribe(
       () => {
         this.registrationForm.reset()
-        this.router.navigate(['/main'],{
+        this.router.navigate(['/main'], {
           queryParams: {
             registered: true
           }
@@ -75,19 +78,14 @@ export class RegistrationComponent implements OnDestroy{
   }
 
   ngOnDestroy() {
-    if (this.authSub){
+    if (this.authSub) {
       this.authSub.unsubscribe()
     }
   }
 
-  // test() {
+  // closeDialog() {
   //   this.router.navigate(['/main']).then(() => {
-  //     this.openDialog()
+  //     this.matDialog.closeAll()
   //   })
   // }
-
-  // openDialog() {
-  //   this.matDialog.open(RegistrSuccessComponent)
-  // }
-
 }

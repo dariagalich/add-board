@@ -2664,7 +2664,7 @@ export interface Schema114 {
 // }
 //========
 export interface Properties7 {
-  // name: string
+  name: string
   login: string
   password: string
 }
@@ -2673,7 +2673,7 @@ export interface Category {
   id: string;
   name: string;
   parentId: string | null;
-  children?: Category[];
+  children: Category[];
 }
 //========
 

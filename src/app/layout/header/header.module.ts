@@ -23,7 +23,7 @@ import {MatMenuModule} from "@angular/material/menu";
     AuthorizationDialogComponent,
     UserAuthorizationComponent,
     SearchBarComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
     imports: [
         CommonModule,
