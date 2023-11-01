@@ -9,6 +9,8 @@ import {
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {AuthorizationDialogComponent} from "../authorization-dialog/authorization-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -26,6 +28,7 @@ export class RegistrationComponent implements OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private matDialog: MatDialog
   ) {
     this._buildForm()
   }
@@ -59,21 +62,11 @@ export class RegistrationComponent implements OnDestroy {
 
   onSubmit(): void {
     const {name, login, password} = this.registrationForm.controls;
-    this.authSub = this.authService.register(name.value, login.value, password.value).subscribe(
+    this.authService.register(name.value, login.value, password.value).subscribe(
       () => {
         this.registrationForm.reset()
-        this.router.navigate(['/main'], {
-          queryParams: {
-            registered: true
-          }
-        }).then(() => {
-          // this.openDialog()
-        })
-      },
-      () => {
-        console.warn(Error)
-        this.registrationForm.enabled
-      },
+        this.openDialog()
+      }
     )
   }
 
@@ -83,9 +76,7 @@ export class RegistrationComponent implements OnDestroy {
     }
   }
 
-  // closeDialog() {
-  //   this.router.navigate(['/main']).then(() => {
-  //     this.matDialog.closeAll()
-  //   })
-  // }
+  openDialog() {
+      this.matDialog.open(AuthorizationDialogComponent)
+  }
 }

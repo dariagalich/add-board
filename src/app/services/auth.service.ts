@@ -96,7 +96,7 @@ export class AuthService {
   register(name: string, login: string, password: string): Observable<Properties7> {
     return this.http.post<Properties7>(apiUrl + 'Register', {
       name, login, password
-    });
+    })
   }
 
 }
