@@ -1,0 +1,26 @@
+<div class="warp-comments">
+
+  <input type="text" placeholder="Оставить комментарий" (keyup.enter)="createComment()"
+         (input)="getTextFromInput($event)">
+
+  <div *ngIf="!commentsArray || commentsArray.length<1 ;else commentsTemplate">
+    <p>Ваш комментарий будет первым!</p>
+  </div>
+
+  <ng-template #commentsTemplate>
+    <div *ngFor="let comment of this.commentsArray" class="users-comments">
+      <div class="comment-container">
+        <div class="display-column">
+          <div class="comment-header">
+            <p class="comment-name">{{comment.user.name}}</p>
+            <p class="comment-create">{{comment.created | date: 'd.M, h:mm'}}</p>
+          </div>
+          <p class="comment-text">{{comment.text}}</p>
+        </div>
+        <button *ngIf="this.userId == comment.user.id" (click)="this.deleteComment(comment.id)" class="delete-button">x</button>
+
+      </div>
+    </div>
+  </ng-template>
+
+</div>

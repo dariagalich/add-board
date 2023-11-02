@@ -1,6 +1,7 @@
 <div class="main-content__ad-item">
   <div class="main-content__ad-image">
-    <img *ngIf="product.imagesIds.length !=0;else errSrc" src="http://194.87.237.48:5000/Images/{{product.imagesIds[0]}}" alt="ошибка загрузки">
+    <img *ngIf="product.imagesIds.length !=0;else errSrc"
+         src="http://194.87.237.48:5000/Images/{{product.imagesIds[0]}}" alt="ошибка загрузки">
     <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
   </div>
   <div class="main-content__ad-description">
@@ -9,6 +10,5 @@
     <p class="ad-text">{{product.location}}</p>
     <p class="ad-text">{{product.createdAt | date: 'd.M.yy h:mm'}}</p>
   </div>
-
 </div>
 

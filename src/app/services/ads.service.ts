@@ -34,12 +34,12 @@ export class AdsService {
     });
   }
 
-  editAdd(advertId: string, form: any) {
+  editAdd(advertId: string, form: FormData = new FormData()) {
     this.http.put(apiUrl + 'Advert/' + advertId,form).subscribe({
       next: () => {
         this.router.navigate(['/user-ads']).then(() => {})
       }
-    });
+    })
   }
 
 }

@@ -76,22 +76,9 @@ a .button-blue{
     fill: #FCBA04;
   }
 
-  .delete-button{
-    color: #FE5F55;
-    border: 1px #FE5F55 solid;
-    background-color: white;
-    fill: #FE5F55;
-  }
-
   .edit-button:hover{
     color: white;
     background-color: #FCBA04;
-    fill: white;
-  }
-
-  .delete-button:hover{
-    color: white;
-    background-color: #FE5F55;
     fill: white;
   }
 
@@ -101,11 +88,24 @@ a .button-blue{
     fill: white;
   }
 
-  .delete-button:active{
-    color: white;
-    background-color: #da564d;
-    fill: white;
-  }
+  //.delete-button{
+  //  color: #FE5F55;
+  //  border: 1px #FE5F55 solid;
+  //  background-color: white;
+  //  fill: #FE5F55;
+  //}
+  //
+  //.delete-button:hover{
+  //  color: white;
+  //  background-color: #FE5F55;
+  //  fill: white;
+  //}
+  //
+  //.delete-button:active{
+  //  color: white;
+  //  background-color: #da564d;
+  //  fill: white;
+  //}
 }
 
 

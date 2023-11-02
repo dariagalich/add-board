@@ -34,6 +34,19 @@ export interface Paths {
   "/Users/current": UsersCurrent
 }
 
+export interface Comment {
+  id: string
+  text: string
+  created: string
+  parentId: string
+  user: User3
+}
+
+export interface UserIdName {
+  id: string
+  name: string
+}
+
 export interface AdvertSearch {
   post: Post
 }
@@ -663,8 +676,8 @@ export interface Schema26 {
 }
 
 export interface Properties2 {
-  Text: Text
-  ParentId: ParentId
+  text: string
+  parentId?: string
 }
 
 export interface Text {
@@ -3474,12 +3487,14 @@ export interface ShortCommentDto {
 }
 
 export interface Properties18 {
-  id: Id7
-  text: Text4
-  created: Created3
-  parentId: ParentId11
-  user: User3
+  id: string
+  text: string
+  created: string
+  parentId: string
+  user: Properties20
 }
+
+
 
 export interface Id7 {
   type: string
@@ -3536,8 +3551,8 @@ export interface ShortUserDto {
 }
 
 export interface Properties20 {
-  id: Id9
-  name: Name17
+  id: string
+  name: string
 }
 
 export interface Id9 {

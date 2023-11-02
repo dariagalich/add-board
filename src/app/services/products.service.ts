@@ -9,18 +9,18 @@ const apiUrl = 'http://194.87.237.48:5000/Advert/'
 export class ProductsService{
 
 
-  constructor(private httpClient: HttpClient){ }
+  constructor(private http: HttpClient){ }
 
   getProducts(): Observable <Properties[]>{
-    return this.httpClient.post<Properties[]>(apiUrl + 'search',{})
+    return this.http.post<Properties[]>(apiUrl + 'search',{})
   }
 
   searchProducts(value: string): Observable<Properties[]> {
-    return this.httpClient.post<Properties[]>(apiUrl + 'search', { search: value })
+    return this.http.post<Properties[]>(apiUrl + 'search', { search: value })
   }
 
   getById(id: string):Observable<Properties>{
-    return this.httpClient.get<Properties>(apiUrl + id,{})
+    return this.http.get<Properties>(apiUrl + id)
   }
 
 }

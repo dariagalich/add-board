@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Router, RouterStateSnapshot,
-} from '@angular/router';
+import {Router} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {AuthService} from "../../services/auth.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -19,10 +16,7 @@ export class AuthGuard {
   ) {
   }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
-    console.log('Guard isAuthenticated ',this.authService.isAuthenticated())
+  canActivate(): Observable<boolean> {
     if (this.authService.isAuthenticated()) {
       return of(true)
     } else {

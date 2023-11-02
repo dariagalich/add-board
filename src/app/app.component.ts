@@ -17,10 +17,6 @@ export class AppComponent implements OnInit{
     const potentialToken = localStorage.getItem('token')
     const expiredTokenDate = localStorage.getItem('token-expiration-date')
 
-    if (potentialToken && expiredTokenDate){
-      console.log('Истек ли токен ',this.authService.isTokenExpired(expiredTokenDate))
-    }
-
     if (expiredTokenDate && potentialToken && !this.authService.isTokenExpired(expiredTokenDate) ){
       this.authService.setToken(potentialToken)
     }

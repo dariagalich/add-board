@@ -1,0 +1,44 @@
+.warp-comments{
+  //border: 1px solid var(--dark-blue);
+  //border-radius: 5px;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-basis: 100%;
+  margin-bottom: 8px;
+}
+input{
+  margin-bottom: 8px;
+}
+
+.users-comments{
+  border: 1px solid rgba(203, 213, 225, 1);
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.comment-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 8px;
+}
+.display-column{
+  display: flex;
+  flex-direction: column;
+}
+.comment-header{
+  display: flex;
+  flex-direction: row;
+}
+.comment-name{
+  margin-right: 8px;
+  font-weight: 600;
+}
+.comment-create{
+
+}
+.comment-text{
+
+}

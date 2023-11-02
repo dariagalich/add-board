@@ -103,6 +103,7 @@ export class AdCreateEditComponent implements OnInit {
       formData.append('categoryId', this.addAd.get('categoryId')?.value)
       formData.append('name', this.addAd.get('name')?.value)
       formData.append('description', this.addAd.get('description')?.value)
+      console.log('desc ',this.addAd.get('description')?.value)
       formData.append('location', this.addAd.get('location')?.value)
       for (let i = 0; i < this.addAd.get('images')?.value.length; i++) {
         formData.append('images', this.addAd.get('images')?.value[i]);

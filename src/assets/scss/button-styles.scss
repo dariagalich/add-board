@@ -24,7 +24,7 @@ button:disabled{
 .button-blue {
   display: flex;
   align-items: center;
-  background-color: #6697E6;
+  background-color: var(--blue);
   color: white;
 }
 
@@ -42,12 +42,12 @@ button:disabled{
   margin: auto;
   color: var(--blue);
   background: none;
-  border: 1px #6697E6 solid;
+  border: 1px var(--blue) solid;
 }
 
 .button-line-blue:hover {
   color: white;
-  background: #6697E6;
+  background: var(--blue);
 }
 
 .button-line-blue:active {
@@ -58,7 +58,7 @@ button:disabled{
 .button-search {
   margin: auto;
   color: white;
-  background-color: #6697E6;
+  background-color: var(--blue);
   border-radius: 0 5px 5px 0;
 }
 
@@ -67,4 +67,23 @@ button:disabled{
   justify-content: center;
   width: 186px;
   height: 35px;
+}
+
+.delete-button{
+  color: var(--red);
+  border: 1px var(--red) solid;
+  background-color: white;
+  fill: var(--red);
+}
+
+.delete-button:hover{
+  color: white;
+  background-color: var(--red);
+  fill: white;
+}
+
+.delete-button:active{
+  color: white;
+  background-color: #da564d;
+  fill: white;
 }

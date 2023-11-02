@@ -22,7 +22,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private matDialog: MatDialog,
-    private userService: UsersService
+    private userService: UsersService,
   ) {
   }
 
@@ -62,8 +62,8 @@ export class AuthService {
 
   getTokenExpirationDate(token: string): Date | null {
     const decodedToken: any = jwt_decode(token);
-    if (decodedToken && decodedToken.exp) {
-      const expirationDate = new Date(decodedToken.exp);
+    if (decodedToken && decodedToken) {
+      const expirationDate = new Date(decodedToken.exp*1000);
       this.tokenExpirationDate = expirationDate;
       return expirationDate;
     }
@@ -71,22 +71,21 @@ export class AuthService {
   }
 
   isTokenExpired(expToken: string): boolean {
-
     if (!expToken) {
       return true;
+    } else {
+      const currentDate = new Date();
+      const expTokenDate = new Date(expToken)
+      console.log('currentDate ', currentDate)
+      console.log('expTokenDate ', expTokenDate)
+      return currentDate > expTokenDate;
     }
-    const currentDate = new Date();
-    const expTokenDate = this.tokenExpirationDate
-
-    return currentDate > expTokenDate;
   }
 
   logout() {
     this.token = ''
     localStorage.clear()
     this.userName.next('')
-    this.router.navigate(['/main']).then(() => {
-    })
   }
 
   isAuthenticated(): boolean {

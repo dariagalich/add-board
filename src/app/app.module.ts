@@ -15,6 +15,7 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     AppComponent,
     HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -31,8 +32,6 @@ import {FormsModule} from "@angular/forms";
       multi: true,
       useClass: TokenInterceptor
     }
-  ],
-  exports: [
   ],
   bootstrap: [AppComponent]
 })

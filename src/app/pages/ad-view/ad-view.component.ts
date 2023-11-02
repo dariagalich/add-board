@@ -14,6 +14,7 @@ import {AdsService} from "../../services/ads.service";
 })
 export class AdViewComponent {
 
+
   product$!: Observable<Properties>;
   isAuth = this.authService.isAuthenticated()
 
