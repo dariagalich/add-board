@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
   <h3>Рекомендации для вас</h3>
   <div class="wrap" *ngIf="products$ | async; else loading">
     <app-product *ngFor="let p of products$ | async" [product]="p" [routerLink]="['/ad-view',p.id]"></app-product>

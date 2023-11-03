@@ -61,14 +61,14 @@ export class AdCreateEditComponent implements OnInit {
 
   private _buildForm() {
     this.addAd = this.fb.group({
-      categoryId: ['', [Validators.required]],
+      categoryId: [this.userAd ? this.userAd.category.id : '', [Validators.required]],
       name: [this.userAd ? this.userAd.name : '', [Validators.required]],
-      description: [''],
+      description: [this.userAd ? this.userAd.description : ''],
       location: [this.userAd ? this.userAd.location : '', [Validators.required]],
       images: [this.userAd ? this.userAd.imagesIds : []],
       cost: [this.userAd ? this.userAd.cost : '', [Validators.required]],
-      email: ['', [Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^(8|\+7)[\-\s]?\(?\d{3}\)?[\-\s]?[\d\-\s]{7,10}$/mg)]],
+      email: [this.userAd ? this.userAd.email : '', [Validators.email]],
+      phone: [this.userAd ? this.userAd.phone : '', [Validators.required, Validators.pattern(/^(8|\+7)[\-\s]?\(?\d{3}\)?[\-\s]?[\d\-\s]{7,10}$/mg)]],
     })
   }
 
@@ -77,7 +77,6 @@ export class AdCreateEditComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    debugger
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
@@ -103,7 +102,7 @@ export class AdCreateEditComponent implements OnInit {
       formData.append('categoryId', this.addAd.get('categoryId')?.value)
       formData.append('name', this.addAd.get('name')?.value)
       formData.append('description', this.addAd.get('description')?.value)
-      console.log('desc ',this.addAd.get('description')?.value)
+      console.log('desc ', this.addAd.get('description')?.value)
       formData.append('location', this.addAd.get('location')?.value)
       for (let i = 0; i < this.addAd.get('images')?.value.length; i++) {
         formData.append('images', this.addAd.get('images')?.value[i]);
@@ -117,12 +116,10 @@ export class AdCreateEditComponent implements OnInit {
           .subscribe((resp) => {
             console.log(resp)
           })
-      } else{
-        this.adsService.editAdd(this.userAd.id,formData)
+      } else {
+        this.adsService.editAdd(this.userAd.id, formData)
       }
-
-      this.addAd.reset()
-
+      this.router.navigate(['/user-ads']).then()
     }
   }
 }

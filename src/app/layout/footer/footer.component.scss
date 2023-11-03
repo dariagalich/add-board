@@ -1,0 +1,46 @@
+body{
+  margin:0;
+  overflow-x:hidden;
+}
+
+footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px 0 20px;
+  position: relative;
+  bottom: 0;
+  background: var(--dark-blue);
+
+}
+
+svg{
+  width: 50px;
+  height: 50px;
+  fill: white;
+}
+
+.icons{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 80px;
+  margin-bottom: 20px;
+}
+
+.row{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 80px;
+  margin-bottom: 20px;
+  color:white;
+}
+
+
+.text{
+  color: white;
+}

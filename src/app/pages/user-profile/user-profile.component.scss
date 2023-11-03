@@ -1,0 +1,40 @@
+.user-avatar {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  background-color: var(--dark-blue);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+
+  svg {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    fill: white;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 2000px) {
+  .user-avatar{
+    height: 324px;
+    width: 324px;
+  }
+}
+@media (max-width: 1200px) {
+  .user-avatar{
+    max-width: 220px;
+    max-height: 220px;
+  }
+}

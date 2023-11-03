@@ -124,12 +124,8 @@ html {
 
 body {
   app-root{
-
     margin: 0;
-    /* Растягиваем body по высоте html */
     min-height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
   }
 }
 

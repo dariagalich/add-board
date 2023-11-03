@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, tap} from "rxjs";
 import {Router} from "@angular/router";
-import {ShortAdvert} from "../interfaces";
+import {Advert} from "../interfaces";
 
 const apiUrl = 'http://194.87.237.48:5000/'
 
@@ -18,8 +18,8 @@ export class AdsService {
   ) {
   }
 
-  adAdd(form: any): Observable<ShortAdvert> {
-    return this.http.post<ShortAdvert>(apiUrl + 'Advert', form).pipe(
+  adAdd(form: any): Observable<Advert> {
+    return this.http.post<Advert>(apiUrl + 'Advert', form).pipe(
       tap(() => {
         this.router.navigate(['/user-ads']).then(() => {})
       }))
