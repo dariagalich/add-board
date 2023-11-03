@@ -14,6 +14,7 @@ export class CommentsService {
     private http: HttpClient,
   ) { }
 
+
   getAdvertComments(advertId: string): Observable<Properties18[]>{
     return this.http.get<Properties18[]>(apiUrl + 'Advert/' + advertId + '/Comments' )
   }
@@ -30,4 +31,14 @@ export class CommentsService {
         }
       });
   }
+
+  editComment(commentId:string, text: any){
+    this.http.put(apiUrl + 'Comment/' + commentId, text)
+      .subscribe({
+        next: () => {
+          window.location.reload()
+        }
+      });
+  }
+
 }

@@ -39,6 +39,7 @@ export class AuthService {
           this.userName.next(response.name)
         })
         this.matDialog.closeAll()
+        window.location.reload()
       })
   }
 
@@ -86,6 +87,7 @@ export class AuthService {
     this.token = ''
     localStorage.clear()
     this.userName.next('')
+    this.router.navigate(['/']).then()
   }
 
   isAuthenticated(): boolean {

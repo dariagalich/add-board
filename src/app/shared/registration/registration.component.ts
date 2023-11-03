@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
   ) {
     this._buildForm()
   }
@@ -78,5 +78,8 @@ export class RegistrationComponent implements OnDestroy {
 
   openDialog() {
       this.matDialog.open(AuthorizationDialogComponent)
+  }
+  navigateToMain(){
+    this.router.navigate(['/']).then(() => {})
   }
 }

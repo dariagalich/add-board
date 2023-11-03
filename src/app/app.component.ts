@@ -7,21 +7,23 @@ import {AuthService} from "./services/auth.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'shop';
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
+
     const potentialToken = localStorage.getItem('token')
     const expiredTokenDate = localStorage.getItem('token-expiration-date')
 
-    if (expiredTokenDate && potentialToken && !this.authService.isTokenExpired(expiredTokenDate) ){
+    if (expiredTokenDate && potentialToken && !this.authService.isTokenExpired(expiredTokenDate)) {
       this.authService.setToken(potentialToken)
+    } else {
+      if (potentialToken)
+        this.authService.logout()
     }
-    else{
-      this.authService.logout()
-    }
+
   }
 }

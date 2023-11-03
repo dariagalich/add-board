@@ -21,6 +21,8 @@ export class CommentsComponent implements OnInit {
   commentsText!: string
   userId!: string
   isAuth: boolean = this.authService.isAuthenticated()
+  toggleEditComment = false
+  commentEditId!: string
 
   constructor(
     private commentsService: CommentsService,
@@ -56,6 +58,13 @@ export class CommentsComponent implements OnInit {
 
   getTextFromInput(event: any) {
     this.commentsText = event.target.value
+    console.log(this.commentsText)
+  }
+
+  editCommentText(commentId:string,commentText: string){
+    this.commentEditId = commentId
+    this.commentsText = commentText
+    this.toggleEditComment = !this.toggleEditComment
   }
 
   createComment() {
@@ -79,6 +88,13 @@ export class CommentsComponent implements OnInit {
 
   deleteComment(commentId: string) {
     this.commentsService.deleteComment(commentId)
+  }
+
+  editComment(commentId: string, text: string) {
+    const jsonObject = {
+      text: text
+    }
+    this.commentsService.editComment(commentId,jsonObject)
   }
 
   openDialog() {

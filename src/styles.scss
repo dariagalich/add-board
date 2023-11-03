@@ -101,8 +101,26 @@ img{
   grid-template-columns: repeat(4,1fr);
 }
 
+.template{
+  height: 630px;
+}
 
+//html, body { height: 100%; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+  height: 100%;
+}
+
+body {
+  app-root{
+
+    margin: 0;
+    /* Растягиваем body по высоте html */
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import "assets/scss/adaptive-styles";

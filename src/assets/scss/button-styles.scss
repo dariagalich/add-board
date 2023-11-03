@@ -87,3 +87,22 @@ button:disabled{
   background-color: #da564d;
   fill: white;
 }
+
+.edit-button{
+  color: #FCBA04;
+  border: 1px #FCBA04 solid;
+  background-color: white;
+  fill: #FCBA04;
+}
+
+.edit-button:hover{
+  color: white;
+  background-color: #FCBA04;
+  fill: white;
+}
+
+.edit-button:active{
+  color: white;
+  background-color: #efac08;
+  fill: white;
+}

@@ -4,6 +4,11 @@
   grid-template-rows: 1fr;
   gap: 24px;
 }
+mat-progress-spinner{
+  width: 60px !important;
+  height: 60px !important;
+  margin: 0 auto;
+}
 img{
   max-height: 450px;
   object-fit: cover;
@@ -87,25 +92,6 @@ a .button-blue{
     background-color: #efac08;
     fill: white;
   }
-
-  //.delete-button{
-  //  color: #FE5F55;
-  //  border: 1px #FE5F55 solid;
-  //  background-color: white;
-  //  fill: #FE5F55;
-  //}
-  //
-  //.delete-button:hover{
-  //  color: white;
-  //  background-color: #FE5F55;
-  //  fill: white;
-  //}
-  //
-  //.delete-button:active{
-  //  color: white;
-  //  background-color: #da564d;
-  //  fill: white;
-  //}
 }
 
 
