@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Properties} from "../../api.interface";
+import {Advert} from "../../interfaces";
 
 @Component({
   selector: 'app-product',
@@ -9,6 +9,6 @@ import {Properties} from "../../api.interface";
 })
 export class ProductComponent {
 
-  @Input() product!: Properties;
+  @Input() product!: Advert;
 
 }

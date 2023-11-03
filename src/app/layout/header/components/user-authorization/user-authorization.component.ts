@@ -3,8 +3,8 @@ import {AuthorizationDialogComponent} from "../../../../shared/authorization-dia
 import {MatDialog} from "@angular/material/dialog";
 import {UsersService} from "../../../../services/users.service";
 import {Observable} from "rxjs";
-import {Properties22} from "../../../../api.interface";
 import {AuthService} from "../../../../services/auth.service";
+import {User} from "../../../../interfaces";
 
 @Component({
   selector: 'app-user-authorization',
@@ -17,6 +17,7 @@ export class UserAuthorizationComponent implements OnInit {
   showLinks: boolean = false;
   userName: string = ''
   isAuthenticated: boolean = false;
+  userId!: string
 
   constructor(
     private matDialog: MatDialog,
@@ -27,16 +28,17 @@ export class UserAuthorizationComponent implements OnInit {
 
   ngOnInit() {
     if (this.isAuth()) {
-      this.setUserName()
+      this.setUserNameAndId()
     }
     this.authService.getUserNameObservable().subscribe(newUsername => {
       this.userName = newUsername;
     });
   }
 
-  setUserName() {
-    this.userService.getCurrentUser().subscribe((response: Properties22) => {
-        this.userName = response.name
+  setUserNameAndId() {
+    this.userService.getCurrentUser().subscribe((response: User) => {
+      this.userName = response.name
+      this.userId = response.id
     })
   }
 

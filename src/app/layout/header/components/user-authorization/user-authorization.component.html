@@ -24,8 +24,9 @@
     </svg>
   </button>
   <mat-menu #menu>
+    <button mat-menu-item [routerLink]="['/user-profile',userId]">Профиль</button>
     <button mat-menu-item routerLink="/user-ads">Мои объявления</button>
-    <button mat-menu-item routerLink="/user-profile">Настройки</button>
+    <button mat-menu-item routerLink="/user-settings">Настройки</button>
     <button mat-menu-item (click)="logOut()">Выйти</button>
   </mat-menu>
 </ng-template>

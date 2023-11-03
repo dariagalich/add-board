@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {CategoriesService} from "../../services/categories.service";
-import {Category, Properties10} from "../../api.interface";
 import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
 } from "@angular/material/tree";
 import {FlatTreeControl} from "@angular/cdk/tree";
+import {Category, CategoryTree} from "../../interfaces";
 
 
 interface ExampleFlatNode {
@@ -22,7 +22,7 @@ interface ExampleFlatNode {
 })
 export class CategoriesTreeComponent {
 
-  private _transformer = (node: Category, level: number) => {
+  private _transformer = (node: CategoryTree, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
@@ -38,9 +38,9 @@ export class CategoriesTreeComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  categories: Properties10[] = []
-  tree: Category[] = []
-  categoriesTree: Category[] = []
+  categories: Category[] = []
+  tree: CategoryTree[] = []
+  categoriesTree: CategoryTree[] = []
 
 
   constructor(private categoriesService: CategoriesService) {
@@ -49,7 +49,7 @@ export class CategoriesTreeComponent {
 
   getCategories() {
     this.categoriesService.getCategories()
-      .subscribe((response) => {
+      .subscribe((response:Category[]) => {
         this.categories = response
 
         this.tree = this.buildCategoryTree(response)
@@ -60,10 +60,10 @@ export class CategoriesTreeComponent {
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
 
-  buildCategoryTree(data: { id: string, parentId: string, name: string }[]): Category[] {
+  buildCategoryTree(data:Category[]): CategoryTree[] {
 
-    let map: { [key: string]: number; } = {}, node: Category, roots: Category[] = [], i;
-    let dataWithChildren: Category[] = data.map((item, index) => {
+    let map: { [key: string]: number; } = {}, node: CategoryTree, roots: CategoryTree[] = [], i;
+    let dataWithChildren: CategoryTree[] = data.map((item, index) => {
       map[item.id] = index;
       return {...item, children: [], $ref: ''}
     })

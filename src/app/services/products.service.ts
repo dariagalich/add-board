@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Properties} from "../api.interface";
+import {Advert} from "../interfaces";
 
 const apiUrl = 'http://194.87.237.48:5000/Advert/'
 
@@ -11,16 +11,16 @@ export class ProductsService{
 
   constructor(private http: HttpClient){ }
 
-  getProducts(): Observable <Properties[]>{
-    return this.http.post<Properties[]>(apiUrl + 'search',{})
+  getProducts(): Observable <Advert[]>{
+    return this.http.post<Advert[]>(apiUrl + 'search',{})
   }
 
-  searchProducts(value: string): Observable<Properties[]> {
-    return this.http.post<Properties[]>(apiUrl + 'search', { search: value })
+  searchProducts(value: string): Observable<Advert[]> {
+    return this.http.post<Advert[]>(apiUrl + 'search', { search: value })
   }
 
-  getById(id: string):Observable<Properties>{
-    return this.http.get<Properties>(apiUrl + id)
+  getById(id: string):Observable<Advert>{
+    return this.http.get<Advert>(apiUrl + id)
   }
 
 }

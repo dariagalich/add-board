@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Properties10} from "../api.interface";
+import {Category} from "../interfaces";
 
 const API = "http://194.87.237.48:5000/"
 
@@ -14,8 +14,8 @@ export class CategoriesService {
 
   constructor(private httpClient: HttpClient){ }
 
-  getCategories(): Observable <Properties10[]>{
-    return this.httpClient.get<Properties10[]>(API + 'Categories',{})
+  getCategories(): Observable <Category[]>{
+    return this.httpClient.get<Category[]>(API + 'Categories',{})
   }
 
 }

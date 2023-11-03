@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {map, Observable} from "rxjs";
-import {Properties, Properties22} from "../../api.interface";
 import {UsersService} from "../../services/users.service";
 import {AuthService} from "../../services/auth.service";
+import {Advert, User} from "../../interfaces";
 
 @Component({
   selector: 'app-user-ads',
@@ -11,7 +11,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class UserAdsComponent implements OnInit {
 
-  public products$!: Observable<Properties[]>;
+  public products$!: Observable<Advert[]>;
 
   constructor(
     private userService: UsersService,
@@ -26,7 +26,7 @@ export class UserAdsComponent implements OnInit {
 
   getUserProduct() {
     this.products$ = this.userService.getCurrentUser()
-      .pipe(map((x:Properties22)=> x.adverts)
+      .pipe(map((x:User)=> x.adverts)
     )
   }
   isAuth(): boolean{

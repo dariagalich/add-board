@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
-import {Properties} from "../../api.interface";
 import {SearchService} from "../../services/search.service";
 import {Observable} from "rxjs";
+import {Advert} from "../../interfaces";
 
 @Component({
   selector: 'app-catalog',
@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
 })
 export class CatalogComponent {
 
-  public products$!: Observable<Properties[]>;
+  public products$!: Observable<Advert[]>;
 
 
   constructor(

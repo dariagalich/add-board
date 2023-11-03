@@ -43,7 +43,14 @@ const routes: Routes = [
       import('./pages/user-ads/user-ads.module').then(m=>m.UserAdsModule)
   },
   {
-    path:'user-profile',
+    path:'user-settings',
+    title: 'Настройки',
+    canActivate: [AuthGuard],
+    loadChildren:() =>
+      import('./pages/user-settings/user-settings.module').then(m=>m.UserSettingsModule)
+  },
+  {
+    path:'user-profile/:id',
     title: 'Настройки',
     canActivate: [AuthGuard],
     loadChildren:() =>

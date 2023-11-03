@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {CommentsService} from "../../services/comments.service";
 import {map, Observable} from "rxjs";
 import {ActivatedRoute, Params} from "@angular/router";
-import {Properties18} from "../../api.interface";
 import {UsersService} from "../../services/users.service";
 import {AuthService} from "../../services/auth.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AuthorizationDialogComponent} from "../authorization-dialog/authorization-dialog.component";
+import {Comment} from "../../interfaces";
 
 @Component({
   selector: 'app-comments',
@@ -15,9 +15,9 @@ import {AuthorizationDialogComponent} from "../authorization-dialog/authorizatio
 })
 export class CommentsComponent implements OnInit {
 
-  comments$!: Observable<Properties18[]> | null
+  comments$!: Observable<Comment[]> | null
   advertId!: string
-  commentsArray!: Properties18[];
+  commentsArray!: Comment[];
   commentsText!: string
   userId!: string
   isAuth: boolean = this.authService.isAuthenticated()
@@ -50,7 +50,7 @@ export class CommentsComponent implements OnInit {
   getComments() {
     return this.commentsService.getAdvertComments(this.advertId)
       .pipe(
-        map(data => data as Properties18[])
+        map(data => data as Comment[])
       ).subscribe(result => {
         this.commentsArray = result
       })

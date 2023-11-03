@@ -4,6 +4,7 @@ import { UserAdsRoutingModule } from './user-ads-routing.module';
 import {UserAdsComponent} from "./user-ads.component";
 import {ProductComponent} from "../../shared/product/product.component";
 import {CatalogModule} from "../catalog/catalog.module";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {CatalogModule} from "../catalog/catalog.module";
   imports: [
     CommonModule,
     UserAdsRoutingModule,
-    CatalogModule
+    CatalogModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     ProductComponent

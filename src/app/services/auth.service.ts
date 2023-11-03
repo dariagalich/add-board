@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Properties22, Properties7} from "../api.interface";
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
 import {Router} from "@angular/router";
 import jwt_decode from 'jwt-decode';
 import {MatDialog} from "@angular/material/dialog";
 import {UsersService} from "./users.service";
+import {CreateUser, User} from "../interfaces";
 
 const apiUrl = 'http://194.87.237.48:5000/Auth/'
 
@@ -35,7 +35,7 @@ export class AuthService {
         if (this.tokenExpirationDate) {
           localStorage.setItem('token-expiration-date', this.tokenExpirationDate.toISOString())
         }
-        this.userService.getCurrentUser().subscribe((response: Properties22) => {
+        this.userService.getCurrentUser().subscribe((response: User) => {
           this.userName.next(response.name)
         })
         this.matDialog.closeAll()
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   setCurrentName() {
-    this.userService.getCurrentUser().subscribe((response: Properties22) => {
+    this.userService.getCurrentUser().subscribe((response: User) => {
       this.userName.next(response.name)
     })
   }
@@ -94,8 +94,8 @@ export class AuthService {
     return !!this.token;
   }
 
-  register(name: string, login: string, password: string): Observable<Properties7> {
-    return this.http.post<Properties7>(apiUrl + 'Register', {
+  register(name: string, login: string, password: string): Observable<CreateUser> {
+    return this.http.post<CreateUser>(apiUrl + 'Register', {
       name, login, password
     })
   }

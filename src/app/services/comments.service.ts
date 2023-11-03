@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Properties18} from "../api.interface";
+import {Comment} from "../interfaces";
 
 const apiUrl = 'http://194.87.237.48:5000/'
 
@@ -15,12 +15,12 @@ export class CommentsService {
   ) { }
 
 
-  getAdvertComments(advertId: string): Observable<Properties18[]>{
-    return this.http.get<Properties18[]>(apiUrl + 'Advert/' + advertId + '/Comments' )
+  getAdvertComments(advertId: string): Observable<Comment[]>{
+    return this.http.get<Comment[]>(apiUrl + 'Advert/' + advertId + '/Comments' )
   }
 
-  createComment(advertId: string, commentsData:FormData = new FormData()): Observable<Properties18>{
-    return this.http.post<Properties18>(apiUrl + 'Advert/' + advertId + '/comments', commentsData )
+  createComment(advertId: string, commentsData:FormData = new FormData()): Observable<Comment>{
+    return this.http.post<Comment>(apiUrl + 'Advert/' + advertId + '/comments', commentsData )
   }
 
   deleteComment(commentId:string){

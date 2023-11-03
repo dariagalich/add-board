@@ -5,11 +5,11 @@ import {
   Validators
 } from "@angular/forms";
 import {CategoriesService} from "../../services/categories.service";
-import {Properties, Properties10, Properties22} from "../../api.interface";
 import {Observable} from "rxjs";
 import {AdsService} from "../../services/ads.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
+import {Advert, Category, User} from "../../interfaces";
 
 @Component({
   selector: 'app-ad-create-edit',
@@ -21,11 +21,11 @@ export class AdCreateEditComponent implements OnInit {
   @ViewChild('inputImage') inputImageRef!: ElementRef;
   addAd: UntypedFormGroup = new UntypedFormGroup({})
 
-  categories$!: Observable<Properties10[]>
+  categories$!: Observable<Category[]>
 
-  userAd!: Properties
+  userAd!: Advert
   private adId: string = ''
-  currentUser!: Properties22
+  currentUser!: User
   imagesView: string[] = []
 
   constructor(
@@ -48,7 +48,7 @@ export class AdCreateEditComponent implements OnInit {
     if (this.adId) {
       this.productService.getById(this.adId)
         .subscribe({
-          next: (ad: Properties) => {
+          next: (ad: Advert) => {
             this.userAd = ad;
             this._buildForm(); // Вызываем метод _buildForm после успешного получения данных userAd
           }

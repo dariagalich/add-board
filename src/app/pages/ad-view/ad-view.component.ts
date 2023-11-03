@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {map, Observable, switchMap} from "rxjs";
-import {Properties, Properties22} from "../../api.interface";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {AuthService} from "../../services/auth.service";
 import {UsersService} from "../../services/users.service";
 import {AdsService} from "../../services/ads.service";
+import {Advert, User} from "../../interfaces";
 
 @Component({
   selector: 'app-ad-view',
@@ -15,13 +15,14 @@ import {AdsService} from "../../services/ads.service";
 export class AdViewComponent {
 
 
-  product$!: Observable<Properties>;
+  product$!: Observable<Advert>;
   isAuth = this.authService.isAuthenticated()
 
-  ad!: Properties
-  currentUser!: Properties22
+  ad!: Advert
+  currentUser!: User
   adId!: string
   isAdvertCreateByUser!: boolean
+  togglePhone = false
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +54,7 @@ export class AdViewComponent {
     return this.route.params.pipe(
       map(params => params['id']),
       switchMap(adId => this.userService.getCurrentUser().pipe(
-        map((response: Properties22) => response.adverts),
+        map((response: User) => response.adverts),
         map(adverts => adverts.map(item => item.id)),
         map(adIds => adIds.includes(adId))
       ))
@@ -62,6 +63,10 @@ export class AdViewComponent {
 
   deleteAdvert(advertId: string) {
     this.adsService.deleteAdd(advertId)
+  }
+
+  showPhone(){
+    this.togglePhone = !this.togglePhone
   }
 
 }

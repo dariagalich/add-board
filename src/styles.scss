@@ -101,14 +101,25 @@ img{
   grid-template-columns: repeat(4,1fr);
 }
 
-.template{
-  height: 630px;
+mat-progress-spinner{
+  width: 60px !important;
+  height: 60px !important;
+  margin: 0 auto;
 }
 
 //html, body { height: 100%; }
 
 html {
   height: 100%;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.column{
+  display: flex;
+  flex-direction: column;
 }
 
 body {

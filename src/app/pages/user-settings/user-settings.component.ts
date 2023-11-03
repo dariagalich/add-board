@@ -1,25 +1,25 @@
 import {Component} from '@angular/core';
 import {FormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {Properties22} from "../../api.interface";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
+import {User} from "../../interfaces";
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  selector: 'app-user-settings',
+  templateUrl: './user-settings.component.html',
+  styleUrls: ['./user-settings.component.scss']
 })
-export class UserProfileComponent {
+export class UserSettingsComponent {
 
   UserEditForm: UntypedFormGroup = new UntypedFormGroup({})
-  user!: Properties22
+  user!: User
 
   constructor(
     private fb: FormBuilder,
     private userService: UsersService,
     private router: Router,
   ) {
-    this.userService.getCurrentUser().subscribe((response: Properties22) => {
+    this.userService.getCurrentUser().subscribe((response: User) => {
       this.user = response
     })
     this._buildFormUser()
