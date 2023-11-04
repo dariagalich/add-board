@@ -1,7 +1,6 @@
 <div class="warp-comments">
 
-  <input type="text" placeholder="Оставить комментарий" (keyup.enter)="createComment()"
-         (input)="getTextFromInput($event)">
+  <input type="text" placeholder="Оставить комментарий" (keyup.enter)="createComment()" [(ngModel)]="commentsText">
 
   <div *ngIf="!commentsArray || commentsArray.length<1 ;else commentsTemplate">
     <p>Ваш комментарий будет первым!</p>

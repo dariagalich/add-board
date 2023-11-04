@@ -6,8 +6,7 @@ import {Advert} from "../interfaces";
 const apiUrl = 'http://194.87.237.48:5000/Advert/'
 
 @Injectable({ providedIn: 'root' })
-export class ProductsService{
-
+export class ProductsService {
 
   constructor(private http: HttpClient){ }
 
@@ -15,8 +14,8 @@ export class ProductsService{
     return this.http.post<Advert[]>(apiUrl + 'search',{})
   }
 
-  searchProducts(value: string): Observable<Advert[]> {
-    return this.http.post<Advert[]>(apiUrl + 'search', { search: value })
+  searchProducts(search: string, category: string): Observable<Advert[]> {
+    return this.http.post<Advert[]>(apiUrl + 'search', { search: search , category: category})
   }
 
   getById(id: string):Observable<Advert>{

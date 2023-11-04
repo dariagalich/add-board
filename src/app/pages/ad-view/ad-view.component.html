@@ -1,9 +1,9 @@
-<div *ngIf="product$ | async as product; else loading">
+<div class="container" *ngIf="product$ | async as product; else loading">
   <div>
     <p>Севастополь · Электроника · Ноутбуки · Apple</p>
   </div>
   <div class="ad-view">
-    <div class="ad-view-product-nameAndImage">
+    <div>
       <div class="display-row">
         <h3>{{product.name}}</h3>
         <div *ngIf="isAdvertCreateByUser" class="buttons-user-edit">
@@ -37,12 +37,19 @@
       </div>
 
       <img *ngIf="product.imagesIds.length!=0 ;else errSrc"
-           src="http://194.87.237.48:5000/Images/{{product.imagesIds[0]}}" alt="ошибка загрузки">
+           src="http://194.87.237.48:5000/Images/{{product.imagesIds[0]}}" alt="ошибка загрузки" class="big-img">
       <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
-      <div *ngFor="let p of product.imagesIds;let i = index" class="small-img">
-        <img *ngIf="i>0 && product.imagesIds.length>1" src="http://194.87.237.48:5000/Images/{{p}}"
-             alt="ошибка загрузки">
+
+      <div class="small-img">
+        <div *ngFor="let p of product.imagesIds; let i = index">
+          <img *ngIf="i > 0;else imageChosen" src="http://194.87.237.48:5000/Images/{{p}}" alt="ошибка загрузки">
+          <ng-template #imageChosen>
+            <img src="http://194.87.237.48:5000/Images/{{p}}" alt="ошибка загрузки" class="imgChosen">
+          </ng-template>
+        </div>
       </div>
+
+
     </div>
     <div class="ad-view-product-description">
       <h3>{{product.cost | number:'1.0-0' }} &#8381;</h3>
@@ -71,13 +78,13 @@
         </svg>
         Показать контакты
       </button>
-      <div *ngIf="togglePhone" >
+      <div *ngIf="togglePhone">
         <p *ngIf="product.phone">Телефон {{product.phone}}</p>
         <p *ngIf="product.email">E-mail {{product.email}}</p>
       </div>
       <h4>Адрес</h4>
       <p>{{product.location}}</p>
-<!--      <button>Откркрыть на катре</button>-->
+      <!--      <button>Откркрыть на катре</button>-->
       <h4>Описание</h4>
       <p>{{product.description}}</p>
       <div *ngIf="product.createdAt">
@@ -89,7 +96,9 @@
         <app-comments></app-comments>
       </div>
     </div>
+
   </div>
+
 </div>
 <ng-template #loading>
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>

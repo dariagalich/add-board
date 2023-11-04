@@ -1,6 +1,9 @@
 <div class="search-bar">
   <label>
-    <input type="text" class="search-input" [(ngModel)]="search" placeholder="Поиск по объявлениям">
+    <input type="text" class="search-input"
+           [(ngModel)]="search"
+           (keyup.enter)="searchAd()"
+           placeholder="Поиск по объявлениям">
   </label>
   <button class="button-search" (click)="searchAd()">
     Найти

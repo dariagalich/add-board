@@ -1,93 +1,92 @@
-.ad-view{
+.ad-view {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;
   gap: 24px;
 }
-mat-progress-spinner{
+
+.product-description {
+  grid-area: 1 / 5 / 4 / 7;
+}
+
+.big-img{
+  height: auto;
+}
+
+.small-img {
+  display: grid;
+  gap: 8px;
+  img {
+    margin:auto;
+    height: 136px;
+    border-radius: 10px;
+  }
+}
+
+.imgChosen {
+  opacity: 0.5;
+  border: var(--dark-blue) solid 1px;
+}
+
+mat-progress-spinner {
   width: 60px !important;
   height: 60px !important;
   margin: 0 auto;
 }
-img{
+
+img {
   max-height: 450px;
   object-fit: cover;
   border: #ccd0d3 1px solid;
 }
 
-.small-img{
-  display: inline-block;
-  flex-wrap: wrap;
-
-  img{
-    //width: 20%;
-    //height: 15%;
-    //width: 90%;
-    //height: 80%;
-    width: 220px;
-    height: 164px;
-
-    object-fit: cover;
-    border: #ccd0d3 1px solid;
-    transition: transform 0.2s ease;
-  }
-  img:hover{
-    transform-origin: center;
-    transform: scale(1.02);
-  }
-}
-.small-img:last-child {
-  margin-right: 0;
-}
-
-p{
+p {
   color: #64748B;
 }
-a{
+
+a {
   height: 40px;
   padding: 12px;
   justify-content: center;
 }
-svg{
+
+svg {
   width: 28px;
   height: 28px;
 }
-a .button-blue{
+
+a .button-blue {
   gap: 12px;
   flex-shrink: 0;
 }
 
-.display-row{
+.display-row {
   display: flex;
-  //flex-direction: row;
   justify-content: space-between;
-  //align-items: center;
-
 }
-.buttons-user-edit{
+
+.buttons-user-edit {
   display: flex;
   gap: 8px;
-  //margin: 8px 0 16px;
-  //svg{
-  //  height: 36px;
-  //}
-  button{
+
+  button {
     margin: 8px 0 16px;
   }
-  .edit-button{
+
+  .edit-button {
     color: #FCBA04;
     border: 1px #FCBA04 solid;
     background-color: white;
     fill: #FCBA04;
   }
 
-  .edit-button:hover{
+  .edit-button:hover {
     color: white;
     background-color: #FCBA04;
     fill: white;
   }
 
-  .edit-button:active{
+  .edit-button:active {
     color: white;
     background-color: #efac08;
     fill: white;
@@ -103,9 +102,51 @@ a .button-blue{
   height: 40px;
   border-radius: 50px;
   background-color: var(--dark-blue);
-  svg{
+
+  svg {
     margin: 0 auto;
     fill: white;
   }
 }
 
+@media (max-width: 2000px) {
+  .small-img {
+    //width: 450px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(6, 1fr);
+
+    img {
+      height: 136px;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .small-img {
+
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+
+    img {
+      height: 136px;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .small-img {
+    //width: 450px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+
+    img {
+      height: 136px;
+      border-radius: 10px;
+    }
+  }
+}

@@ -7,5 +7,6 @@ import {Subject} from "rxjs";
 export class SearchService {
 
   public search: Subject<string> = new Subject()
+  public category: Subject<string> = new Subject()
 
 }
