@@ -64,42 +64,50 @@
     <button type="button" (click)="adImage()" class="button-blue">Добавить картинки</button>
     <p>Максимум 10 картинок в формате jpeg, png</p>
   </div>
-  <!--  <div *ngIf=" this.addAd.controls['images'].value.length > 0">-->
-  <!--    <p>Для удаления нажмите на изображение</p>-->
-  <!--  </div>-->
-  <div *ngIf="!userAd; else userImage" class="images-array wrap">
+  <div *ngIf=" this.addAd.controls['images'].value.length > 0">
+    <p>Для удаления нажмите на изображение</p>
+  </div>
+
+  <div class="images-array wrap">
     <img *ngFor="let url of  this.imagesView; let i = index" [src]="url" alt="Ошибка загрузки фото"
          class="add-image" (click)=" this.addAd.controls['images'].value.splice(i,1)">
-  </div>
-  <ng-template #userImage class="images-array wrap">
-    <div class="images-array wrap">
+
+
+    <div *ngIf="userAd">
       <img *ngFor="let url of  this.userAd.imagesIds; let i = index" [src]="'http://194.87.237.48:5000/Images/' + url"
            alt="Ошибка загрузки фото"
            class="add-image" (click)=" this.addAd.controls['images'].value.splice(i,1)">
-    </div>
-  </ng-template>
 
-  <div class="form-input">
-    <label for="cost">Цена</label>
-    <input id="cost" formControlName="cost" type="number" placeholder="0 ₽">
-    <div class="warning"
-         *ngIf="addAd.controls['cost'].invalid && (addAd.controls['cost'].touched || addAd.controls['cost'].dirty)">
-      <span *ngIf="addAd.controls['cost'].errors?.['required']">Пожалуйста введите цену</span>
+      <div *ngIf="imagesView.length > 0">
+        <img *ngFor="let url of  this.imagesView; let i = index" [src]="url" alt="Ошибка загрузки фото"
+             class="add-image" (click)=" this.addAd.controls['images'].value.splice(i,1)">
+      </div>
+
     </div>
   </div>
+    <!--  </ng-template>-->
 
-  <div *ngIf="!userAd; else buttonSave">
-    <button class="button-blue button-big" type="submit">Разместить объявление</button>
+    <div class="form-input">
+      <label for="cost">Цена</label>
+      <input id="cost" formControlName="cost" type="number" placeholder="0 ₽">
+      <div class="warning"
+           *ngIf="addAd.controls['cost'].invalid && (addAd.controls['cost'].touched || addAd.controls['cost'].dirty)">
+        <span *ngIf="addAd.controls['cost'].errors?.['required']">Пожалуйста введите цену</span>
+      </div>
+    </div>
 
-    <p>Нажимая кнопку «Разместить объявление» <br>
-      Вы соглашаетесь с
-      <a href="#">правилами площадки</a>
-    </p>
-  </div>
+    <div *ngIf="!userAd; else buttonSave">
+      <button class="button-blue button-big" type="submit">Разместить объявление</button>
 
-  <ng-template #buttonSave>
-    <button class="button-blue button-big" type="submit">Сохранить</button>
-  </ng-template>
+      <p>Нажимая кнопку «Разместить объявление» <br>
+        Вы соглашаетесь с
+        <a href="#">правилами площадки</a>
+      </p>
+    </div>
+
+    <ng-template #buttonSave>
+      <button class="button-blue button-big" type="submit">Сохранить</button>
+    </ng-template>
 
 </form>
 

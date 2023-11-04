@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Category} from "../interfaces";
 
 const API = "http://194.87.237.48:5000/"
-
 
 
 @Injectable({
@@ -12,10 +11,21 @@ const API = "http://194.87.237.48:5000/"
 })
 export class CategoriesService {
 
-  constructor(private httpClient: HttpClient){ }
+  private isVisibleCategoriesSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
-  getCategories(): Observable <Category[]>{
-    return this.httpClient.get<Category[]>(API + 'Categories',{})
+  constructor(private httpClient: HttpClient) {
+  }
+
+  getCategories(): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(API + 'Categories', {})
+  }
+
+  getIsVisibleCategories(value: boolean) {
+    this.isVisibleCategoriesSubject.next(value)
+  }
+
+  setIsVisibleCategories(): Observable<boolean> {
+    return this.isVisibleCategoriesSubject.asObservable()
   }
 
 }

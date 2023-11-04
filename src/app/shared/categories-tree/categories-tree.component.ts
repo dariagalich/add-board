@@ -17,13 +17,17 @@ interface ExampleFlatNode {
   id: string
 }
 
-
 @Component({
   selector: 'app-categories-tree',
   templateUrl: './categories-tree.component.html',
   styleUrls: ['./categories-tree.component.scss']
 })
 export class CategoriesTreeComponent {
+
+  categories: Category[] = []
+  tree: CategoryTree[] = []
+  categoriesTree: CategoryTree[] = []
+  isVisibleTree = true
 
   private _transformer = (node: CategoryTree, level: number) => {
     return {
@@ -42,23 +46,18 @@ export class CategoriesTreeComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  categories: Category[] = []
-  tree: CategoryTree[] = []
-  categoriesTree: CategoryTree[] = []
-
-
   constructor(
     private categoriesService: CategoriesService,
     private searchService: SearchService,
-    private router:Router
-    ) {
+    private router: Router
+  ) {
     this.getCategories()
 
   }
 
   getCategories() {
     this.categoriesService.getCategories()
-      .subscribe((response:Category[]) => {
+      .subscribe((response: Category[]) => {
         this.categories = response
 
         this.tree = this.buildCategoryTree(response)
@@ -69,14 +68,14 @@ export class CategoriesTreeComponent {
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
 
-  buildCategoryTree(data:Category[]): CategoryTree[] {
+  buildCategoryTree(data: Category[]): CategoryTree[] {
 
     let map: { [key: string]: number; } = {}, node: CategoryTree, roots: CategoryTree[] = [], i;
     let dataWithChildren: CategoryTree[] = data.map((item, index) => {
       map[item.id] = index;
       return {...item, children: [], $ref: ''}
     })
-  debugger
+    debugger
     for (i = 0; i < dataWithChildren.length; i += 1) {
       node = dataWithChildren[i];
       if (node.parentId !== null && node.parentId !== '00000000-0000-0000-0000-000000000000') {
@@ -91,13 +90,18 @@ export class CategoriesTreeComponent {
 
   async navigateToCategory(categoryId: string) {
 
-
-
     this.searchService.category.next(categoryId);
 
-    if (this.router.url !== '/main')
-      this.router.navigate(['/main'],{queryParams: {category: categoryId}}).then()
+    if (this.router.url !== '/main') {
+      this.router.navigate(['/main'], {queryParams: {category: categoryId}}).then()
+    }
 
+    this.isVisibleTree = !this.isVisibleTree
 
+    this.closeCategory()
+  }
+
+  closeCategory() {
+    this.categoriesService.getIsVisibleCategories(this.isVisibleTree)
   }
 }
