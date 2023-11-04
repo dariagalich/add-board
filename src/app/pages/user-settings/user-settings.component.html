@@ -28,7 +28,7 @@
 
   <div class="form-input">
     <label for="password">Пароль</label>
-    <input id="password" formControlName="password" type="text" placeholder="Введите адресс">
+    <input id="password" formControlName="password" type="password" placeholder="Введите адресс">
     <div class="warning"
          *ngIf="UserEditForm.controls['password'].invalid && (UserEditForm.controls['password'].touched || UserEditForm.controls['password'].dirty)">
       <span *ngIf="UserEditForm.controls['password'].errors?.['required']">Пожалуйста введите пароль</span>

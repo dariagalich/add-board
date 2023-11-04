@@ -46,6 +46,7 @@ export class UserSettingsComponent {
       this.userService.editUserName(this.user.id, formData).subscribe({
         next: () => {
           this.router.navigate(['/user-ads']).then(() => {
+          window.location.reload()
           })
         }
       })
