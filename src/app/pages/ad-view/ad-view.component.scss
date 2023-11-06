@@ -1,3 +1,9 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .ad-view {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -9,15 +15,16 @@
   grid-area: 1 / 5 / 4 / 7;
 }
 
-.big-img{
+.big-img {
   height: auto;
 }
 
 .small-img {
   display: grid;
   gap: 8px;
+
   img {
-    margin:auto;
+    margin: auto;
     height: 136px;
     border-radius: 10px;
   }

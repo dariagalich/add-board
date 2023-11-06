@@ -5,7 +5,9 @@ import {ProductsService} from "../../services/products.service";
 import {AuthService} from "../../services/auth.service";
 import {UsersService} from "../../services/users.service";
 import {AdsService} from "../../services/ads.service";
-import {Advert, User} from "../../interfaces";
+import {Advert, Breadcrumb, Category, CategoryTree, User} from "../../interfaces";
+import {CategoriesService} from "../../services/categories.service";
+import {buildCategoryTree} from "../../utils/helpers";
 
 @Component({
   selector: 'app-ad-view',
@@ -23,13 +25,16 @@ export class AdViewComponent {
   adId!: string
   isAdvertCreateByUser!: boolean
   togglePhone = false
+  allCategories: CategoryTree[] = []
+  breadcrumbs: Breadcrumb[] = []
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
     private authService: AuthService,
     private userService: UsersService,
-    private adsService: AdsService
+    private adsService: AdsService,
+    private categoriesService: CategoriesService
   ) {
   }
 
@@ -40,10 +45,18 @@ export class AdViewComponent {
         return this.productService.getById(params['id'])
       }))
 
+    this.product$.subscribe(response => {
+      this.ad = response
+      const currentCategory = response.category
+      this.categoriesService.getCategories().subscribe((response: Category[]) => {
+        this.allCategories = buildCategoryTree(response)
+        this.breadcrumbs = this.buildBreadcrumbPath(currentCategory, this.allCategories);
+      })
+    })
+
     if (this.authService.isAuthenticated()) {
 
       this.checkIsCreatedByUser().subscribe(result => {
-        // console.log('result', result)
         this.isAdvertCreateByUser = result;
       });
     }
@@ -65,8 +78,23 @@ export class AdViewComponent {
     this.adsService.deleteAdd(advertId)
   }
 
-  showPhone(){
+  showPhone() {
     this.togglePhone = !this.togglePhone
+  }
+
+  buildBreadcrumbPath(category: Category, allCategories: CategoryTree[], path: Breadcrumb[] = []): Breadcrumb[] {
+
+    const parentCategory = allCategories.find(c => c.id === category.parentId);
+    if (parentCategory && parentCategory.parentId !== '00000000-0000-0000-0000-000000000000') {
+      path.unshift({label: parentCategory.name, id: parentCategory.id});
+      return this.buildBreadcrumbPath(parentCategory, allCategories, path);
+    } else {
+      if (parentCategory && parentCategory.parentId === '00000000-0000-0000-0000-000000000000') {
+        path.unshift({label: parentCategory.name, id: parentCategory.id});
+      }
+      path.push({label: category.name, id: category.id})
+      return path;
+    }
   }
 
 }

@@ -1,32 +1,46 @@
-.form-size{
+.form-size {
   padding: 24px;
   width: 368px;
 }
 
-.warning{
+.warning {
   margin-top: 2px;
   color: red;
 }
-label{
+
+label {
   display: block;
   margin-top: 8px;
   margin-bottom: 8px;
 }
-a{
+
+a {
   display: contents;
   padding-left: 0;
   color: var(--blue)
 }
-small a:hover{
+
+small a:hover {
   text-decoration: underline;
 }
-.form-input{
+
+.form-input {
   margin-bottom: 16px;
 }
-input{
+
+input {
   margin-top: 8px;
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid var(--red);
+  }
+
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
 }
-textarea{
+
+textarea {
   width: 100%;
   margin-top: 16px;
   padding: 4px 10px;

@@ -1,6 +1,9 @@
 <div class="container" *ngIf="product$ | async as product; else loading">
-  <div>
-    <p>Севастополь · Электроника · Ноутбуки · Apple</p>
+  <div class="breadcrumbs">
+    <ng-container *ngFor="let breadcrumb of breadcrumbs;let last = last">
+      <p [routerLink]="['/main']" [queryParams]="{ category: breadcrumb.id }">{{ breadcrumb.label }}</p>
+      <span *ngIf="!last">·</span>
+    </ng-container>
   </div>
   <div class="ad-view">
     <div>

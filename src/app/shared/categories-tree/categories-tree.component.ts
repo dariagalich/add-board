@@ -8,6 +8,7 @@ import {FlatTreeControl} from "@angular/cdk/tree";
 import {Category, CategoryTree} from "../../interfaces";
 import {SearchService} from "../../services/search.service";
 import {Router} from "@angular/router";
+import {buildCategoryTree} from "../../utils/helpers"
 
 
 interface ExampleFlatNode {
@@ -60,41 +61,16 @@ export class CategoriesTreeComponent {
       .subscribe((response: Category[]) => {
         this.categories = response
 
-        this.tree = this.buildCategoryTree(response)
+        this.tree = buildCategoryTree(response)
         this.dataSource.data = this.tree
       })
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
-
-  buildCategoryTree(data: Category[]): CategoryTree[] {
-
-    let map: { [key: string]: number; } = {}, node: CategoryTree, roots: CategoryTree[] = [], i;
-    let dataWithChildren: CategoryTree[] = data.map((item, index) => {
-      map[item.id] = index;
-      return {...item, children: [], $ref: ''}
-    })
-    debugger
-    for (i = 0; i < dataWithChildren.length; i += 1) {
-      node = dataWithChildren[i];
-      if (node.parentId !== null && node.parentId !== '00000000-0000-0000-0000-000000000000') {
-        dataWithChildren[map[node.parentId]].children.push(node)
-      } else {
-        roots.push(node);
-      }
-    }
-
-    return roots;
-  }
-
   async navigateToCategory(categoryId: string) {
-
     this.searchService.category.next(categoryId);
-
-    if (this.router.url !== '/main') {
-      this.router.navigate(['/main'], {queryParams: {category: categoryId}}).then()
-    }
+    this.router.navigate(['/main'], {queryParams: {category: categoryId}}).then()
 
     this.isVisibleTree = !this.isVisibleTree
 

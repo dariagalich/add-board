@@ -4,7 +4,7 @@ export interface Advert {
   name: string
   description: string
   isActive: string
-  imagesIds: string
+  imagesIds: string[]
   cost: string
   email: string
   phone: string
@@ -39,6 +39,7 @@ export interface AdvertSearch {
   showNonActive: string
   category: string
 }
+
 //==================================
 export interface User {
   id: string
@@ -69,7 +70,7 @@ export interface ShortUser {
 export interface Category {
   id: string
   name: string
-  parentId: string | null
+  parentId: string
 }
 
 export interface ImportCategory {
@@ -81,9 +82,10 @@ export interface ImportCategory {
 export interface CategoryTree {
   id: string;
   name: string;
-  parentId: string | null;
+  parentId: string;
   children: CategoryTree[];
 }
+
 //==================================
 export interface Comment {
   id: string
@@ -92,9 +94,11 @@ export interface Comment {
   parentId: string
   user: User
 }
+
 export interface UpdateComment {
   text: string
 }
+
 //==================================
 export interface ShortImage {
   id: string
@@ -110,3 +114,9 @@ export interface Encoding {
   Phone: string
   CategoryId: string
 }
+
+export interface Breadcrumb {
+  label: string
+  id: string
+}
+

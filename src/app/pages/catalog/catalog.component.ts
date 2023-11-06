@@ -31,21 +31,21 @@ export class CatalogComponent implements OnInit {
       .subscribe(params => {
           this.search = params['search'];
           this.category = params['category'];
+
+          if (!this.search && !this.category) {
+            this.getProduct()
+          } else {
+            this.searchProducts(this.search, this.category)
+          }
         }
       );
 
-    if (!this.search) {
-      this.getProduct()
-    } else {
-      this.searchProducts(this.search,this.category)
-    }
-
     this.searchService.search.subscribe((search) => {
-      this.searchProducts(search,this.category)
+      this.searchProducts(search, this.category)
     })
 
     this.searchService.category.subscribe((category) => {
-      this.searchProducts(this.search,category)
+      this.searchProducts(this.search, category)
     })
 
   }
@@ -54,8 +54,8 @@ export class CatalogComponent implements OnInit {
     this.products$ = this.productsService.getProducts()
   }
 
-  searchProducts(search: string, category:string) {
-    this.products$ = this.productsService.searchProducts(search,category)
+  searchProducts(search: string, category: string) {
+    this.products$ = this.productsService.searchProducts(search, category)
   }
 
 }

@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnDestroy {
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required, this.confirmPassValidator]],
       captcha: ['', [Validators.required, this.captchaValidator]]
-    })
+    },)
   }
 
   confirmPassValidator: ValidatorFn = (): ValidationErrors | null => {
@@ -56,18 +56,16 @@ export class RegistrationComponent implements OnDestroy {
     return !(captcha === captchaKey) ? {correctCaptcha: true} : null;
   }
 
-  // loginValidator: ValidatorFn = (control:AbstractControl): ValidationErrors | null =>{
-  //
-  // }
-
   onSubmit(): void {
-    const {name, login, password} = this.registrationForm.controls;
-    this.authService.register(name.value, login.value, password.value).subscribe(
-      () => {
-        this.registrationForm.reset()
-        this.openDialog()
-      }
-    )
+    if (this.registrationForm.valid) {
+      const {name, login, password} = this.registrationForm.controls;
+      this.authService.register(name.value, login.value, password.value).subscribe(
+        () => {
+          this.registrationForm.reset()
+          this.openDialog()
+        }
+      )
+    }
   }
 
   ngOnDestroy() {
@@ -77,9 +75,11 @@ export class RegistrationComponent implements OnDestroy {
   }
 
   openDialog() {
-      this.matDialog.open(AuthorizationDialogComponent)
+    this.matDialog.open(AuthorizationDialogComponent)
   }
-  navigateToMain(){
-    this.router.navigate(['/']).then(() => {})
+
+  navigateToMain() {
+    this.router.navigate(['/']).then(() => {
+    })
   }
 }

@@ -31,5 +31,6 @@ export class SearchBarComponent {
     if (this.router.url !== '/main')
       this.router.navigate(['/main'], {queryParams: {search: this.search}}).then()
 
+    this.search = ''
   }
 }

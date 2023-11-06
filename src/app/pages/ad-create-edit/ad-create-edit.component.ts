@@ -27,6 +27,7 @@ export class AdCreateEditComponent implements OnInit {
   private adId: string = ''
   currentUser!: User
   imagesView: string[] = []
+  allImages: string[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -36,11 +37,9 @@ export class AdCreateEditComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductsService
   ) {
-
   }
 
   ngOnInit() {
-
 
     this.route.params.subscribe(params => {
       this.adId = params['id'];
@@ -50,6 +49,11 @@ export class AdCreateEditComponent implements OnInit {
         .subscribe({
           next: (ad: Advert) => {
             this.userAd = ad;
+            console.log(this.userAd.imagesIds)
+            this.allImages.push(
+              ...this.userAd.imagesIds
+                .map(item => 'http://194.87.237.48:5000/Images/' + item)
+            )
             this._buildForm(); // Вызываем метод _buildForm после успешного получения данных userAd
           }
         })
@@ -79,11 +83,14 @@ export class AdCreateEditComponent implements OnInit {
   onFileChange(event: any) {
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;
+      console.log(filesAmount)
       for (let i = 0; i < filesAmount; i++) {
-        this.addAd.controls['images'].value.push(event.target.files[i]);
+
         let reader = new FileReader();
         reader.onload = (event: any) => {
-          this.imagesView.push(event.target.result);
+          // this.addAd.controls['images'].value.push(event.target.result);
+          this.allImages.push(event.target.result);
+          // this.imagesView.push(event.target.result);
 
           this.addAd.patchValue({
             fileSource: this.imagesView
@@ -91,6 +98,7 @@ export class AdCreateEditComponent implements OnInit {
         }
         reader.readAsDataURL(event.target.files[i]);
       }
+
     }
   }
 
