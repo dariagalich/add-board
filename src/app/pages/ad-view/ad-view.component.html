@@ -1,7 +1,8 @@
 <div class="container" *ngIf="product$ | async as product; else loading">
   <div class="breadcrumbs">
     <ng-container *ngFor="let breadcrumb of breadcrumbs;let last = last">
-      <p [routerLink]="['/main']" [queryParams]="{ category: breadcrumb.id }">{{ breadcrumb.label }}</p>
+      <p [routerLink]="['/main']" [queryParams]="{ category: breadcrumb.id }"
+         class="breadcrumbs-link">{{ breadcrumb.label }}</p>
       <span *ngIf="!last">·</span>
     </ng-container>
   </div>
@@ -10,7 +11,6 @@
       <div class="display-row">
         <h3>{{product.name}}</h3>
         <div *ngIf="isAdvertCreateByUser" class="buttons-user-edit">
-
           <button [routerLink]="['/ad-create-edit',product.id]" class="edit-button">
             <svg class="edit-icon" xmlns="http://www.w3.org/2000/svg"
                  width="22" height="22" viewBox="0 0 22 22" fill="current color">
@@ -42,21 +42,20 @@
       <div *ngIf="selectedImage;else errSrc" class="big-img">
         <img src="http://194.87.237.48:5000/Images/{{selectedImage}}" alt="ошибка загрузки">
       </div>
-        <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
+      <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
 
       <ngx-slick-carousel class="carousel small-img" [config]="slideConfig">
         <div *ngFor="let image of product.imagesIds">
-          <img src="http://194.87.237.48:5000/Images/{{image}}" alt="ошибка загрузки" (click)="selectImage(image)" [ngClass]="{'selected': selectedImage === image}">
+          <img src="http://194.87.237.48:5000/Images/{{image}}" alt="ошибка загрузки" (click)="selectImage(image)"
+               [ngClass]="{'selected': selectedImage === image}">
         </div>
       </ngx-slick-carousel>
-
 
     </div>
     <div class="ad-view-product-description">
       <h3>{{product.cost | number:'1.0-0' }} &#8381;</h3>
-
       <h3>Владелец</h3>
-      <div class="row" [routerLink]="['/user-profile',product.user.id]">
+      <div class="row user" [routerLink]="['/user-profile',product.user.id]">
         <div class="user-avatar">
           <svg width="5" height="5" viewBox="0 0 16 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -79,28 +78,30 @@
         </svg>
         Показать контакты
       </button>
+
       <div *ngIf="togglePhone">
         <p *ngIf="product.phone">Телефон {{product.phone}}</p>
         <p *ngIf="product.email">E-mail {{product.email}}</p>
       </div>
+
       <h4>Адрес</h4>
       <p>{{product.location}}</p>
-      <!--      <button>Откркрыть на катре</button>-->
       <h4>Описание</h4>
       <p>{{product.description}}</p>
+
       <div *ngIf="product.createdAt">
         <h4>Дата создания</h4>
         <p>{{product.createdAt | date: 'd.M.yy h:mm'}}</p>
       </div>
+
       <div>
         <h4>Комментарии</h4>
         <app-comments></app-comments>
       </div>
     </div>
-
   </div>
-
 </div>
+
 <ng-template #loading>
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </ng-template>

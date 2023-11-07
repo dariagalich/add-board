@@ -7,7 +7,7 @@ import {RouterOutlet} from "@angular/router";
 import {HeaderModule} from "./layout/header/header.module";
 import {MatButtonModule} from "@angular/material/button";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {TokenInterceptor} from "./shared/classes/token.interceptor";
+import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {FooterComponent} from './layout/footer/footer.component';

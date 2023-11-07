@@ -8,22 +8,19 @@ import {FormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {SlickCarouselModule} from "ngx-slick-carousel";
 
-
 @NgModule({
   declarations: [
     AdViewComponent,
     CommentsComponent
   ],
-    imports: [
-        CommonModule,
-        AdViewRoutingModule,
-        MatIconModule,
-        FormsModule,
-        MatProgressSpinnerModule,
-        SlickCarouselModule
-    ],
-  exports: []
-
+  imports: [
+    CommonModule,
+    AdViewRoutingModule,
+    MatIconModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    SlickCarouselModule
+  ]
 })
 export class AdViewModule {
 }

@@ -7,7 +7,6 @@ import {CategoriesService} from "../../services/categories.service";
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   isVisibleTree: boolean = false
 
   constructor(
@@ -24,6 +23,5 @@ export class HeaderComponent implements OnInit {
   showTree() {
     this.isVisibleTree = !this.isVisibleTree
   }
-
 }
 

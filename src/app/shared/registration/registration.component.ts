@@ -45,7 +45,6 @@ export class RegistrationComponent {
     },)
   }
 
-
   onSubmit() {
     if (this.registrationForm.valid) {
       const {name, login, password} = this.registrationForm.controls;

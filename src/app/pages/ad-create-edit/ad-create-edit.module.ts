@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormsModule,ReactiveFormsModule} from "@angular/forms";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdCreateEditComponent} from "./ad-create-edit.component";
 import {AdCreateEditRoutingModule} from "./ad-create-edit.routing.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {HttpClientModule} from "@angular/common/http";
-
-
 
 @NgModule({
   declarations: [
@@ -23,4 +21,5 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule,
   ]
 })
-export class AdCreateEditModule { }
+export class AdCreateEditModule {
+}

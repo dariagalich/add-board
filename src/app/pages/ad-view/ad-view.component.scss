@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 
 .ad-view {
@@ -49,11 +54,6 @@ img {
 
 p {
   color: #64748B;
-}
-
-p:hover{
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 a {
@@ -121,9 +121,14 @@ a .button-blue {
   }
 }
 
+.user:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #d3d3d3;
+}
+
 @media (max-width: 2000px) {
   .small-img {
-    //width: 450px;
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(6, 1fr);
@@ -151,7 +156,6 @@ a .button-blue {
 
 @media (max-width: 1000px) {
   .small-img {
-    //width: 450px;
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(3, 1fr);

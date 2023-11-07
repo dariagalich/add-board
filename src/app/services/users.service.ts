@@ -18,10 +18,10 @@ export class UsersService {
   }
 
   editUserName(userId: string, form: any): Observable<User> {
-    return this.http.put<User>(apiUrl + 'Users/'+ userId, form)
+    return this.http.put<User>(apiUrl + 'Users/' + userId, form)
   }
 
-  getUserById(userId: string): Observable<User>{
-    return this.http.get<User>(apiUrl + 'Users/'+ userId)
+  getUserById(userId: string): Observable<User> {
+    return this.http.get<User>(apiUrl + 'Users/' + userId)
   }
 }

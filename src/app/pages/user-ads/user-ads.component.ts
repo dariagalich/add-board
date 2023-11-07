@@ -11,7 +11,6 @@ import {AdsService} from "../../services/ads.service";
   styleUrls: ['./user-ads.component.scss']
 })
 export class UserAdsComponent implements OnInit {
-
   public products$!: Observable<Advert[]>;
   errorMessage = ''
 
@@ -23,9 +22,9 @@ export class UserAdsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.isAuth())
-    this.getUserProduct()
-    this.adsService.setErrorMessage().subscribe((response)=>{
+    if (this.isAuth())
+      this.getUserProduct()
+    this.adsService.setErrorMessage().subscribe((response) => {
       this.errorMessage = response
       this.showErrorMessage(this.errorMessage)
     })
@@ -33,16 +32,18 @@ export class UserAdsComponent implements OnInit {
 
   getUserProduct() {
     this.products$ = this.userService.getCurrentUser()
-      .pipe(map((x:User)=> x.adverts)
-    )
+      .pipe(map((x: User) => x.adverts)
+      )
   }
-  isAuth(): boolean{
+
+  isAuth(): boolean {
     return this.authService.isAuthenticated()
   }
+
   showErrorMessage(message: string) {
-    this.errorMessage = message;
+    this.errorMessage = message
     setTimeout(() => {
-      this.errorMessage = '';
-    }, 10000);
+      this.errorMessage = ''
+    }, 10000)
   }
 }

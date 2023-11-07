@@ -1,12 +1,14 @@
-button{
+button {
   margin: 14px 0 14px 0;
   padding: 6px 12px;
   border-radius: 5px;
 }
-button:disabled{
+
+button:disabled {
   color: white;
   background-color: #c7c9d2;
 }
+
 .button-line-white {
   color: white;
   background: none;
@@ -37,7 +39,6 @@ button:disabled{
   background: #85a9e3;
 }
 
-
 .button-line-blue {
   margin: auto;
   color: var(--blue);
@@ -62,46 +63,46 @@ button:disabled{
   border-radius: 0 5px 5px 0;
 }
 
-.button-big{
+.button-big {
   display: flex;
   justify-content: center;
   width: 186px;
   height: 35px;
 }
 
-.delete-button{
+.delete-button {
   color: var(--red);
   border: 1px var(--red) solid;
   background-color: white;
   fill: var(--red);
 }
 
-.delete-button:hover{
+.delete-button:hover {
   color: white;
   background-color: var(--red);
   fill: white;
 }
 
-.delete-button:active{
+.delete-button:active {
   color: white;
   background-color: #da564d;
   fill: white;
 }
 
-.edit-button{
+.edit-button {
   color: #FCBA04;
   border: 1px #FCBA04 solid;
   background-color: white;
   fill: #FCBA04;
 }
 
-.edit-button:hover{
+.edit-button:hover {
   color: white;
   background-color: #FCBA04;
   fill: white;
 }
 
-.edit-button:active{
+.edit-button:active {
   color: white;
   background-color: #efac08;
   fill: white;

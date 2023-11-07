@@ -15,7 +15,6 @@
             <p class="comment-create">{{comment.created | date: 'd.M, h:mm'}}</p>
           </div>
 
-
           <input type="text" *ngIf="toggleEditComment && comment.id == commentEditId;else commentText"
                  placeholder="Ваш комментарий"
                  [(ngModel)]="commentsText"
@@ -26,7 +25,6 @@
           <ng-template #commentText>
             <p class="comment-text">{{comment.text}}</p>
           </ng-template>
-
         </div>
         <div>
           <button *ngIf="this.userId == comment.user.id" (click)="this.deleteComment(comment.id)" class="delete-button">
@@ -56,5 +54,4 @@
       </div>
     </div>
   </ng-template>
-
 </div>

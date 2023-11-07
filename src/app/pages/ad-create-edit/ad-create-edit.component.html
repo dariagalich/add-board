@@ -1,6 +1,5 @@
 <h4>Новое объявление</h4>
 <form [formGroup]="addAd" (ngSubmit)="submit()">
-
   <div class="form-input">
     <label for="category">Выберите категорию</label>
     <select id="category" formControlName="categoryId">
@@ -64,6 +63,7 @@
     <button type="button" (click)="adImage()" class="button-blue">Добавить картинки</button>
     <p>Максимум 10 картинок в формате jpeg, png</p>
   </div>
+
   <div *ngIf=" this.addAd.controls['images'].value.length > 0">
     <p>Для удаления нажмите на изображение</p>
   </div>
@@ -95,6 +95,5 @@
   <ng-template #buttonSave>
     <button class="button-blue button-big" type="submit">Сохранить</button>
   </ng-template>
-
 </form>
 

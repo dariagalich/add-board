@@ -27,13 +27,14 @@
 }
 
 @media (max-width: 2000px) {
-  .user-avatar{
+  .user-avatar {
     height: 324px;
     width: 324px;
   }
 }
+
 @media (max-width: 1200px) {
-  .user-avatar{
+  .user-avatar {
     max-width: 220px;
     max-height: 220px;
   }

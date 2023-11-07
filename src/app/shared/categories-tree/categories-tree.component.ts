@@ -8,7 +8,7 @@ import {FlatTreeControl} from "@angular/cdk/tree";
 import {Category, CategoryTree} from "../../interfaces";
 import {SearchService} from "../../services/search.service";
 import {Router} from "@angular/router";
-import {buildCategoryTree} from "../../utils/helpers"
+import {buildCategoryTree} from "../utils/helpers"
 
 
 interface ExampleFlatNode {

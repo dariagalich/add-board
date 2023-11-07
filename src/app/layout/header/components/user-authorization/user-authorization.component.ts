@@ -12,7 +12,6 @@ import {User} from "../../../../interfaces";
   styleUrls: ['./user-authorization.component.scss']
 })
 export class UserAuthorizationComponent implements OnInit {
-
   public user$!: Observable<string>;
   showLinks: boolean = false;
   userName: string = ''
@@ -42,11 +41,9 @@ export class UserAuthorizationComponent implements OnInit {
     })
   }
 
-
   isAuth(): boolean {
     return this.authService.isAuthenticated();
   }
-
 
   openDialog() {
     this.matDialog.open(AuthorizationDialogComponent)

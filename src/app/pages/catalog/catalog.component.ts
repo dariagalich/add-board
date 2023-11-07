@@ -11,12 +11,11 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
-
-  public products$!: Observable<Advert[]>;
+  public products$!: Observable<Advert[]>
   searchInside!: string
   search!: string
   category!: string
-  selected = 'none';
+  selected = 'none'
 
   constructor(
     private productsService: ProductsService,
@@ -27,11 +26,10 @@ export class CatalogComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.queryParams
       .subscribe(params => {
-          this.search = params['search'];
-          this.category = params['category'];
+          this.search = params['search']
+          this.category = params['category']
 
           if (!this.search && !this.category) {
             this.getProduct()
@@ -48,7 +46,6 @@ export class CatalogComponent implements OnInit {
     this.searchService.category.subscribe((category) => {
       this.searchProducts(this.search, category)
     })
-
   }
 
   getProduct() {
@@ -62,20 +59,19 @@ export class CatalogComponent implements OnInit {
   filterAndSortAds(ads$: Observable<Advert[]>, sortOrder: string): Observable<Advert[]> {
     return ads$.pipe(
       map((ads: Advert[]) => {
-        let filteredAds = ads.slice(); // Создаем копию массива объявлений
+        let filteredAds = ads.slice()
 
         if (sortOrder === 'ascending') {
-          filteredAds = filteredAds.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
+          filteredAds = filteredAds.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost))
         } else if (sortOrder === 'descending') {
-          filteredAds = filteredAds.sort((a, b) => parseFloat(b.cost) - parseFloat(a.cost));
+          filteredAds = filteredAds.sort((a, b) => parseFloat(b.cost) - parseFloat(a.cost))
         }
-        return filteredAds;
+        return filteredAds
       })
-    );
+    )
   }
 
-  setSortAdverts(ads$: Observable<Advert[]>, sortOrder: string){
-    this.products$ = this.filterAndSortAds(ads$,sortOrder)
+  setSortAdverts(ads$: Observable<Advert[]>, sortOrder: string) {
+    this.products$ = this.filterAndSortAds(ads$, sortOrder)
   }
-
 }

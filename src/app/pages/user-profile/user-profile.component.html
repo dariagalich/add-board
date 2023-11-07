@@ -13,7 +13,6 @@
       <p>{{user.registeredTime| date: 'd.M.yy h:mm'}}</p>
     </div>
   </div>
-
   <div class="wrap" *ngIf="user.adverts; else loading">
     <app-product *ngFor="let ad of user.adverts" [product]="ad" [routerLink]="['/ad-view',ad.id]"></app-product>
   </div>

@@ -1,4 +1,5 @@
 <form class="form-size" [formGroup]="authorizationForm" (ngSubmit)="onSubmit()">
+
   <div class="form-header">
     <h3>Авторизация</h3>
     <svg mat-dialog-close="" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -7,6 +8,7 @@
         fill="#1E293B"/>
     </svg>
   </div>
+
   <div>
     <input id="login" type="login" formControlName="login" placeholder="Номер телефона">
     <div class="validation warning">
@@ -19,6 +21,7 @@
       </div>
     </div>
   </div>
+
   <div>
     <label for="password"></label>
     <input id="password" type="password" formControlName="password" placeholder="Пароль">

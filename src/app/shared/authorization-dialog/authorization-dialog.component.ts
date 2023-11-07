@@ -30,7 +30,6 @@ export class AuthorizationDialogComponent implements OnDestroy {
     private authService: AuthService,
   ) {
     this._buildForm()
-
   }
 
   private _buildForm() {
@@ -44,24 +43,20 @@ export class AuthorizationDialogComponent implements OnDestroy {
   onSubmit() {
 
     if (this.authorizationForm.valid) {
-
       const {login, password} = this.authorizationForm.controls
       const user = {
         login: login.value,
         password: password.value
       }
-
       this.authService.login(user)
-
       this.authService.setErrorMessage().subscribe((error) => {
         this.error = error
       })
-
     } else {
       Object.values(this.authorizationForm.controls).forEach(control => {
-        control.markAsTouched();
-        control.markAsDirty();
-      });
+        control.markAsTouched()
+        control.markAsDirty()
+      })
     }
   }
 
@@ -72,7 +67,7 @@ export class AuthorizationDialogComponent implements OnDestroy {
   }
 
   reloadPage(): void {
-    window.location.reload();
+    window.location.reload()
   }
 
   remember() {
@@ -82,7 +77,6 @@ export class AuthorizationDialogComponent implements OnDestroy {
   openDialogRegistration() {
     this.matDialog.open(RegistrationComponent)
   }
-
 }
 
 

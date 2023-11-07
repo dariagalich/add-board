@@ -13,33 +13,6 @@ export interface Advert {
   category: Category
 }
 
-// export interface CreateAdvert {
-//   id: string
-//   mame: string
-//   location: string
-//   Images: []
-//   Cost: string
-//   Email: string
-//   Phone: string
-//   CategoryId: string
-// }
-
-export interface ShortAdvert {
-  id: string
-  name: string
-  location: string
-  createdAt: string
-  isActive: string
-  imagesIds: string[]
-  cost: string
-}
-
-export interface AdvertSearch {
-  search: string
-  showNonActive: string
-  category: string
-}
-
 //==================================
 export interface User {
   id: string
@@ -58,22 +31,10 @@ export interface CreateUser {
 export interface LoginUser {
   login: string
   password: string
-  //======
-}
-
-export interface ShortUser {
-  id: string
-  name: string
 }
 
 //==================================
 export interface Category {
-  id: string
-  name: string
-  parentId: string
-}
-
-export interface ImportCategory {
   id: string
   name: string
   parentId: string
@@ -95,15 +56,7 @@ export interface Comment {
   user: User
 }
 
-export interface UpdateComment {
-  text: string
-}
-
 //==================================
-export interface ShortImage {
-  id: string
-}
-
 export interface Encoding {
   Id: string
   Name: string

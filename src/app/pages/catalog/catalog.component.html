@@ -1,4 +1,4 @@
-<div class="">
+<div>
   <div class="row">
     <h3>Рекомендации для вас</h3>
     <mat-form-field>
@@ -18,6 +18,7 @@
     <app-product *ngFor="let p of products$ | async" [product]="p" [routerLink]="['/ad-view',p.id]"></app-product>
   </div>
 </div>
+
 <ng-template #loading>
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </ng-template>

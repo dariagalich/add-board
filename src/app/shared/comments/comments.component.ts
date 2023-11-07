@@ -17,7 +17,7 @@ export class CommentsComponent implements OnInit {
 
   comments$!: Observable<Comment[]> | null
   advertId!: string
-  commentsArray!: Comment[];
+  commentsArray!: Comment[]
   commentsText!: string
   userId!: string
   isAuth: boolean = this.authService.isAuthenticated()
@@ -35,14 +35,14 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.advertId = params['id'];
+      this.advertId = params['id']
     })
 
     this.getComments()
 
     if (this.isAuth) {
       this.userService.getCurrentUser().subscribe(user => {
-        this.userId = user.id;
+        this.userId = user.id
       });
     }
   }
@@ -61,7 +61,7 @@ export class CommentsComponent implements OnInit {
     console.log(this.commentsText)
   }
 
-  editCommentText(commentId:string,commentText: string){
+  editCommentText(commentId: string, commentText: string) {
     this.commentEditId = commentId
     this.commentsText = commentText
     this.toggleEditComment = !this.toggleEditComment
@@ -82,7 +82,7 @@ export class CommentsComponent implements OnInit {
           next: () => {
             window.location.reload()
           }
-        });
+        })
     }
   }
 
@@ -94,7 +94,7 @@ export class CommentsComponent implements OnInit {
     const jsonObject = {
       text: text
     }
-    this.commentsService.editComment(commentId,jsonObject)
+    this.commentsService.editComment(commentId, jsonObject)
   }
 
   openDialog() {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {UsersService} from "../../services/users.service";
 import {ActivatedRoute, Params} from "@angular/router";
@@ -12,8 +12,8 @@ import {User} from "../../interfaces";
 })
 export class UserProfileComponent {
 
-  public user$!: Observable<User>;
-  public user!: User;
+  public user$!: Observable<User>
+  public user!: User
   userId!: string
 
   constructor(
@@ -25,7 +25,7 @@ export class UserProfileComponent {
   ngOnInit() {
 
     this.route.params.subscribe((params: Params) => {
-      this.userId = params['id'];
+      this.userId = params['id']
     })
 
     this.getUser()
@@ -33,17 +33,16 @@ export class UserProfileComponent {
   }
 
   getUser() {
-    this.userService.getUserById(this.userId).subscribe((response:User)=>{
-      this.user =  response
+    this.userService.getUserById(this.userId).subscribe((response: User) => {
+      this.user = response
     })
   }
 
-  async setUser(){
-   await this.userService.getUserById(this.userId)
-     .subscribe(result => {
+  async setUser() {
+    await this.userService.getUserById(this.userId)
+      .subscribe(result => {
         this.user = result
         console.log('user ', this.user)
       })
   }
-
 }

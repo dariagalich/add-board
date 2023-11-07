@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {AdCreateEditComponent} from "./ad-create-edit.component";
 
-
 const routes: Routes = [
   {
     path: '',
@@ -10,10 +9,10 @@ const routes: Routes = [
   }
 ];
 
-
 @NgModule({
   declarations: [],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdCreateEditRoutingModule { }
+export class AdCreateEditRoutingModule {
+}

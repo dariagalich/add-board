@@ -27,33 +27,6 @@ export class AuthService {
   ) {
   }
 
-  // login(user: LoginUser) {
-  //   this.http.post<{ token: string }>(apiUrl + 'Login', user)
-  //     .subscribe((response: any) => {
-  //       this.setToken(response)
-  //       this.getTokenExpirationDate(response)
-  //       localStorage.setItem('token', response)
-  //       if (this.tokenExpirationDate) {
-  //         localStorage.setItem('token-expiration-date', this.tokenExpirationDate.toISOString())
-  //       }
-  //       this.userService.getCurrentUser().subscribe((response: User) => {
-  //         this.userName.next(response.name)
-  //       })
-  //       this.matDialog.closeAll()
-  //       window.location.reload()
-  //     },
-  //   error => {
-  //     if (error.status === 400 && error.error.errors) {
-  //       // const errorMessage = error.error;
-  //       if (error.error.errors[0] === 'Invalid login or password') {
-  //         this.errorMessage.next('Неправильный логин или пароль')
-  //       }
-  //     }
-  //     return this.errorMessage
-  //   }
-  //     )
-  // }
-
   login(user: LoginUser) {
     this.http.post<string>(apiUrl + 'Login', user)
       .subscribe({
@@ -72,7 +45,6 @@ export class AuthService {
         },
         error: (response) => {
           if (response.status === 400 && response.error.errors) {
-            // const errorMessage = error.error;
             if (response.error.errors[0] === 'Invalid login or password') {
               this.errorMessage.next('Неправильный логин или пароль')
             }
@@ -101,13 +73,13 @@ export class AuthService {
   }
 
   getTokenExpirationDate(token: string): Date | null {
-    const decodedToken: any = jwt_decode(token);
+    const decodedToken: any = jwt_decode(token)
     if (decodedToken && decodedToken) {
-      const expirationDate = new Date(decodedToken.exp*1000);
-      this.tokenExpirationDate = expirationDate;
+      const expirationDate = new Date(decodedToken.exp * 1000)
+      this.tokenExpirationDate = expirationDate
       return expirationDate;
     }
-    return null;
+    return null
   }
 
   isTokenExpired(expToken: string): boolean {
@@ -118,7 +90,7 @@ export class AuthService {
       const expTokenDate = new Date(expToken)
       console.log('currentDate ', currentDate)
       console.log('expTokenDate ', expTokenDate)
-      return currentDate > expTokenDate;
+      return currentDate > expTokenDate
     }
   }
 
@@ -130,14 +102,14 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.token;
+    return !!this.token
   }
 
   register(user: CreateUser): Observable<CreateUser> {
     return this.http.post<CreateUser>(apiUrl + 'Register', user)
   }
 
-  setErrorMessage():Observable<string>{
+  setErrorMessage(): Observable<string> {
     return this.errorMessage.asObservable()
   }
 }

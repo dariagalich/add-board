@@ -2,6 +2,7 @@
   border-radius: 10px;
   transition: transform 0.2s ease;
   overflow: hidden;
+
   img {
     object-fit: cover;
     border: #ccd0d3 1px solid;
@@ -36,14 +37,15 @@
 }
 
 @media (max-width: 2000px) {
-    img{
-      height: 251px;
-      width: 324px;
-    }
+  img {
+    height: 251px;
+    width: 324px;
+  }
 }
+
 @media (max-width: 1200px) {
-    img{
-      max-width: 220px;
-      max-height: 164px;
-    }
+  img {
+    max-width: 220px;
+    max-height: 164px;
+  }
 }

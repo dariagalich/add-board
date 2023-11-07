@@ -35,7 +35,7 @@ export class AdsService {
         this.router.navigate(['/user-ads']).then(() => {
         })
       }
-    });
+    })
   }
 
   editAdd(advertId: string, form: FormData = new FormData()) {
@@ -46,19 +46,15 @@ export class AdsService {
       },
       error: (response) => {
         if (response.status === 500 && response.statusText === 'Internal Server Error') {
-
           this.errorMessage.next('Произошла ошибка на сервере, попробуйте позже')
-
         }
         return this.errorMessage
       }
     })
-
   }
 
-  setErrorMessage():Observable<string>{
-    console.log('ok',this.errorMessage.asObservable())
+  setErrorMessage(): Observable<string> {
+    console.log('ok', this.errorMessage.asObservable())
     return this.errorMessage.asObservable()
   }
-
 }

@@ -17,12 +17,9 @@ import {Advert, Category, User} from "../../interfaces";
   styleUrls: ['./ad-create-edit.component.scss'],
 })
 export class AdCreateEditComponent implements OnInit {
-
-  @ViewChild('inputImage') inputImageRef!: ElementRef;
+  @ViewChild('inputImage') inputImageRef!: ElementRef
   addAd: UntypedFormGroup = new UntypedFormGroup({})
-
   categories$!: Observable<Category[]>
-
   userAd!: Advert
   private adId: string = ''
   currentUser!: User
@@ -43,7 +40,7 @@ export class AdCreateEditComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      this.adId = params['id'];
+      this.adId = params['id']
     })
     if (this.adId) {
       this.productService.getById(this.adId)
@@ -54,7 +51,7 @@ export class AdCreateEditComponent implements OnInit {
               ...this.userAd.imagesIds
                 .map(item => 'http://194.87.237.48:5000/Images/' + item)
             )
-            this._buildForm(); // Вызываем метод _buildForm после успешного получения данных userAd
+            this._buildForm()
           }
         })
     }
@@ -82,28 +79,25 @@ export class AdCreateEditComponent implements OnInit {
 
   onFileChange(event: any) {
     if (event.target.files && event.target.files[0]) {
-      let filesAmount = event.target.files.length;
+      let filesAmount = event.target.files.length
       console.log(filesAmount)
       for (let i = 0; i < filesAmount; i++) {
-        this.addAd.controls['images'].value.push(event.target.files[i]);
-        let reader = new FileReader();
+        this.addAd.controls['images'].value.push(event.target.files[i])
+        let reader = new FileReader()
         reader.onload = (event: any) => {
-          this.allImages.push(event.target.result);
+          this.allImages.push(event.target.result)
           this.addAd.patchValue({
             fileSource: this.allImages
-          });
+          })
         }
-        reader.readAsDataURL(event.target.files[i]);
+        reader.readAsDataURL(event.target.files[i])
       }
-
     }
   }
 
   submit() {
     if (this.addAd.valid) {
-
       const formData = new FormData()
-
       formData.append('categoryId', this.addAd.get('categoryId')?.value)
       formData.append('name', this.addAd.get('name')?.value)
       formData.append('description', this.addAd.get('description')?.value)
@@ -116,9 +110,7 @@ export class AdCreateEditComponent implements OnInit {
       formData.append('cost', this.addAd.get('cost')?.value)
 
       if (!this.userAd) {
-
         this.adsService.adAdd(formData)
-
       } else {
         this.adsService.editAdd(this.userAd.id, formData)
         this.router.navigate(['/user-ads']).then()

@@ -10,7 +10,6 @@
     </svg>
   </div>
 
-
   <input id="name-registration" type="name" formControlName="name" placeholder="Имя">
   <div class="warning"
        *ngIf="registrationForm.controls['name'].invalid && (registrationForm.controls['name'].touched || registrationForm.controls['name'].dirty)">
@@ -19,7 +18,6 @@
       <span>В имени содержатся недопустимые символы</span>
     </div>
   </div>
-
 
   <input id="email-registration" type="email" formControlName="email" placeholder="E-mail">
   <div class="warning"
@@ -30,7 +28,6 @@
     </div>
   </div>
 
-
   <input id="login-registration" type="login" formControlName="login" placeholder="Номер телефона">
   <div class="warning"
        *ngIf="registrationForm.controls['login'].invalid && (registrationForm.controls['login'].touched || registrationForm.controls['login'].dirty)">
@@ -40,7 +37,6 @@
     </div>
   </div>
 
-
   <input id="password-registration" type="password" formControlName="password" placeholder="Пароль">
   <div class="warning"
        *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].touched || registrationForm.controls['password'].dirty)">
@@ -49,7 +45,6 @@
       <small>Пароль должен содержать не меннее 8 символов</small>
     </div>
   </div>
-
 
   <input id="confirm-password-registration" type="password" formControlName="confirmPassword"
          placeholder="Подтвердите пароль">
@@ -62,9 +57,7 @@
     </div>
   </div>
 
-
   <img src="assets/images/KCaptcha.png" alt="Ошибка загрузки изображения">
-
 
   <input id="captcha" type="text" formControlName="captcha" placeholder="Введите код">
   <div class="warning"

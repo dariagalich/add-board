@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CatalogComponent} from "./catalog.component";
 import {CatalogRoutingModule} from "./catalog.routing.module";
 import {HttpClientModule} from "@angular/common/http";
@@ -25,6 +25,7 @@ import {MatSelectModule} from "@angular/material/select";
   exports: [
     ProductComponent
   ],
-  providers:[ProductsService]
+  providers: [ProductsService]
 })
-export class CatalogModule {}
+export class CatalogModule {
+}
