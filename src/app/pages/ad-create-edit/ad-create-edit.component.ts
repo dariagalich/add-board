@@ -110,11 +110,13 @@ export class AdCreateEditComponent implements OnInit {
       formData.append('cost', this.addAd.get('cost')?.value)
 
       if (!this.userAd) {
-        this.adsService.adAdd(formData)
+        this.adsService.adAdd(formData).subscribe()
       } else {
-        this.adsService.editAdd(this.userAd.id, formData)
+
         this.router.navigate(['/user-ads']).then()
       }
+      this.adsService.editAdd(this.userAd.id, formData)
+      this.router.navigate(['/user-ads']).then()
     }
   }
 }
