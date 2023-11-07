@@ -1,4 +1,4 @@
-<form class="form-size" [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit()">
+<form class="form-size" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
   <div class="form-header">
     <h3>Регистрация</h3>
@@ -75,8 +75,8 @@
     </div>
   </div>
 
-  <div *ngIf="registrationForm.markAsTouched" class="warning">
-    Форма содержит незаполенные поля. Пожалуйста, исправьте их.
+  <div *ngIf="errorMessage" class="error-container">
+    <p class="error-message">{{this.errorMessage}}</p>
   </div>
 
   <div class="button-login">

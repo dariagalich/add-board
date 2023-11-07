@@ -28,6 +28,17 @@ export class AdViewComponent {
   allCategories: CategoryTree[] = []
   breadcrumbs: Breadcrumb[] = []
 
+  selectedImage!: string
+  slideConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    infinite: true,
+    autoplay: false,
+    autoplaySpeed: 2000
+  };
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
@@ -48,9 +59,12 @@ export class AdViewComponent {
     this.product$.subscribe(response => {
       this.ad = response
       const currentCategory = response.category
+      this.product$.subscribe(response => {
+        this.selectedImage = response.imagesIds[0]
+      });
       this.categoriesService.getCategories().subscribe((response: Category[]) => {
         this.allCategories = buildCategoryTree(response)
-        this.breadcrumbs = this.buildBreadcrumbPath(currentCategory, this.allCategories);
+        this.breadcrumbs = this.buildBreadcrumbPath(currentCategory, this.allCategories)
       })
     })
 
@@ -61,6 +75,10 @@ export class AdViewComponent {
       });
     }
 
+  }
+
+  selectImage(image: string) {
+    this.selectedImage = image;
   }
 
   checkIsCreatedByUser(): Observable<boolean> {

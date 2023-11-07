@@ -7,10 +7,7 @@ import {
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationComponent} from "../registration/registration.component";
 import {AuthService} from "../../services/auth.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Subscription} from "rxjs";
-
-const expirationDate = new Date();
 
 @Component({
   selector: 'app-authorization-dialog',
@@ -27,24 +24,13 @@ export class AuthorizationDialogComponent implements OnDestroy {
   rememberMe: boolean = false
 
 
-
   constructor(
     private matDialog: MatDialog,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute
-  ){
+  ) {
     this._buildForm()
 
-    this.route.queryParams.subscribe((params:Params) => {
-      if (params['registered']){
-        // Вы вошли в систему
-      } else  if (params['accessDenied']){
-        // Сначала войдите в систему
-      }
-
-    })
   }
 
   private _buildForm() {
@@ -67,15 +53,28 @@ export class AuthorizationDialogComponent implements OnDestroy {
   //   // }
   // }
 
-  submit(){
-    // this.authService.setTokenExpirationDate(expirationDate);
-    const { login, password } = this.authorizationForm.controls
-    this.authService.login(login.value,password.value)
-    this.authorizationForm.reset()
+  onSubmit() {
+
+    if (this.authorizationForm.valid) {
+
+      const {login, password} = this.authorizationForm.controls
+      const user = {
+        login: login.value,
+        password: password.value
+      }
+      this.authService.login(user)
+      this.authorizationForm.reset()
+
+    } else {
+      Object.values(this.authorizationForm.controls).forEach(control => {
+        control.markAsTouched();
+        control.markAsDirty();
+      });
+    }
   }
 
   ngOnDestroy() {
-    if (this.authSub){
+    if (this.authSub) {
       this.authSub.unsubscribe()
     }
   }

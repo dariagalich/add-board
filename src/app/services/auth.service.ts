@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import jwt_decode from 'jwt-decode';
 import {MatDialog} from "@angular/material/dialog";
 import {UsersService} from "./users.service";
-import {CreateUser, User} from "../interfaces";
+import {CreateUser, LoginUser, User} from "../interfaces";
 
 const apiUrl = 'http://194.87.237.48:5000/Auth/'
 
@@ -26,8 +26,8 @@ export class AuthService {
   ) {
   }
 
-  login(login: string, password: string) {
-    this.http.post<{ token: string }>(apiUrl + 'Login', {login, password})
+  login(user: LoginUser) {
+    this.http.post<{ token: string }>(apiUrl + 'Login', user)
       .subscribe((response: any) => {
         this.setToken(response)
         this.getTokenExpirationDate(response)
@@ -94,10 +94,8 @@ export class AuthService {
     return !!this.token;
   }
 
-  register(name: string, login: string, password: string): Observable<CreateUser> {
-    return this.http.post<CreateUser>(apiUrl + 'Register', {
-      name, login, password
-    })
+  register(user: CreateUser): Observable<CreateUser> {
+    return this.http.post<CreateUser>(apiUrl + 'Register', user)
   }
 
 }

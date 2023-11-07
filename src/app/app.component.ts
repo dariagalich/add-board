@@ -10,6 +10,8 @@ import {AuthService} from "./services/auth.service";
 export class AppComponent implements OnInit {
   title = 'shop';
 
+  loadingPage = true;
+
   constructor(private authService: AuthService) {
   }
 
@@ -24,6 +26,11 @@ export class AppComponent implements OnInit {
       if (potentialToken)
         this.authService.logout()
     }
+
+    setTimeout(() => {
+      // Завершение асинхронной операции или загрузки данных
+      this.loadingPage = false;
+    }, 3000);
 
   }
 }

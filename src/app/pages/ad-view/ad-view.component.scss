@@ -30,7 +30,7 @@
   }
 }
 
-.imgChosen {
+.selected {
   opacity: 0.5;
   border: var(--dark-blue) solid 1px;
 }
@@ -42,13 +42,18 @@ mat-progress-spinner {
 }
 
 img {
-  max-height: 450px;
+  max-height: 576px;
   object-fit: cover;
   border: #ccd0d3 1px solid;
 }
 
 p {
   color: #64748B;
+}
+
+p:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 a {

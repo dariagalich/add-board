@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {SearchService} from "../../services/search.service";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Advert} from "../../interfaces";
 import {ActivatedRoute} from "@angular/router";
 
@@ -16,6 +16,7 @@ export class CatalogComponent implements OnInit {
   searchInside!: string
   search!: string
   category!: string
+  selected = 'none';
 
   constructor(
     private productsService: ProductsService,
@@ -56,6 +57,25 @@ export class CatalogComponent implements OnInit {
 
   searchProducts(search: string, category: string) {
     this.products$ = this.productsService.searchProducts(search, category)
+  }
+
+  filterAndSortAds(ads$: Observable<Advert[]>, sortOrder: string): Observable<Advert[]> {
+    return ads$.pipe(
+      map((ads: Advert[]) => {
+        let filteredAds = ads.slice(); // Создаем копию массива объявлений
+
+        if (sortOrder === 'ascending') {
+          filteredAds = filteredAds.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
+        } else if (sortOrder === 'descending') {
+          filteredAds = filteredAds.sort((a, b) => parseFloat(b.cost) - parseFloat(a.cost));
+        }
+        return filteredAds;
+      })
+    );
+  }
+
+  setSortAdverts(ads$: Observable<Advert[]>, sortOrder: string){
+    this.products$ = this.filterAndSortAds(ads$,sortOrder)
   }
 
 }

@@ -6,6 +6,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {CommentsComponent} from "../../shared/comments/comments.component";
 import {FormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 
 @NgModule({
@@ -13,13 +14,14 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     AdViewComponent,
     CommentsComponent
   ],
-  imports: [
-    CommonModule,
-    AdViewRoutingModule,
-    MatIconModule,
-    FormsModule,
-    MatProgressSpinnerModule
-  ],
+    imports: [
+        CommonModule,
+        AdViewRoutingModule,
+        MatIconModule,
+        FormsModule,
+        MatProgressSpinnerModule,
+        SlickCarouselModule
+    ],
   exports: []
 
 })

@@ -1,47 +1,51 @@
-.form-header{
+.form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-svg{
+
+svg {
   height: 12px;
   width: 12px;
   margin: 8px 0 16px;
   cursor: pointer;
 }
 
-svg:active{
+svg:active {
   border-radius: 5px;
   background-color: #CBD5E1;
 }
 
-.checkbox{
+.checkbox {
   height: 16px;
   width: 16px;
   color: var(--blue);
   border-color: #CBD5E1;
 }
-.other-info{
+
+.other-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.check-remember{
+
+.check-remember {
   display: flex;
   gap: 8px;
 }
 
-.button-login{
+.button-login {
   margin-bottom: 2px;
   display: flex;
   justify-content: center;
 }
 
-.registration-link{
+.registration-link {
   display: flex;
   justify-content: center;
   cursor: pointer;
 }
+
 @import "src/assets/scss/form-styles";
 @import "src/assets/scss/button-styles";
 

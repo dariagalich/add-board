@@ -39,18 +39,16 @@
         </div>
       </div>
 
-      <img *ngIf="product.imagesIds.length!=0 ;else errSrc"
-           src="http://194.87.237.48:5000/Images/{{product.imagesIds[0]}}" alt="ошибка загрузки" class="big-img">
-      <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
-
-      <div class="small-img">
-        <div *ngFor="let p of product.imagesIds; let i = index">
-          <img *ngIf="i > 0;else imageChosen" src="http://194.87.237.48:5000/Images/{{p}}" alt="ошибка загрузки">
-          <ng-template #imageChosen>
-            <img src="http://194.87.237.48:5000/Images/{{p}}" alt="ошибка загрузки" class="imgChosen">
-          </ng-template>
-        </div>
+      <div *ngIf="selectedImage;else errSrc" class="big-img">
+        <img src="http://194.87.237.48:5000/Images/{{selectedImage}}" alt="ошибка загрузки">
       </div>
+        <ng-template #errSrc><img src="/assets/images/image_error.png" alt="ошибка загрузки"></ng-template>
+
+      <ngx-slick-carousel class="carousel small-img" [config]="slideConfig">
+        <div *ngFor="let image of product.imagesIds">
+          <img src="http://194.87.237.48:5000/Images/{{image}}" alt="ошибка загрузки" (click)="selectImage(image)" [ngClass]="{'selected': selectedImage === image}">
+        </div>
+      </ngx-slick-carousel>
 
 
     </div>

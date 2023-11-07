@@ -1,47 +1,68 @@
-.form-header{
+.form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-svg{
+
+svg {
   height: 12px;
   width: 12px;
   margin: 8px 0 16px;
   cursor: pointer;
 }
 
-svg:active{
+svg:active {
   border-radius: 5px;
   background-color: #CBD5E1;
 }
 
-img{
+img {
   margin-top: 8px;
 }
 
-.other-info{
+.other-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.check-remember{
+
+.check-remember {
   display: flex;
   gap: 8px;
 }
 
-.button-login{
+.button-login {
   margin: auto;
   display: flex;
   justify-content: center;
 }
-button{
+
+button {
   margin: 24px 0 0 0;
 }
-.registration-link{
+
+.registration-link {
   margin-top: 8px;
   display: flex;
   justify-content: center;
 }
+
+.error-container {
+  border: 1px;
+  border-radius: 5px;
+  background-color: #ffd693;
+  margin-top: 8px;
+
+  .error-message {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #c58701;
+  }
+}
+
 @import "src/assets/scss/form-styles";
 @import "src/assets/scss/button-styles";
 

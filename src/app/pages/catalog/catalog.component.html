@@ -1,5 +1,19 @@
 <div class="">
-  <h3>Рекомендации для вас</h3>
+  <div class="row">
+    <h3>Рекомендации для вас</h3>
+    <mat-form-field>
+      <mat-label>Сортировать по</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="none" (click)="getProduct()">Нет</mat-option>
+        <mat-option value="ascending" (click)="setSortAdverts(products$,'ascending')">
+          По возрастанию цены
+        </mat-option>
+        <mat-option value="descending" (click)="setSortAdverts(products$,'descending')">
+          По убыванию цены
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="wrap" *ngIf="products$ | async; else loading">
     <app-product *ngFor="let p of products$ | async" [product]="p" [routerLink]="['/ad-view',p.id]"></app-product>
   </div>

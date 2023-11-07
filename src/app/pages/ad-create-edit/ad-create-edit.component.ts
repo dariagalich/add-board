@@ -85,15 +85,12 @@ export class AdCreateEditComponent implements OnInit {
       let filesAmount = event.target.files.length;
       console.log(filesAmount)
       for (let i = 0; i < filesAmount; i++) {
-
+        this.addAd.controls['images'].value.push(event.target.files[i]);
         let reader = new FileReader();
         reader.onload = (event: any) => {
-          // this.addAd.controls['images'].value.push(event.target.result);
           this.allImages.push(event.target.result);
-          // this.imagesView.push(event.target.result);
-
           this.addAd.patchValue({
-            fileSource: this.imagesView
+            fileSource: this.allImages
           });
         }
         reader.readAsDataURL(event.target.files[i]);
