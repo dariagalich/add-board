@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {Router} from "@angular/router";
 import jwt_decode from 'jwt-decode';
 import {MatDialog} from "@angular/material/dialog";
@@ -17,6 +17,7 @@ export class AuthService {
   userName = new Subject<string>()
   token = ''
   private tokenExpirationDate!: Date
+  private errorMessage: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
   constructor(
     private http: HttpClient,
@@ -26,20 +27,58 @@ export class AuthService {
   ) {
   }
 
+  // login(user: LoginUser) {
+  //   this.http.post<{ token: string }>(apiUrl + 'Login', user)
+  //     .subscribe((response: any) => {
+  //       this.setToken(response)
+  //       this.getTokenExpirationDate(response)
+  //       localStorage.setItem('token', response)
+  //       if (this.tokenExpirationDate) {
+  //         localStorage.setItem('token-expiration-date', this.tokenExpirationDate.toISOString())
+  //       }
+  //       this.userService.getCurrentUser().subscribe((response: User) => {
+  //         this.userName.next(response.name)
+  //       })
+  //       this.matDialog.closeAll()
+  //       window.location.reload()
+  //     },
+  //   error => {
+  //     if (error.status === 400 && error.error.errors) {
+  //       // const errorMessage = error.error;
+  //       if (error.error.errors[0] === 'Invalid login or password') {
+  //         this.errorMessage.next('Неправильный логин или пароль')
+  //       }
+  //     }
+  //     return this.errorMessage
+  //   }
+  //     )
+  // }
+
   login(user: LoginUser) {
-    this.http.post<{ token: string }>(apiUrl + 'Login', user)
-      .subscribe((response: any) => {
-        this.setToken(response)
-        this.getTokenExpirationDate(response)
-        localStorage.setItem('token', response)
-        if (this.tokenExpirationDate) {
-          localStorage.setItem('token-expiration-date', this.tokenExpirationDate.toISOString())
+    this.http.post<string>(apiUrl + 'Login', user)
+      .subscribe({
+        next: (response: string) => {
+          this.setToken(response)
+          this.getTokenExpirationDate(response)
+          localStorage.setItem('token', response)
+          if (this.tokenExpirationDate) {
+            localStorage.setItem('token-expiration-date', this.tokenExpirationDate.toISOString())
+          }
+          this.userService.getCurrentUser().subscribe((response: User) => {
+            this.userName.next(response.name)
+          })
+          this.matDialog.closeAll()
+          window.location.reload()
+        },
+        error: (response) => {
+          if (response.status === 400 && response.error.errors) {
+            // const errorMessage = error.error;
+            if (response.error.errors[0] === 'Invalid login or password') {
+              this.errorMessage.next('Неправильный логин или пароль')
+            }
+          }
+          return this.errorMessage
         }
-        this.userService.getCurrentUser().subscribe((response: User) => {
-          this.userName.next(response.name)
-        })
-        this.matDialog.closeAll()
-        window.location.reload()
       })
   }
 
@@ -98,5 +137,8 @@ export class AuthService {
     return this.http.post<CreateUser>(apiUrl + 'Register', user)
   }
 
+  setErrorMessage():Observable<string>{
+    return this.errorMessage.asObservable()
+  }
 }
 

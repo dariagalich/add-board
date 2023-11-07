@@ -8,10 +8,9 @@ import {
 } from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
-import {Observable,Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {AuthorizationDialogComponent} from "../authorization-dialog/authorization-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {CreateUser} from "../../interfaces";
 
 
 @Component({
@@ -55,30 +54,33 @@ export class RegistrationComponent {
         login: login.value,
         password: password.value
       }
-      this.authService.register(user).subscribe((response:CreateUser)=> {
-        this.registrationForm.reset();
-        this.matDialog.closeAll();
-        this.openDialog();
-      },
-        error => {
-          console.error(error);
-          if (error.status === 400 && error.error.login) {
-            const errorMessage = error.error.login[0];
-            if (errorMessage === 'Пользователь с таким логином уже существует.') {
-              this.errorMessage = 'Пользователь с таким номером уже существует!';
-              console.log(this.errorMessage)
+      this.authService.register(user)
+        .subscribe({
+            next: () => {
+              this.registrationForm.reset();
+              this.matDialog.closeAll();
+              this.openDialog();
+            },
+            error: (response) => {
+              if (response.status === 400 && response.error.login) {
+                const errorMessage = response.error.login[0];
+                if (errorMessage === 'Пользователь с таким логином уже существует.') {
+                  this.errorMessage = 'Пользователь с таким номером уже существует!';
+                  console.log(this.errorMessage)
+                }
+              }
+              return new Observable<never>(() => {
+                throw new Error('Ошибка');
+              })
             }
           }
-          return new Observable<never>(() => {
-            throw new Error('Ошибка');})
-        }
-      )
-
+        )
     } else {
-      Object.values(this.registrationForm.controls).forEach(control => {
+      Object
+        .values(this.registrationForm.controls).forEach(control => {
         control.markAsTouched();
         control.markAsDirty();
-      });
+      })
     }
   }
 

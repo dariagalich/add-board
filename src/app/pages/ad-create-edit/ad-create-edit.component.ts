@@ -28,6 +28,7 @@ export class AdCreateEditComponent implements OnInit {
   currentUser!: User
   imagesView: string[] = []
   allImages: string[] = []
+  errorMessage = ''
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +50,6 @@ export class AdCreateEditComponent implements OnInit {
         .subscribe({
           next: (ad: Advert) => {
             this.userAd = ad;
-            console.log(this.userAd.imagesIds)
             this.allImages.push(
               ...this.userAd.imagesIds
                 .map(item => 'http://194.87.237.48:5000/Images/' + item)
@@ -107,7 +107,6 @@ export class AdCreateEditComponent implements OnInit {
       formData.append('categoryId', this.addAd.get('categoryId')?.value)
       formData.append('name', this.addAd.get('name')?.value)
       formData.append('description', this.addAd.get('description')?.value)
-      console.log('desc ', this.addAd.get('description')?.value)
       formData.append('location', this.addAd.get('location')?.value)
       for (let i = 0; i < this.addAd.get('images')?.value.length; i++) {
         formData.append('images', this.addAd.get('images')?.value[i]);
@@ -117,14 +116,13 @@ export class AdCreateEditComponent implements OnInit {
       formData.append('cost', this.addAd.get('cost')?.value)
 
       if (!this.userAd) {
+
         this.adsService.adAdd(formData)
-          .subscribe((resp) => {
-            console.log(resp)
-          })
+
       } else {
         this.adsService.editAdd(this.userAd.id, formData)
+        this.router.navigate(['/user-ads']).then()
       }
-      this.router.navigate(['/user-ads']).then()
     }
   }
 }

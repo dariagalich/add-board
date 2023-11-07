@@ -1,10 +1,10 @@
 @media (max-width: 1400px) {
 
-  .container, .wrap{
+  .container, .wrap {
     width: 1140px;
   }
-  .wrap{
-    grid-template-columns: repeat(3,1fr);
+  .wrap {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -15,14 +15,14 @@
 }
 
 @media (max-width: 1050px) {
-  h3{
+  h3 {
     font-size: 24px;
   }
-  h4{
+  h4 {
     margin-top: 16px;
     font-size: 16px;
   }
-  p{
+  p {
     font-size: 14px;
   }
   .container, .wrap {
@@ -32,11 +32,11 @@
 }
 
 @media (max-width: 768px) {
-  .container, .wrap{
+  .container, .wrap {
     width: 540px;
   }
-  .wrap{
-    grid-template-columns: repeat(2,1fr);
+  .wrap {
+    grid-template-columns: repeat(2, 1fr);
   }
   .header-bottom-bar {
     flex-wrap: wrap;
@@ -48,8 +48,8 @@
   .container, .wrap {
     width: 432px;
   }
-  .wrap{
-    grid-template-columns: repeat(1,1fr);
+  .wrap {
+    grid-template-columns: repeat(1, 1fr);
   }
   .categories-text {
     display: none;

@@ -22,7 +22,7 @@ export class AuthorizationDialogComponent implements OnDestroy {
   authorizationForm: UntypedFormGroup = new UntypedFormGroup({})
 
   rememberMe: boolean = false
-
+  error = ''
 
   constructor(
     private matDialog: MatDialog,
@@ -41,18 +41,6 @@ export class AuthorizationDialogComponent implements OnDestroy {
     })
   }
 
-
-  // submit(){
-  //   // this.authService.setTokenExpirationDate(expirationDate);
-  //   // const userLoginData = { this.authorizationForm}
-  //   const { login, password } = this.authorizationForm.controls
-  //   this.authSub = this.authService.login(login.value, password.value)
-  //   // {
-  //   //   this.authorizationForm.reset()
-  //   //   this.router.navigate(['/user-ads']).then(() =>{})
-  //   // }
-  // }
-
   onSubmit() {
 
     if (this.authorizationForm.valid) {
@@ -62,8 +50,12 @@ export class AuthorizationDialogComponent implements OnDestroy {
         login: login.value,
         password: password.value
       }
+
       this.authService.login(user)
-      this.authorizationForm.reset()
+
+      this.authService.setErrorMessage().subscribe((error) => {
+        this.error = error
+      })
 
     } else {
       Object.values(this.authorizationForm.controls).forEach(control => {
@@ -90,10 +82,6 @@ export class AuthorizationDialogComponent implements OnDestroy {
   openDialogRegistration() {
     this.matDialog.open(RegistrationComponent)
   }
-
-  // closeDialog(){
-  //   this.matDialog.closeAll()
-  // }
 
 }
 

@@ -18,6 +18,10 @@
 
   </div>
 
+  <div *ngIf="errorMessage !=''" class="error-container">
+    <p class="error-message">{{this.errorMessage}}</p>
+  </div>
+
   <ng-template #loading>
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </ng-template>
