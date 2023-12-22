@@ -137,4 +137,8 @@ app-root {
   min-height: 100%;
 }
 
+.ymaps3x0--default-marker__title-wrapper{
+  max-width: 100% !important;
+}
+
 @import "assets/scss/adaptive-styles";

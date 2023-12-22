@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {map, Observable, switchMap} from "rxjs";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
@@ -8,6 +8,7 @@ import {AdsService} from "../../services/ads.service";
 import {Advert, Breadcrumb, Category, CategoryTree, User} from "../../interfaces";
 import {CategoriesService} from "../../services/categories.service";
 import {buildCategoryTree} from "../../shared/utils/helpers";
+import {GeocoderService} from "../../services/geocoder.service";
 
 @Component({
   selector: 'app-ad-view',
@@ -22,6 +23,7 @@ export class AdViewComponent {
   adId!: string
   isAdvertCreateByUser!: boolean
   togglePhone = false
+  toggleMap = false
   allCategories: CategoryTree[] = []
   breadcrumbs: Breadcrumb[] = []
   selectedImage!: string
@@ -35,13 +37,16 @@ export class AdViewComponent {
     autoplaySpeed: 2000
   };
 
+  @ViewChild('myElement') myElement!: ElementRef;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
     private authService: AuthService,
     private userService: UsersService,
     private adsService: AdsService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private geoCoder: GeocoderService,
   ) {
   }
 
@@ -56,6 +61,7 @@ export class AdViewComponent {
       this.product$.subscribe(response => {
         this.selectedImage = response.imagesIds[0]
       });
+      this.geoCoder.getAddressCoordinates(this.ad.location)
       this.categoriesService.getCategories().subscribe((response: Category[]) => {
         this.allCategories = buildCategoryTree(response)
         this.breadcrumbs = this.buildBreadcrumbPath(currentCategory, this.allCategories)
@@ -67,6 +73,7 @@ export class AdViewComponent {
         this.isAdvertCreateByUser = result
       })
     }
+
   }
 
   selectImage(image: string) {
@@ -90,6 +97,13 @@ export class AdViewComponent {
 
   showPhone() {
     this.togglePhone = !this.togglePhone
+  }
+
+  showMap(){
+    this.toggleMap = true
+    setTimeout(() => {
+      this.myElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
   }
 
   buildBreadcrumbPath(category: Category, allCategories: CategoryTree[], path: Breadcrumb[] = []): Breadcrumb[] {

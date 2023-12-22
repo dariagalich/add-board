@@ -7,11 +7,13 @@ import {CommentsComponent} from "../../shared/comments/comments.component";
 import {FormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {SlickCarouselModule} from "ngx-slick-carousel";
+import {MapComponent} from "../../shared/map/map.component";
 
 @NgModule({
   declarations: [
     AdViewComponent,
-    CommentsComponent
+    CommentsComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,

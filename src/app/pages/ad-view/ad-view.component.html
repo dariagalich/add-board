@@ -86,6 +86,7 @@
 
       <h4>Адрес</h4>
       <p>{{product.location}}</p>
+      <button (click)="showMap()">Показать на карте</button>
       <h4>Описание</h4>
       <p>{{product.description}}</p>
 
@@ -99,6 +100,9 @@
         <app-comments></app-comments>
       </div>
     </div>
+  </div>
+  <div *ngIf="toggleMap" #myElement>
+    <app-map></app-map>
   </div>
 </div>
 
